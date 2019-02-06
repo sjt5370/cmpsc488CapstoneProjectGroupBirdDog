@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Picking</string>
+    <string name="employee_name">[Employee Name]</string>
+    <string name="next_order">Next Order</string>
+    <string name="logout">Logout</string>
+    <string name="product_1">Product 1</string>
+    <string name="product_2">Product 2</string>
+    <string name="product_3">Product 3</string>
+    <string name="product_4">Product 4</string>
+    <string name="product_5">Product 5</string>
+    <string name="finish_order">Finish Order</string>
+    <string name="hold_order">Place Order On Hold</string>
+</resources>
