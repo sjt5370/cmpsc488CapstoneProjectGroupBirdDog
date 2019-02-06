@@ -33,6 +33,10 @@ public class Order extends AppCompatActivity {
             finish.setEnabled(true);
             hold.setEnabled(false);
         }
+        else{
+            finish.setEnabled(false);
+            hold.setEnabled(true);
+        }
     }
 
     //returns user to Main Page
