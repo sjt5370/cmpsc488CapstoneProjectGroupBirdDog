@@ -1,6 +1,8 @@
 package com.birddogs.picking;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,5 +42,32 @@ public class Order extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    //shows confirmation dialog for Place on Hold and Finish Order button
+    public void alert(View view){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        if(view.getId() == R.id.finishOrder){
+            alert.setTitle("Finish Order and Exit?");
+        }
+        else if(view.getId() == R.id.holdButton) {
+            alert.setTitle("Place Order on Hold and Exit?");
+        }
+
+        alert.setMessage("").setCancelable(false).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Order.this.finish();
+            }
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alertD = alert.create();
+        alertD.show();
+    }
+
 
 }
