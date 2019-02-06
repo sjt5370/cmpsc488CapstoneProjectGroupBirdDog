@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Stocking Proto</string>
+
+    <string name="login_bar">Sign in</string>
+    <string name="email_field_hint">Employee Email</string>
+    <string name="password_field_hint">Password</string>
+    <string name="forgot_password_button">Forgot?</string>
+    <string name="forgot_password_response">Too Bad!</string>
+    <string name="login_button">Log In</string>
+    <string name="logout_button">Log Out</string>
+
+    <string name="stocking_bar">Select a job:</string>
+    <string name="restocking_button">Restocking</string>
+    <string name="receiving_button">Receiving</string>
+
+    <string name="restocking_bar">Select product to restock:</string>
+
+    <string name="bulk_stock_quantity">Quantity in Bulk:</string>
+    <string name="to_move_quantity">Quantity to Move:</string>
+    <string name="move_button">Move</string>
+    <string name="negative_quantity_response">Enter a number greater than zero.</string>
+    <string name="insufficient_quantity_response">Enter a number less than bulk stock.</string>
+
+    <string name="receiving_bar">Ready to receive:</string>
+    <string name="pick_up_button">Pick Up</string>
+</resources>
