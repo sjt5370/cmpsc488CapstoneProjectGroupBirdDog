@@ -10,4 +10,7 @@
     <string name="product_5">Product 5</string>
     <string name="finish_order">Finish Order</string>
     <string name="hold_order">Place Order On Hold</string>
+    <string name="employee_id">Employee ID</string>
+    <string name="password">********</string>
+    <string name="loginButton">Login</string>
 </resources>

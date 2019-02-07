@@ -41,12 +41,6 @@ public class Order extends AppCompatActivity {
         }
     }
 
-    //returns user to Main Page
-    public void previous(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     //shows confirmation dialog for Place on Hold and Finish Order button
     public void alert(View view){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
