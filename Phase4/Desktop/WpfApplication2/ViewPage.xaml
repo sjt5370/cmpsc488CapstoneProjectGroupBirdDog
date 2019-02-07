@@ -1,0 +1,87 @@
+<Page x:Class="WpfApplication2.ViewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WpfApplication2"
+      mc:Ignorable="d"
+      Title="ViewPage" Height="450" Width="800">
+    <Grid>
+        <Canvas HorizontalAlignment="Right" VerticalAlignment="Center" Height="450" Width="300" Background="White">
+            <Button Height="100" Width="200" Content="Add/Edit" FontSize="50" Canvas.Top="150" Canvas.Left="50" Click="ButtonBase_OnClick"/>
+           
+        </Canvas>
+        <ListBox Margin="10,10,10,10" Name="RouteList" Height="390" Width="500" VerticalAlignment="Top" HorizontalAlignment="Left" HorizontalContentAlignment="Center" BorderThickness="1">
+                <ListBoxItem Content="Route 101" FontSize="20" MouseDoubleClick="Control_OnMouseDoubleClick"></ListBoxItem>
+                <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                    <ListBox FontSize="12"  Height="140" Width="390">
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                    </ListBox>
+                </ListBoxItem>
+                
+                <ListBoxItem Content="Route 102" FontSize="20"  MouseDoubleClick="Control_OnMouseDoubleClick"></ListBoxItem>
+                <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                    <ListBox FontSize="12"  Height="140" Width="390">
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                    </ListBox>
+                </ListBoxItem>
+                
+                <ListBoxItem Content="Route 103" FontSize="20"  MouseDoubleClick="Control_OnMouseDoubleClick"></ListBoxItem>
+                <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                    <ListBox FontSize="12"  Height="140" Width="390">
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                    </ListBox>
+                </ListBoxItem>
+                
+                <ListBoxItem Content="Route 104" FontSize="20"  MouseDoubleClick="Control_OnMouseDoubleClick"></ListBoxItem>
+                <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                    <ListBox FontSize="12"  Height="140" Width="390">
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                    </ListBox>
+                </ListBoxItem>
+                
+                <ListBoxItem Content="Route 105" FontSize="20"  MouseDoubleClick="Control_OnMouseDoubleClick"></ListBoxItem>
+                <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                    <ListBox FontSize="12"  Height="140" Width="390">
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                        <ListBoxItem Content="Account Name                    Order Size"/>
+                    </ListBox>
+                </ListBoxItem>
+            </ListBox>
+        <Frame x:Name="View"/>
+    </Grid>
+</Page>

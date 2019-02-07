@@ -1,0 +1,18 @@
+<Page x:Class="WpfApplication2.EditAdd"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WpfApplication2"
+      mc:Ignorable="d"
+      Title="EditAdd" Height="450" Width="800">
+    <Grid>
+        <Canvas Width="800" Height="450" Background="White">
+                            <Button Canvas.Top="35" Content="EDIT" Canvas.Left="250" Click="ClickEdit"
+                                    Height="125" Width="300" FontSize="70" BorderThickness="4"/>
+                            <Button Canvas.Top="175" Content="ADD" Canvas.Left="250" Click="ClickAdd"
+                                    Height="125" Width="300" FontSize="70" BorderThickness="4"/>
+                        </Canvas>
+                        <Frame x:Name="Selection"/>
+    </Grid>
+</Page>
