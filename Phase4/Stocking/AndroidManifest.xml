@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -35,6 +38,12 @@
         <activity
             android:name=".ReceivingActivity"
             android:parentActivityName=".StockingActivity" />
+        <activity
+            android:name=".ProductReceiveActivity"
+            android:parentActivityName=".ReceivingActivity" />
+        <activity
+            android:name=".NewProductActivity"
+            android:parentActivityName=".ReceivingActivity" />
     </application>
 
 </manifest>

@@ -79,7 +79,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Random r = new Random();
         for (int i = 0; i < 20; i++) {
             Product p = new Product();
-            p.setID(i * 123);
+            p.setID(i + 1);
             p.setShelfStock(r.nextInt(999) + 1);
             p.setBulkStock(r.nextInt(999) + 1);
             p.setManufacturer("Manufacturer #" + (r.nextInt(10) + 1));
@@ -129,24 +129,23 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public Product getProduct(int id, SQLiteDatabase db) {
         StringBuilder command = new StringBuilder();
-        command.append("select prod_name, prod_desc, manu, price, inv_bulk, inv_shelf ");
+        command.append("select product.prod_id as prod_id, prod_name, prod_desc, manu, price, inv_bulk, inv_shelf ");
         command.append("from product, inventory ");
         command.append("where product.prod_id = inventory.prod_id and product.prod_id = ");
         command.append(id);
         command.append(";");
         Cursor c = db.rawQuery(command.toString(), null);
-        if (!c.moveToFirst()) {
-            c.close();
-            return null;
+        Product product = null;
+        if (c.moveToFirst()) {
+            product = new Product();
+            product.setID(c.getInt(c.getColumnIndex("prod_id")));
+            product.setProductName(c.getString(c.getColumnIndex("prod_name")));
+            product.setDescription(c.getString(c.getColumnIndex("prod_desc")));
+            product.setManufacturer(c.getString(c.getColumnIndex("manu")));
+            product.setPrice(c.getDouble(c.getColumnIndex("price")));
+            product.setBulkStock(c.getInt(c.getColumnIndex("inv_bulk")));
+            product.setShelfStock(c.getInt(c.getColumnIndex("inv_shelf")));
         }
-        Product product = new Product();
-        product.setID(c.getInt(c.getColumnIndex("prod_id")));
-        product.setProductName(c.getString(c.getColumnIndex("prod_name")));
-        product.setDescription(c.getString(c.getColumnIndex("prod_desc")));
-        product.setManufacturer(c.getString(c.getColumnIndex("manu")));
-        product.setPrice(c.getDouble(c.getColumnIndex("price")));
-        product.setBulkStock(c.getInt(c.getColumnIndex("inv_bulk")));
-        product.setShelfStock(c.getInt(c.getColumnIndex("inv_shelf")));
         c.close();
         return product;
     }
@@ -174,6 +173,16 @@ public class DatabaseManager extends SQLiteOpenHelper {
         command.append("update inventory set inv_bulk = inv_bulk - ");
         command.append(quantity);
         command.append(", inv_shelf = inv_shelf + ");
+        command.append(quantity);
+        command.append(" where prod_id = ");
+        command.append(id);
+        command.append(";");
+        db.execSQL(command.toString());
+    }
+
+    public void receiveProduct(int id, int quantity, SQLiteDatabase db) {
+        StringBuilder command = new StringBuilder();
+        command.append("update inventory set inv_bulk = inv_bulk + ");
         command.append(quantity);
         command.append(" where prod_id = ");
         command.append(id);

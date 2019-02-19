@@ -1,95 +1,147 @@
 package edu.psu.sjt5370.stockingproto;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.vision.CameraSource;
+import com.google.android.gms.vision.Detector;
+import com.google.android.gms.vision.barcode.Barcode;
+import com.google.android.gms.vision.barcode.BarcodeDetector;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ReceivingActivity extends AppCompatActivity {
-    ArrayList<Product> exampleProducts;
-    ProductListAdapter adapter;
+    BarcodeDetector barcodeDetector;
+    CameraSource cameraSource;
+    DatabaseManager instance;
+    private int productID;
+    private final static int CAMERA_PERMISSION = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receiving);
-        this.setTitle(getResources().getString(R.string.receiving_bar));
-        exampleProducts = new ArrayList<>();
-        for (int i = 0; i < 20; i++) exampleProducts.add(new Product());
-        adapter = new ProductListAdapter(this, R.layout.product, exampleProducts);
-        ((ListView) findViewById(R.id.productList)).setAdapter(adapter);
-        ((Button) findViewById(R.id.pickUpButton)).setOnClickListener(new View.OnClickListener() {
+        instance = DatabaseManager.getInstance(this);
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+            requestPermissions(new String[] {Manifest.permission.CAMERA}, CAMERA_PERMISSION);
+        else continueCreate();
+    }
+
+    private void continueCreate() {
+        setContentView(R.layout.activity_receiving);
+        barcodeDetector = new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.QR_CODE).build();
+        cameraSource = new CameraSource.Builder(this, barcodeDetector).setRequestedPreviewSize(1920, 1280).setAutoFocusEnabled(true).build();
+
+        barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
-            public void onClick(View view) {
-                while(exampleProducts.size() > 0) {
-                    exampleProducts.remove(0);
-                    adapter.notifyDataSetChanged();
+            public void release() {}
+
+            @Override
+            public void receiveDetections(Detector.Detections<Barcode> detections) {
+                final SparseArray barcodeList = detections.getDetectedItems();
+                if (barcodeList.size() == 0) return;
+                try {
+                    String value = ((Barcode) barcodeList.valueAt(0)).displayValue;
+                    //System.out.println("Display Value: " + value);
+                    productID = Integer.parseInt(value);
+                } catch (ClassCastException ccex) { return; }
+                System.out.println(productID);
+
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (cameraSource != null) cameraSource.stop();
+                        if (barcodeDetector != null) barcodeDetector.release();
+                    }
+                });
+                //FIXME: cameraSource.stop(); can not be called in this thread due to deadlock issue with API implementation
+                instance.getWritableDatabase(new DatabaseManager.OnDatabaseReadyListener() {
+                    @Override
+                    public void onDatabaseReady(SQLiteDatabase db) {
+                        Product product = instance.getProduct(productID, db);
+                        //System.out.println(product.getProductName());
+                        if (product != null) {
+                            Intent intent = new Intent(ReceivingActivity.this, ProductReceiveActivity.class);
+                            intent.putExtra("product", product);
+                            startActivityForResult(intent, 0);
+                        } else {
+                            Intent intent = new Intent(ReceivingActivity.this, NewProductActivity.class);
+                            intent.putExtra("id", productID);
+                            startActivityForResult(intent, 0);
+                        }
+                    }
+                });
+            }
+        });
+
+        ((SurfaceView) findViewById(R.id.camera)).getHolder().addCallback(new SurfaceHolder.Callback() {
+            @Override
+            public void surfaceCreated(SurfaceHolder holder) {
+                try {
+                    cameraSource.start(((SurfaceView) findViewById(R.id.camera)).getHolder());
+                } catch (IOException ioex) {
+                    //Toast.makeText(ReceivingActivity.this, getResources().getString(R.string.camera_needed), Toast.LENGTH_LONG).show();
+                    finish();
+                } catch (SecurityException scex) {
+                    Toast.makeText(ReceivingActivity.this, getResources().getString(R.string.camera_needed), Toast.LENGTH_LONG).show();
                 }
+            }
+
+            @Override
+            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {}
+
+            @Override
+            public void surfaceDestroyed(SurfaceHolder holder) {
+                cameraSource.stop();
             }
         });
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
+    protected void onDestroy() {
+        super.onDestroy();
+        if (cameraSource != null) cameraSource.release();
+        if (barcodeDetector != null) barcodeDetector.release();
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.logoutButton) {
-            Intent intent = new Intent(ReceivingActivity.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-            return true;
-        } else return super.onOptionsItemSelected(item);
+    public void onActivityResult(int reqCode, int resCode, Intent result) {
+        if (cameraSource != null) cameraSource.release();
+        continueCreate();
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putParcelableArrayList("productList", exampleProducts);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        exampleProducts = savedInstanceState.getParcelableArrayList("productList");
-        if (exampleProducts == null)
-            exampleProducts = new ArrayList<>();
-        adapter = new ProductListAdapter(this, R.layout.product, exampleProducts);
-        ((ListView) findViewById(R.id.productList)).setAdapter(adapter);
-    }
-
-    private class ProductListAdapter extends ArrayAdapter<Product> {
-        public ProductListAdapter(Context context, int resource, ArrayList<Product> products) { super(context, resource, products); }
-
-        @Override
-        public Product getItem(int position) { return exampleProducts.get(position); }
-
-        @Override
-        @NonNull
-        public View getView(int position, View view, @NonNull ViewGroup listView) {
-            if (view == null)  {
-                view = getLayoutInflater().inflate(R.layout.product, listView, false);
-            }
-            view.setTag(position);
-            ((TextView) view.findViewById(R.id.listName)).setText(getItem(position).getProductName());
-            return view;
-        }
+    public void onRequestPermissionsResult(int reqCode, @NonNull String[] permissions, @NonNull int[] results) {
+        if (reqCode == CAMERA_PERMISSION) {
+            if (results.length != 0 && results[0] == PackageManager.PERMISSION_GRANTED) {
+                continueCreate();
+            } else finish();
+        } else super.onRequestPermissionsResult(reqCode, permissions, results);
     }
 }
 
