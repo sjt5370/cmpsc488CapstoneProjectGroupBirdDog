@@ -3,6 +3,7 @@ package edu.psu.sjt5370.stockingproto;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,21 +16,35 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class RestockingActivity extends AppCompatActivity {
 
-    ArrayList<Product> exampleProducts;
-    ProductListAdapter adapter;
+    private ArrayList<Product> productList;
+    private ProductListAdapter adapter;
+    private DatabaseManager instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restocking);
         this.setTitle(getResources().getString(R.string.restocking_bar));
-        exampleProducts = new ArrayList<>();
-        for (int i = 0; i < 20; i++) exampleProducts.add(new Product());
-        adapter = new ProductListAdapter(this, R.layout.product, exampleProducts);
+        productList = new ArrayList<>();
+        adapter = new ProductListAdapter(this, R.layout.product, productList);
         ((ListView) findViewById(R.id.productList)).setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        instance = DatabaseManager.getInstance(this);
+        instance.getWritableDatabase(new DatabaseManager.OnDatabaseReadyListener() {
+            @Override
+            public void onDatabaseReady(SQLiteDatabase db) {
+                if (adapter.getCount() > 0) adapter.clear();
+                adapter.addAll(instance.getProductList(db));    //FIXME: Database needs a "Restock Request" bit field, currently pulls all products in bulk every time the list refreshes
+            }
+        });
     }
 
     @Override
@@ -52,24 +67,35 @@ public class RestockingActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putParcelableArrayList("productList", exampleProducts);
+        savedInstanceState.putParcelableArrayList("productList", productList);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        exampleProducts = savedInstanceState.getParcelableArrayList("productList");
-        if (exampleProducts == null)
-            exampleProducts = new ArrayList<>();
-        adapter = new ProductListAdapter(this, R.layout.product, exampleProducts);
+        productList = savedInstanceState.getParcelableArrayList("productList");
+        if (productList == null)
+            productList = new ArrayList<>();
+        adapter = new ProductListAdapter(this, R.layout.product, productList);
         ((ListView) findViewById(R.id.productList)).setAdapter(adapter);
+    }
+
+    @Override
+    public void onActivityResult(int reqCode, int resCode, Intent result) {
+        if (reqCode == 0 && resCode == Activity.RESULT_OK) {
+            int index = result.getIntExtra("index", -1);
+            if (index >= 0 && index < productList.size()) {
+                productList.remove(index);
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 
     private class ProductListAdapter extends ArrayAdapter<Product> {
         public ProductListAdapter(Context context, int resource, ArrayList<Product> products) { super(context, resource, products); }
 
         @Override
-        public Product getItem(int position) { return exampleProducts.get(position); }
+        public Product getItem(int position) { return productList.get(position); }
 
         @Override
         @NonNull
@@ -88,19 +114,8 @@ public class RestockingActivity extends AppCompatActivity {
                 });
             }
             view.setTag(position);
-            ((TextView) view.findViewById(R.id.listName)).setText(getItem(position).name);
+            ((TextView) view.findViewById(R.id.listName)).setText(getItem(position).getProductName());
             return view;
-        }
-    }
-
-    @Override
-    public void onActivityResult(int reqCode, int resCode, Intent result) {
-        if (reqCode == 0 && resCode == Activity.RESULT_OK) {
-            int index = result.getIntExtra("index", -1);
-            if (index >= 0 && index < exampleProducts.size()) {
-                exampleProducts.remove(index);
-                adapter.notifyDataSetChanged();
-            }
         }
     }
 }

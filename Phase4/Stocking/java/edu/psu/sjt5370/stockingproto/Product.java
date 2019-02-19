@@ -6,13 +6,13 @@ import android.os.Parcelable;
 import java.util.Random;
 
 public class Product implements Parcelable {
-    Integer id;
-    String name;
-    String description;
-    String manufacturer;
-    Double price;
-    Integer bulkStock;
-    Integer shelfStock;
+    private Integer id;
+    private String name;
+    private String description;
+    private String manufacturer;
+    private Double price;
+    private Integer bulkStock;
+    private Integer shelfStock;
     //static Integer count = 0;
     /*
     public Product() {

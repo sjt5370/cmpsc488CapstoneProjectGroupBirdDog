@@ -87,7 +87,7 @@ public class ReceivingActivity extends AppCompatActivity {
                 view = getLayoutInflater().inflate(R.layout.product, listView, false);
             }
             view.setTag(position);
-            ((TextView) view.findViewById(R.id.listName)).setText(getItem(position).name);
+            ((TextView) view.findViewById(R.id.listName)).setText(getItem(position).getProductName());
             return view;
         }
     }

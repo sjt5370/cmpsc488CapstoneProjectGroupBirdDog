@@ -7,44 +7,64 @@
     tools:context="edu.psu.sjt5370.stockingproto.ProductStockActivity">
 
     <TextView
-        android:id="@+id/bulkStockLabel"
+        android:id="@+id/shelfStockLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/bulk_stock_quantity"
+        android:layout_marginTop="8dp"
+        android:text="@string/shelf_stock_quantity"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/byManufacturer" />
+
+    <TextView
+        android:id="@+id/bulkStockLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/bulk_stock_quantity"
+        app:layout_constraintStart_toStartOf="@+id/shelfStockLabel"
+        app:layout_constraintTop_toBottomOf="@+id/shelfStockLabel" />
 
     <TextView
         android:id="@+id/moveLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:text="@string/to_move_quantity"
         app:layout_constraintStart_toStartOf="@+id/bulkStockLabel"
         app:layout_constraintTop_toBottomOf="@+id/bulkStockLabel" />
 
     <TextView
-        android:id="@+id/bulkStockQuantity"
+        android:id="@+id/shelfStockQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:text="0"
         android:textAlignment="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/shelfStockLabel" />
+
+    <TextView
+        android:id="@+id/bulkStockQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="@+id/shelfStockQuantity"
         app:layout_constraintTop_toTopOf="@+id/bulkStockLabel" />
 
     <EditText
         android:id="@+id/moveQuantity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="14dp"
         android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="number"
+        android:padding="2dp"
         android:textAlignment="textEnd"
         android:textSize="14sp"
+        android:maxLength="9"
         app:layout_constraintBaseline_toBaselineOf="@+id/moveLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/moveLabel" />
@@ -63,5 +83,60 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/byManufacturer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/by_manufacturer"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divisorBar"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/moveQuantity"
+        app:layout_constraintBottom_toTopOf="@id/descriptionScrollView"
+        />
+
+    <ScrollView
+        android:id="@+id/descriptionScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divisorBar"
+        app:layout_constraintBottom_toTopOf="@id/moveButton" >
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="20"
+                android:text="@string/description" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

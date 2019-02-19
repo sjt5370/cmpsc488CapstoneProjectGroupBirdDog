@@ -5,11 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.AsyncTask;
-import android.util.Log;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class DatabaseManager extends SQLiteOpenHelper {
     interface OnDatabaseReadyListener {
@@ -38,9 +35,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
                     "drop table if exists product;\n";
 
     private static final String PROD_TABLE =
-            "create table product(prod_id int primary key, prod_name varchar(100), prod_desc varchar(255), manu varchar(50), price float, unique( prod_name, prod_desc, manu));";
+            "create table product (prod_id int primary key, prod_name varchar(100), prod_desc varchar(255), manu varchar(50), price float, unique( prod_name, prod_desc, manu));";
     private static final String INV_TABLE =
-            "create table inventory(prod_id int primary key, inv_bulk int not null, inv_shelf int not null, foreign key (prod_id) references product, check (not inv_bulk < 0), check (not inv_shelf < 0));";
+            "create table inventory (prod_id int primary key, inv_bulk int not null, inv_shelf int not null, foreign key (prod_id) references product, check (not inv_bulk < 0), check (not inv_shelf < 0));";
     private static final String MASTER_ACC_TABLE =
             "create table master_account (acc_id int primary key, acc_type bit not null, password varchar(30) not null);";
     private static final String EMPL_ACC_TABLE =
@@ -78,6 +75,19 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         db.execSQL("insert into master_account values (12345, 1, 'password');");
         db.execSQL("insert into employee_account values (12345, 'stocker', 0);");
+
+        Random r = new Random();
+        for (int i = 0; i < 20; i++) {
+            Product p = new Product();
+            p.setID(i * 123);
+            p.setShelfStock(r.nextInt(999) + 1);
+            p.setBulkStock(r.nextInt(999) + 1);
+            p.setManufacturer("Manufacturer #" + (r.nextInt(10) + 1));
+            p.setProductName("Product #" + (i + 1));
+            p.setDescription("An example product.");
+            p.setPrice(r.nextDouble() * 100);
+            addProduct(p, db);
+        }
     }
 
     @Override
@@ -87,31 +97,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onDowngrade(SQLiteDatabase db, int oldVers, int newVers) {
-        onUpgrade(db, oldVers, newVers);
-    }
+    public void onDowngrade(SQLiteDatabase db, int oldVers, int newVers) { onUpgrade(db, oldVers, newVers); }
 
-    public void getWritableDatabase(OnDatabaseReadyListener listener) {
-       new OpenDatabaseAsyncTask().execute(listener);
-    }
-
-
-
-    public class OpenDatabaseAsyncTask extends AsyncTask<OnDatabaseReadyListener, Void, SQLiteDatabase> {
-        OnDatabaseReadyListener listener;
-
-        @Override
-        protected SQLiteDatabase doInBackground(OnDatabaseReadyListener... params) {
-            listener = params[0];
-            return DatabaseManager.instance.getWritableDatabase();
-        }
-        @Override
-        protected void onPostExecute(SQLiteDatabase db) {
-            listener.onDatabaseReady(db);
-        }
-    }
-
-
+    public void getWritableDatabase(OnDatabaseReadyListener listener) { new OpenDatabaseAsyncTask().execute(listener); }
 
     public void addProduct(Product product, SQLiteDatabase db) {
         StringBuilder command = new StringBuilder();
@@ -126,7 +114,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         command.append("\', ");
         command.append(product.getPrice());
         command.append(");");
-        db.rawQuery(command.toString(), null);
+        db.execSQL(command.toString());
 
         command = new StringBuilder();
         command.append("insert into inventory values (");
@@ -136,7 +124,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         command.append(", ");
         command.append(product.getShelfStock());
         command.append(");");
-        db.rawQuery(command.toString(), null);
+        db.execSQL(command.toString());
     }
 
     public Product getProduct(int id, SQLiteDatabase db) {
@@ -163,14 +151,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return product;
     }
 
-    public ArrayList<Product> getProductList(SQLiteDatabase db) {
-        Cursor c = db.rawQuery("select prod_name, prod_desc, manu, price, inv_bulk, inv_shelf from product, inventory where product.prod_id = inventory.prod_id;", null);
+    public ArrayList<Product> getProductList(SQLiteDatabase db) {   //FIXME: Currently only returns all products with a nonzero bulk quantity
+        Cursor c = db.rawQuery("select product.prod_id as prod_id, prod_name, prod_desc, manu, price, inv_bulk, inv_shelf from product, inventory where product.prod_id = inventory.prod_id and not inv_bulk = 0;", null);
         ArrayList<Product> productList = new ArrayList<>();
-        if (!c.moveToFirst()) {
-            c.close();
-            return null;
-        }
-        for (; !c.isAfterLast(); c.moveToNext()) {
+        if (c.moveToFirst()) for (; !c.isAfterLast(); c.moveToNext()) {
             Product product = new Product();
             product.setID(c.getInt(c.getColumnIndex("prod_id")));
             product.setProductName(c.getString(c.getColumnIndex("prod_name")));
@@ -194,7 +178,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         command.append(" where prod_id = ");
         command.append(id);
         command.append(";");
-        db.rawQuery(command.toString(), null);
+        db.execSQL(command.toString());
     }
 
     public boolean authenticate(int id, String password, SQLiteDatabase db) {
@@ -214,5 +198,19 @@ public class DatabaseManager extends SQLiteOpenHelper {
         String job = c.getString(c.getColumnIndex("job"));
         c.close();
         return acc_type && job.toLowerCase().equals("stocker") && password.equals(correctPass);
+    }
+
+    public class OpenDatabaseAsyncTask extends AsyncTask<OnDatabaseReadyListener, Void, SQLiteDatabase> {
+        OnDatabaseReadyListener listener;
+
+        @Override
+        protected SQLiteDatabase doInBackground(OnDatabaseReadyListener... params) {
+            listener = params[0];
+            return DatabaseManager.instance.getWritableDatabase();
+        }
+        @Override
+        protected void onPostExecute(SQLiteDatabase db) {
+            listener.onDatabaseReady(db);
+        }
     }
 }

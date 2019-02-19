@@ -16,8 +16,11 @@
 
     <string name="restocking_bar">Select product to restock:</string>
 
+    <string name="by_manufacturer">by Unlisted Manufacturer</string>
+    <string name="description">No item description available…</string>
+    <string name="shelf_stock_quantity">Quantity on Shelves:</string>
     <string name="bulk_stock_quantity">Quantity in Bulk:</string>
-    <string name="to_move_quantity">Quantity to Move:</string>
+    <string name="to_move_quantity">Quantity to Move to Shelf:</string>
     <string name="move_button">Move</string>
     <string name="negative_quantity_response">Enter a number greater than zero.</string>
     <string name="insufficient_quantity_response">Enter a number less than bulk stock.</string>
