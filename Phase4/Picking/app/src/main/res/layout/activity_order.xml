@@ -73,9 +73,9 @@
 
     <Button
         android:id="@+id/finishOrder"
-        android:layout_width="143dp"
-        android:layout_height="85dp"
-        android:layout_marginBottom="64dp"
+        android:layout_width="141dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="32dp"
         android:background="@android:color/holo_blue_light"
         android:enabled="false"
         android:onClick="alert"
@@ -97,5 +97,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/scanButton"
+        android:layout_width="250dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="64dp"
+        android:background="@android:color/holo_blue_light"
+        android:text="@string/scanButton"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/finishOrder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

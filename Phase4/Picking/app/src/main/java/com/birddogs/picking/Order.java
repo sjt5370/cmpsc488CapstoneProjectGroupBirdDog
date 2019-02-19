@@ -29,15 +29,18 @@ public class Order extends AppCompatActivity {
         //get buttons
         Button finish = (Button) findViewById(R.id.finishOrder);
         Button hold = (Button) findViewById(R.id.holdButton);
+        Button scan = (Button) findViewById(R.id.scanButton);
 
         //check for checked and update buttons
         if(p1.isChecked() && p2.isChecked() && p3.isChecked() && p4.isChecked() && p5.isChecked()){
             finish.setEnabled(true);
             hold.setEnabled(false);
+            scan.setEnabled(false);
         }
         else{
             finish.setEnabled(false);
             hold.setEnabled(true);
+            scan.setEnabled(true);
         }
     }
 
