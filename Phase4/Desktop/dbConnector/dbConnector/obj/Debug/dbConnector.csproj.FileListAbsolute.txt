@@ -1,0 +1,15 @@
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\bin\Debug\dbConnector.exe.config
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\bin\Debug\dbConnector.exe
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\bin\Debug\dbConnector.pdb
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\obj\Debug\dbConnector.csprojAssemblyReference.cache
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\obj\Debug\MainWindow.g.cs
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\obj\Debug\App.g.cs
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\obj\Debug\dbConnector_MarkupCompile.cache
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\obj\Debug\dbConnector_MarkupCompile.lref
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\obj\Debug\MainWindow.baml
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\obj\Debug\dbConnector.g.resources
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\obj\Debug\dbConnector.Properties.Resources.resources
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\obj\Debug\dbConnector.csproj.GenerateResource.cache
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\obj\Debug\dbConnector.csproj.CoreCompileInputs.cache
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\obj\Debug\dbConnector.exe
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\dbConnector\obj\Debug\dbConnector.pdb
