@@ -25,6 +25,15 @@
     <string name="negative_quantity_response">Enter a number greater than zero.</string>
     <string name="insufficient_quantity_response">Enter a number less than bulk stock.</string>
 
-    <string name="receiving_bar">Ready to receive:</string>
+    <string name="receiving_bar">Scan a barcode:</string>
     <string name="pick_up_button">Pick Up</string>
+    <string name="to_receive_quantity">Quantity to Receive:</string>
+    <string name="camera_needed">Camera permissions required to scan barcodes!</string>
+
+    <string name="new_product_bar">New Product</string>
+    <string name="name_label">Product Name:</string>
+    <string name="manufacturer_label">Manufacturer:</string>
+    <string name="description_label">Description:</string>
+    <string name="price_label">Price:</string>
+    <string name="empty_fields_response">Fields cannot be blank.</string>
 </resources>

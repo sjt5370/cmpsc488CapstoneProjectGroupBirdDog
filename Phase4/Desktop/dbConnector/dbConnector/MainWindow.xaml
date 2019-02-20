@@ -1,0 +1,16 @@
+﻿<Window x:Class="dbConnector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dbConnector"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="labelTableName" Content="Table name" HorizontalAlignment="Left" Height="25" Margin="31,96,0,0" VerticalAlignment="Top" Width="73"/>
+        <TextBox x:Name="textBoxTableName" HorizontalAlignment="Left" Height="25" Margin="109,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192"/>
+        <Button x:Name="buttonInsertIntoTable" Content="Insert into Table" HorizontalAlignment="Left" Height="24" Margin="109,373,0,0" VerticalAlignment="Top" Width="136"/>
+        <Button x:Name="buttonGetFromTable" Content="Get from table" HorizontalAlignment="Left" Height="24" Margin="473,373,0,0" VerticalAlignment="Top" Width="126"/>
+
+    </Grid>
+</Window>
