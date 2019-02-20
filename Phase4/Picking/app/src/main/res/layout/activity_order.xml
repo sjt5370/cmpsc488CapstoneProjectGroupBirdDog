@@ -6,71 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Order">
 
-    <CheckBox
-        android:id="@+id/product1"
-        android:layout_width="140dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="100dp"
-        android:clickable="true"
-        android:onClick="clicked"
-        android:text="@string/product_1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <CheckBox
-        android:id="@+id/product2"
-        android:layout_width="140dp"
-        android:layout_height="40dp"
-        android:checked="false"
-        android:clickable="true"
-        android:onClick="clicked"
-        android:text="@string/product_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/product1" />
-
-    <CheckBox
-        android:id="@+id/product3"
-        android:layout_width="140dp"
-        android:layout_height="40dp"
-        android:checked="false"
-        android:clickable="true"
-        android:onClick="clicked"
-        android:text="@string/product_3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/product2" />
-
-    <CheckBox
-        android:id="@+id/product4"
-        android:layout_width="140dp"
-        android:layout_height="40dp"
-        android:checked="false"
-        android:clickable="true"
-        android:onClick="clicked"
-        android:text="@string/product_4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/product3" />
-
-    <CheckBox
-        android:id="@+id/product5"
-        android:layout_width="140dp"
-        android:layout_height="40dp"
-        android:checked="false"
-        android:clickable="true"
-        android:onClick="clicked"
-        android:text="@string/product_5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/product4" />
-
     <Button
         android:id="@+id/finishOrder"
         android:layout_width="141dp"
@@ -105,10 +40,87 @@
         android:layout_height="82dp"
         android:layout_marginBottom="64dp"
         android:background="@android:color/holo_blue_light"
+        android:onClick="openScan"
         android:text="@string/scanButton"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/finishOrder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:layout_width="395dp"
+        android:layout_height="132dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:drawable/editbox_dropdown_light_frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/product1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:clickable="true"
+                android:onClick="clicked"
+                android:text="@string/product_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <CheckBox
+                android:id="@+id/product2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:checked="false"
+                android:clickable="true"
+                android:onClick="clicked"
+                android:text="@string/product_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <CheckBox
+                android:id="@+id/product3"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:checked="false"
+                android:clickable="true"
+                android:onClick="clicked"
+                android:text="@string/product_3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <CheckBox
+                android:id="@+id/product4"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:checked="false"
+                android:clickable="true"
+                android:onClick="clicked"
+                android:text="@string/product_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.549"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <CheckBox
+                android:id="@+id/product5"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:checked="false"
+                android:clickable="true"
+                android:onClick="clicked"
+                android:text="@string/product_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

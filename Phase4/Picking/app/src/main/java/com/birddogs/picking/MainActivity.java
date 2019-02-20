@@ -24,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(false);
+    }
+
     //opens order page when Next Order Button is clicked
     public void openOrder(View view){
         Intent intent = new Intent(this, Order.class);

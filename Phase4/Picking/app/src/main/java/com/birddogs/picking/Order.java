@@ -17,6 +17,11 @@ public class Order extends AppCompatActivity {
         setContentView(R.layout.activity_order);
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(false);
+    }
+
     //checks that all products are scanned and enables/disables finish/hold buttons
     public void clicked(View view){
         //get checkboxes
@@ -42,6 +47,11 @@ public class Order extends AppCompatActivity {
             hold.setEnabled(true);
             scan.setEnabled(true);
         }
+    }
+
+    public void openScan(View view){
+        Intent intent = new Intent(this, Scan.class);
+        startActivity(intent);
     }
 
     //shows confirmation dialog for Place on Hold and Finish Order button

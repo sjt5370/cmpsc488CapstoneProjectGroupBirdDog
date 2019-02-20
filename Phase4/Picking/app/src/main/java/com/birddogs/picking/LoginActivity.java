@@ -14,6 +14,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(false);
+    }
+
     //opens Main Page when Login Button is clicked
     public void login(View view){
         Intent intent = new Intent(this, MainActivity.class);

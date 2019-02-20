@@ -10,4 +10,9 @@ public class Scan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
     }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(false);
+    }
 }
