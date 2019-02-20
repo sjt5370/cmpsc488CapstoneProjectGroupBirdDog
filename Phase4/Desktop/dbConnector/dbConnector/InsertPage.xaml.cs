@@ -20,9 +20,20 @@ namespace dbConnector
     /// </summary>
     public partial class InsertPage : Page
     {
-        public InsertPage()
+        public InsertPage(String tableName)
         {
             InitializeComponent();
+            labelTableName.Content = tableName;
         }
+
+        private void ButtonQuery_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonDone_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }        
     }
 }

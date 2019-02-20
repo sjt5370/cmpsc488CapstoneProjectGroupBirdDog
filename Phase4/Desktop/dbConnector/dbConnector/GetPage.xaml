@@ -13,7 +13,8 @@
         <Label x:Name="labelSelect" Content="Select" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="86" Margin="59,339,0,0"/>
         <TextBox x:Name="textSelect" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Margin="145,339,0,0"/>
         <Label x:Name="labelTableName" Content="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="147" Margin="59,302,0,0"/>
-        <Button x:Name="buttonQuery" Content="Query" HorizontalAlignment="Left" Height="25" Margin="59,399,0,0" VerticalAlignment="Top" Width="133"/>
+        <Button x:Name="buttonQuery" Content="Query" HorizontalAlignment="Left" Height="25" Margin="59,399,0,0" VerticalAlignment="Top" Width="133" Click="ButtonQuery_Click"/>
+        <Button x:Name="buttonDone" Content="Done" HorizontalAlignment="Left" Height="25" Margin="585,399,0,0" VerticalAlignment="Top" Width="101" Click="ButtonDone_Click"/>
 
     </Grid>
 </Page>

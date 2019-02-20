@@ -20,9 +20,20 @@ namespace dbConnector
     /// </summary>
     public partial class GetPage : Page
     {
-        public GetPage()
+        public GetPage(String tableName)
         {
             InitializeComponent();
+            labelTableName.Content = tableName;
+        }
+
+        private void ButtonQuery_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonDone_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

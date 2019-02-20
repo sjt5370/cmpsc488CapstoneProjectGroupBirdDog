@@ -24,5 +24,17 @@ namespace dbConnector
         {
             InitializeComponent();
         }
+
+        private void ButtonInsertIntoTable_Click(object sender, RoutedEventArgs e)
+        {
+            String tableName = textBoxTableName.Text;
+            this.Content = new InsertPage(tableName);            
+        }
+
+        private void ButtonGetFromTable_Click(object sender, RoutedEventArgs e)
+        {
+            String tableName = textBoxTableName.Text;
+            this.Content = new GetPage(tableName);
+        }
     }
 }
