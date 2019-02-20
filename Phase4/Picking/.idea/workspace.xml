@@ -10,59 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c91eaba9-6a93-46df-a21a-0da20ba31fa0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/Scan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_scan.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,44 +38,44 @@
     <session id="594658793">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gradle" value="2" />
-          <entry key="java" value="3" />
+          <entry key="java" value="4" />
           <entry key="properties" value="1" />
-          <entry key="xml" value="5" />
+          <entry key="xml" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="2" />
-          <entry key="JAVA" value="3" />
+          <entry key="JAVA" value="4" />
           <entry key="Properties" value="1" />
-          <entry key="XML" value="5" />
+          <entry key="XML" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="5" />
-          <entry key="java" value="59" />
+          <entry key="java" value="201" />
           <entry key="properties" value="3" />
-          <entry key="txt" value="11" />
-          <entry key="xml" value="42" />
+          <entry key="txt" value="31" />
+          <entry key="xml" value="214" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="5" />
-          <entry key="JAVA" value="59" />
-          <entry key="PLAIN_TEXT" value="11" />
+          <entry key="JAVA" value="201" />
+          <entry key="PLAIN_TEXT" value="31" />
           <entry key="Properties" value="3" />
-          <entry key="XML" value="42" />
+          <entry key="XML" value="214" />
         </counts>
       </usages-collector>
     </session>
@@ -154,22 +111,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_order.xml">
-          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1024">
+            <state relative-caret-position="-317">
+              <caret line="54" column="74" selection-start-line="54" selection-start-column="74" selection-end-line="54" selection-end-column="74" />
               <folding>
-                <element signature="e#4129#4149#0" expanded="true" />
+                <element signature="e#2715#2734#0" expanded="true" />
+                <element signature="e#3233#3252#0" expanded="true" />
+                <element signature="e#3752#3771#0" expanded="true" />
+                <element signature="e#4271#4290#0" expanded="true" />
+                <element signature="e#4782#4801#0" expanded="true" />
               </folding>
             </state>
           </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_scan.xml">
-          <provider selected="true" editor-type-id="android-designer2" />
           <provider editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -177,17 +139,27 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/Order.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="19" lean-forward="true" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+            <state relative-caret-position="698">
+              <caret line="53" column="66" selection-start-line="53" selection-start-column="66" selection-end-line="53" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1956#2147#0" expanded="true" />
-                <element signature="e#2146#2147#0" expanded="true" />
-                <element signature="e#2177#2364#0" expanded="true" />
-                <element signature="e#2363#2364#0" expanded="true" />
+                <element signature="e#2445#2632#0" expanded="true" />
+                <element signature="e#2631#2632#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="30" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -204,6 +176,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="resourceFile" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -219,16 +198,16 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_order.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/border.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/Order.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_order.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-123" />
-    <option name="y" value="-27" />
-    <option name="width" value="3864" />
-    <option name="height" value="2114" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1909" />
+    <option name="width" value="1943" />
+    <option name="height" value="2102" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -236,7 +215,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -320,6 +298,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -335,347 +314,6 @@
     <key name="android.template.parentActivityClass">
       <recent name="" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Phase3/Gantt Chart.pdf</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Phase3/Table.pdf</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/caches/build_file_checksums.ser</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/caches/gradle_models.ser</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Picking.iml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/app.iml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/AndroidManifest.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/MainActivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/Order.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/activity_order.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/values/strings.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/local.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Stocking/java/edu/psu/sjt5370/stockingproto/LoginActivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Stocking/java/edu/psu/sjt5370/stockingproto/Product.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Stocking/java/edu/psu/sjt5370/stockingproto/ProductStockActivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Stocking/java/edu/psu/sjt5370/stockingproto/ReceivingActivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Stocking/java/edu/psu/sjt5370/stockingproto/RestockingActivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Stocking/res/layout/activity_login.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Stocking/res/layout/activity_product_stock.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Stocking/res/values/strings.xml</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../CapstoneDBTables.txt</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Database_creation_query.sql</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp.sln</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/AddEditForm.Designer.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/AddEditForm.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/AddEditForm.resx</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/AddForm.Designer.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/AddForm.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/AddForm.resx</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/App.config</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/CapstoneDesktopApp.csproj</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/EditForm.Designer.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/EditForm.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/EditForm.resx</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/InspectForm.Designer.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/InspectForm.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/InspectForm.resx</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/MainPage.Designer.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/MainPage.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/MainPage.resx</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/MapForm.Designer.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/MapForm.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/MapForm.resx</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/Program.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/Properties/AssemblyInfo.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/Properties/Resources.Designer.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/Properties/Resources.resx</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/Properties/Settings.Designer.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/Properties/Settings.settings</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/obj/Debug/CapstoneDesktopApp.csproj.CoreCompileInputs.cache</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/CapstoneDesktopApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop.sln</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/AddPage.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/AddPage.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/AddRoute.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/AddRoute.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/App.config</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/App.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/App.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/EditPage.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/EditPage.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/InspectWindow.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/LoginPage.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/LoginPage.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/Main.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/Main.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/PalletizePage.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/PalletizePage.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/PickManagePage.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/PickManagePage.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/Properties/AssemblyInfo.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/Properties/Resources.Designer.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/Properties/Resources.resx</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/Properties/Settings.Designer.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/Properties/Settings.settings</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/SDesignDesktop.csproj</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/ViewPage.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/ViewPage.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/bin/Debug/SDesignDesktop.exe</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/bin/Debug/SDesignDesktop.exe.config</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/bin/Debug/SDesignDesktop.pdb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/AddPage.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/AddPage.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/AddPage.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/AddRoute.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/AddRoute.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/AddRoute.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/App.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/App.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/DesignTimeResolveAssemblyReferences.cache</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/EditPage.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/EditPage.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/EditPage.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/InspectPage.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/InspectWindow.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/LoginPage.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/LoginPage.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/LoginPage.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/Main.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/Main.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/Main.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/MainWindow.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/Page1.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/PalletizePage.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/PalletizePage.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/PalletizePage.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/PickManagePage.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/PickManagePage.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/PickManagePage.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/SDesignDesktop.Properties.Resources.resources</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/SDesignDesktop.csproj.CoreCompileInputs.cache</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/SDesignDesktop.csproj.FileListAbsolute.txt</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/SDesignDesktop.csproj.GenerateResource.cache</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/SDesignDesktop.csprojAssemblyReference.cache</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/SDesignDesktop.exe</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/SDesignDesktop.g.resources</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/SDesignDesktop.pdb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/SDesignDesktop_MarkupCompile.cache</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/SDesignDesktop_MarkupCompile.i.cache</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/SDesignDesktop_MarkupCompile.i.lref</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/SDesignDesktop_MarkupCompile.lref</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/TempPE/Properties.Resources.Designer.cs.dll</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/ViewPage.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/ViewPage.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/ViewPage.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/CapstoneDesktopApp/SDesignDesktop/obj/Debug/Window1.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/Desktop app complete</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/AddPage.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/AddPage.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/App.config</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/App.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/App.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/EditAdd.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/EditAdd.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/EditPage.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/EditPage.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/EditWindow.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/EditWindow.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/InspectPage.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/InspectPage.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/MainWindow.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/MainWindow.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/Properties/AssemblyInfo.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/Properties/Resources.Designer.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/Properties/Resources.resx</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/ViewPage.xaml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/ViewPage.xaml.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/WpfApplication2.csproj</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/bin/Debug/WpfApplication2.exe</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/bin/Debug/WpfApplication2.exe.config</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/bin/Debug/WpfApplication2.pdb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/AddPage.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/AddPage.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/AddPage.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/App.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/App.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/EditAdd.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/EditAdd.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/EditAdd.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/EditPage.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/EditPage.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/EditPage.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/EditWindow.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/EditWindow.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/EditWindow.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/InspectPage.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/InspectPage.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/InspectPage.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/MainWindow.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/MainWindow.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/MainWindow.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/ViewPage.baml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/ViewPage.g.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/ViewPage.g.i.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/WpfApplication2.Properties.Resources.resources</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/WpfApplication2.csproj.FileListAbsolute.txt</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/WpfApplication2.csproj.GenerateResource.Cache</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/WpfApplication2.csprojResolveAssemblyReference.cache</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/WpfApplication2.exe</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/WpfApplication2.g.resources</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/WpfApplication2.pdb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/WpfApplication2_MarkupCompile.cache</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/WpfApplication2/obj/Debug/WpfApplication2_MarkupCompile.lref</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Desktop/readme</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/LoginActivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Stocking/java/edu/psu/sjt5370/stockingproto/DatabaseManager.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Stocking/text/create_tables.txt</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -825,7 +463,14 @@
       <option name="project" value="LOCAL" />
       <updated>1549428239962</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Picking App">
+      <created>1550546539894</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1550546539894</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -838,11 +483,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2208" height="1208" extended-state="6" />
+    <frame x="1091" y="0" width="1110" height="1201" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49734512" visible="true" weight="0.3223256" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49734512" weight="0.32224333" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" sideWeight="0.50265485" side_tool="true" weight="0.32233676" />
@@ -856,19 +501,19 @@
       <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.49621993" weight="0.32897863" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50378007" side_tool="true" weight="0.32897863" />
       <window_info anchor="bottom" id="Version Control" order="6" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4975945" weight="0.32806692" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4975945" weight="0.33021516" />
       <window_info anchor="bottom" id="Android Profiler" order="8" sideWeight="0.49965635" weight="0.32897863" />
       <window_info anchor="bottom" id="Find" order="9" />
-      <window_info anchor="right" id="Preview" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Preview" order="5" />
     </layout>
     <layout-to-restore>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49734512" visible="true" weight="0.3223256" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49734512" visible="true" weight="0.32224333" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" sideWeight="0.50265485" side_tool="true" weight="0.32233676" />
@@ -882,15 +527,15 @@
       <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.49621993" weight="0.32897863" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50378007" side_tool="true" weight="0.32897863" />
       <window_info anchor="bottom" id="Version Control" order="6" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4975945" visible="true" weight="0.32806692" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4975945" weight="0.33021516" />
       <window_info anchor="bottom" id="Android Profiler" order="8" sideWeight="0.49965635" weight="0.32897863" />
       <window_info anchor="bottom" id="Find" order="9" />
-      <window_info anchor="right" id="Preview" order="0" />
-      <window_info anchor="right" id="Device File Explorer" order="1" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="2" />
-      <window_info anchor="right" id="Gradle" order="3" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Gradle" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Preview" order="5" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -909,12 +554,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
         </state>
       </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -924,16 +569,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="46" column="46" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor" />
@@ -942,17 +587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-          <folding>
-            <element signature="e#1461#1648#0" expanded="true" />
-            <element signature="e#1647#1648#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -977,36 +611,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/Scan.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_order.xml">
-      <provider editor-type-id="android-designer2" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/border.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1024">
-          <folding>
-            <element signature="e#4129#4149#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_scan.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="30" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/Order.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="19" lean-forward="true" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+        <state relative-caret-position="698">
+          <caret line="53" column="66" selection-start-line="53" selection-start-column="66" selection-end-line="53" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1956#2147#0" expanded="true" />
-            <element signature="e#2146#2147#0" expanded="true" />
-            <element signature="e#2177#2364#0" expanded="true" />
-            <element signature="e#2363#2364#0" expanded="true" />
+            <element signature="e#2445#2632#0" expanded="true" />
+            <element signature="e#2631#2632#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/birddogs/picking/Scan.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_scan.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_order.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-317">
+          <caret line="54" column="74" selection-start-line="54" selection-start-column="74" selection-end-line="54" selection-end-column="74" />
+          <folding>
+            <element signature="e#2715#2734#0" expanded="true" />
+            <element signature="e#3233#3252#0" expanded="true" />
+            <element signature="e#3752#3771#0" expanded="true" />
+            <element signature="e#4271#4290#0" expanded="true" />
+            <element signature="e#4782#4801#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
   </component>
   <component name="masterDetails">
