@@ -9,6 +9,8 @@
     <Grid>
         <Label x:Name="labelTableName" Content="Table name" HorizontalAlignment="Left" Height="25" Margin="31,96,0,0" VerticalAlignment="Top" Width="73"/>
         <TextBox x:Name="textBoxTableName" HorizontalAlignment="Left" Height="25" Margin="109,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192"/>
+        <Button x:Name="buttonInsertIntoTable" Content="Insert into Table" HorizontalAlignment="Left" Height="24" Margin="109,373,0,0" VerticalAlignment="Top" Width="136"/>
+        <Button x:Name="buttonGetFromTable" Content="Get from table" HorizontalAlignment="Left" Height="24" Margin="473,373,0,0" VerticalAlignment="Top" Width="126"/>
 
     </Grid>
 </Window>
