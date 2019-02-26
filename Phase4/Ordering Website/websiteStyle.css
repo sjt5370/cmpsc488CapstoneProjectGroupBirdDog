@@ -1,0 +1,43 @@
+body {
+    background-color: steelblue;
+    margin-top: 20px;
+    max-width: 100%;
+}
+
+a {
+
+    text-indent: 10px;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 150%;
+    font-family: "Arial Black";
+    color: black;
+    background-color: lightsteelblue;
+    border-radius: 10px;
+    border-style: solid;
+
+
+}
+
+h2 {
+    font-family: "Arial Black";
+    color: steelblue;
+}
+
+form {
+    text-align: center;
+    padding: 15% 0;
+    border-radius: 10px;
+    border-style: solid;
+    background-color: lightsteelblue;
+    vertical-align: middle;
+}
+
+input[type=text], select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
