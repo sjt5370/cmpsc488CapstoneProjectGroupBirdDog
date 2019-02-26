@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.HashMap;
+
 public class LoginActivity extends AppCompatActivity {
     public static final String LOGIN_MESSAGE = "com.birddogs.picking.MESSAGE";
     @Override
@@ -22,9 +24,27 @@ public class LoginActivity extends AppCompatActivity {
     //opens Main Page when Login Button is clicked
     public void login(View view){
         Intent intent = new Intent(this, MainActivity.class);
-        EditText editText = (EditText) findViewById(R.id.employeeID);
-        String message = editText.getText().toString();
-        intent.putExtra(LOGIN_MESSAGE, message);
-        startActivity(intent);
+        EditText id = (EditText) findViewById(R.id.employeeID);
+        EditText pass = (EditText) findViewById(R.id.employeePassword);
+
+        //checks users
+        HashMap<String, String> users = DatabaseInterface.getUsers();
+        String i = id.getText().toString();
+        System.out.println(i);
+
+        if(users.containsKey(i)){
+            if(pass.getText().toString().equals(users.get(i))){
+                String message = i;
+                intent.putExtra(LOGIN_MESSAGE, message);
+                startActivity(intent);
+            }else{
+
+            }
+        }else{
+
+        }
+
+
+
     }
 }

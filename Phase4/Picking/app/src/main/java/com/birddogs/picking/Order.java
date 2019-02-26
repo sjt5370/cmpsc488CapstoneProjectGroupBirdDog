@@ -11,7 +11,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+
 public class Order extends AppCompatActivity {
+    static ArrayList<String> palette;
+    static ArrayList<String> pickedProducts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +26,17 @@ public class Order extends AppCompatActivity {
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 
-        for(int i = 1; i <= 20; i++){
+        //get palette
+        palette = DatabaseInterface.getNewPalette();
+
+        for(int i = 0; i < palette.size(); i++){
             CheckBox c = new CheckBox(this);
-            c.setText("Product " + i);
+            c.setText(palette.get(i));
             c.setId(i);
             c.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
-                    clicked(v);
+                    clicked(v, palette);
                 }
             });
             //c.setLayoutParams(params);
@@ -43,14 +50,14 @@ public class Order extends AppCompatActivity {
     }
 
     //checks that all products are scanned and enables/disables finish/hold buttons
-    public void clicked(View view){
+    public void clicked(View view, ArrayList products){
         //get buttons
-        Button finish = (Button) findViewById(R.id.finishOrder);
+        Button finish = (Button) findViewById(R.id.finishPalette);
         Button hold = (Button) findViewById(R.id.holdButton);
         Button scan = (Button) findViewById(R.id.scanButton);
         boolean fin = true;
 
-        for(int i = 1; i < 5; i++){
+        for(int i = 0; i < products.size(); i++){
             CheckBox c = findViewById(i);
             if(!c.isChecked()){
                 fin = false;
@@ -78,24 +85,36 @@ public class Order extends AppCompatActivity {
     public void alert(View view){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-        if(view.getId() == R.id.finishOrder){
-            alert.setTitle("Finish Order and Exit?");
+        if(view.getId() == R.id.finishPalette){
+            alert.setTitle("Finish Palette and Exit?");
+            alert.setMessage("").setCancelable(false).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Order.this.finish();
+                }
+            }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
         }
         else if(view.getId() == R.id.holdButton) {
-            alert.setTitle("Place Order on Hold and Exit?");
+            alert.setTitle("Place Palette on Hold and Exit?");
+            alert.setMessage("").setCancelable(false).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    DatabaseInterface.cancelPalette(pickedProducts);
+                    Order.this.finish();
+                }
+            }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
         }
 
-        alert.setMessage("").setCancelable(false).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Order.this.finish();
-            }
-        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
         AlertDialog alertD = alert.create();
         alertD.show();
     }
