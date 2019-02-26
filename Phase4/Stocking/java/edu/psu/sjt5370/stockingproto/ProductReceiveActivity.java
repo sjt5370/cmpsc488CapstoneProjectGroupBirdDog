@@ -1,8 +1,6 @@
 package edu.psu.sjt5370.stockingproto;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -13,10 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Connection;
+
 public class ProductReceiveActivity extends AppCompatActivity {
-    private DatabaseManager instance;
     private Product product;
-    //private int index;
     private int toMove;
 
     @Override
@@ -38,12 +36,10 @@ public class ProductReceiveActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(toMoveS) || (toMove = Integer.parseInt(toMoveS.toString())) <= 0)
                     Toast.makeText(ProductReceiveActivity.this, getResources().getString(R.string.negative_quantity_response), Toast.LENGTH_LONG).show();
                 else {
-                    instance = DatabaseManager.getInstance(ProductReceiveActivity.this);
-                    instance.getWritableDatabase(new DatabaseManager.OnDatabaseReadyListener() {
+                    new DatabaseManager().getDBConnection(new DatabaseManager.OnDatabaseReadyListener() {
                         @Override
-                        public void onDatabaseReady(SQLiteDatabase db) {
-                            instance.receiveProduct(product.getID(), toMove, db);
-                            //setResult(Activity.RESULT_OK, new Intent().putExtra("index", index));
+                        public void onDatabaseReady(Connection db) {
+                            DatabaseManager.receiveProduct(product.getID(), toMove, db);
                             finish();
                         }
                     });

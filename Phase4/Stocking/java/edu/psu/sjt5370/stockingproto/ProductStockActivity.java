@@ -13,8 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Connection;
+
 public class ProductStockActivity extends AppCompatActivity {
-    private DatabaseManager instance;
     private Product product;
     private int index;
     private int toMove;
@@ -41,11 +42,10 @@ public class ProductStockActivity extends AppCompatActivity {
                 else if (toMove > product.getBulkStock())
                     Toast.makeText(ProductStockActivity.this, getResources().getString(R.string.insufficient_quantity_response), Toast.LENGTH_LONG).show();
                 else {
-                    instance = DatabaseManager.getInstance(ProductStockActivity.this);
-                    instance.getWritableDatabase(new DatabaseManager.OnDatabaseReadyListener() {
+                    new DatabaseManager().getDBConnection(new DatabaseManager.OnDatabaseReadyListener() {
                         @Override
-                        public void onDatabaseReady(SQLiteDatabase db) {
-                            instance.stockProduct(product.getID(), toMove, db);
+                        public void onDatabaseReady(Connection db) {
+                            DatabaseManager.stockProduct(product.getID(), toMove, db);
                             setResult(Activity.RESULT_OK, new Intent().putExtra("index", index));
                             finish();
                         }

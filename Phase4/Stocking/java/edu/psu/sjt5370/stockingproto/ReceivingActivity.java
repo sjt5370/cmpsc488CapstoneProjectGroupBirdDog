@@ -31,12 +31,12 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.ArrayList;
 
 public class ReceivingActivity extends AppCompatActivity {
     BarcodeDetector barcodeDetector;
     CameraSource cameraSource;
-    DatabaseManager instance;
     private int productID;
     private final static int CAMERA_PERMISSION = 5;
 
@@ -44,7 +44,6 @@ public class ReceivingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receiving);
-        instance = DatabaseManager.getInstance(this);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
             requestPermissions(new String[] {Manifest.permission.CAMERA}, CAMERA_PERMISSION);
@@ -80,11 +79,10 @@ public class ReceivingActivity extends AppCompatActivity {
                     }
                 });
                 //FIXME: cameraSource.stop(); can not be called in this thread due to deadlock issue with API implementation
-                instance.getWritableDatabase(new DatabaseManager.OnDatabaseReadyListener() {
+                new DatabaseManager().getDBConnection(new DatabaseManager.OnDatabaseReadyListener() {
                     @Override
-                    public void onDatabaseReady(SQLiteDatabase db) {
-                        Product product = instance.getProduct(productID, db);
-                        //System.out.println(product.getProductName());
+                    public void onDatabaseReady(Connection db) {
+                        Product product = DatabaseManager.getProduct(productID, db);
                         if (product != null) {
                             Intent intent = new Intent(ReceivingActivity.this, ProductReceiveActivity.class);
                             intent.putExtra("product", product);
@@ -105,7 +103,6 @@ public class ReceivingActivity extends AppCompatActivity {
                 try {
                     cameraSource.start(((SurfaceView) findViewById(R.id.camera)).getHolder());
                 } catch (IOException ioex) {
-                    //Toast.makeText(ReceivingActivity.this, getResources().getString(R.string.camera_needed), Toast.LENGTH_LONG).show();
                     finish();
                 } catch (SecurityException scex) {
                     Toast.makeText(ReceivingActivity.this, getResources().getString(R.string.camera_needed), Toast.LENGTH_LONG).show();
@@ -116,9 +113,7 @@ public class ReceivingActivity extends AppCompatActivity {
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {}
 
             @Override
-            public void surfaceDestroyed(SurfaceHolder holder) {
-                cameraSource.stop();
-            }
+            public void surfaceDestroyed(SurfaceHolder holder) { cameraSource.stop(); }
         });
     }
 

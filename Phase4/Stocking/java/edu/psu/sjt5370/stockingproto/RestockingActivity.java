@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -22,7 +23,6 @@ public class RestockingActivity extends AppCompatActivity {
 
     private ArrayList<Product> productList;
     private ProductListAdapter adapter;
-    private DatabaseManager instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +37,11 @@ public class RestockingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        instance = DatabaseManager.getInstance(this);
-        instance.getWritableDatabase(new DatabaseManager.OnDatabaseReadyListener() {
+        new DatabaseManager().getDBConnection(new DatabaseManager.OnDatabaseReadyListener() {
             @Override
-            public void onDatabaseReady(SQLiteDatabase db) {
+            public void onDatabaseReady(Connection db) {
                 if (adapter.getCount() > 0) adapter.clear();
-                adapter.addAll(instance.getProductList(db));    //FIXME: Database needs a "Restock Request" bit field, currently pulls all products in bulk every time the list refreshes
+                adapter.addAll(DatabaseManager.getProductList(db));    //FIXME: Database needs a "Restock Request" bit field, currently pulls all products in bulk every time the list refreshes
             }
         });
     }
