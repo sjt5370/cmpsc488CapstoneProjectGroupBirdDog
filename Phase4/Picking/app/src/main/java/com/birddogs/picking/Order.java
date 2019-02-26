@@ -1,5 +1,6 @@
 package com.birddogs.picking;
 
+import android.app.ActionBar.LayoutParams;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 
 public class Order extends AppCompatActivity {
 
@@ -15,6 +17,24 @@ public class Order extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+
+        final LinearLayout lm = (LinearLayout) findViewById(R.id.layout);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+
+        for(int i = 1; i <= 20; i++){
+            CheckBox c = new CheckBox(this);
+            c.setText("Product " + i);
+            c.setId(i);
+            c.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    clicked(v);
+                }
+            });
+            //c.setLayoutParams(params);
+            lm.addView(c);
+        }
     }
 
     @Override
@@ -24,20 +44,20 @@ public class Order extends AppCompatActivity {
 
     //checks that all products are scanned and enables/disables finish/hold buttons
     public void clicked(View view){
-        //get checkboxes
-        CheckBox p1 = (CheckBox) findViewById(R.id.product1);
-        CheckBox p2 = (CheckBox) findViewById(R.id.product2);
-        CheckBox p3 = (CheckBox) findViewById(R.id.product3);
-        CheckBox p4 = (CheckBox) findViewById(R.id.product4);
-        CheckBox p5 = (CheckBox) findViewById(R.id.product5);
-
         //get buttons
         Button finish = (Button) findViewById(R.id.finishOrder);
         Button hold = (Button) findViewById(R.id.holdButton);
         Button scan = (Button) findViewById(R.id.scanButton);
+        boolean fin = true;
 
+        for(int i = 1; i < 5; i++){
+            CheckBox c = findViewById(i);
+            if(!c.isChecked()){
+                fin = false;
+            }
+        }
         //check for checked and update buttons
-        if(p1.isChecked() && p2.isChecked() && p3.isChecked() && p4.isChecked() && p5.isChecked()){
+        if(fin){
             finish.setEnabled(true);
             hold.setEnabled(false);
             scan.setEnabled(false);
