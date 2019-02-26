@@ -14,4 +14,5 @@
     <string name="password">********</string>
     <string name="loginButton">Login</string>
     <string name="scanButton">Scan Product</string>
+    <string name="camera_needed">Camera Needed</string>
 </resources>
