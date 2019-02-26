@@ -3,52 +3,21 @@
 <head>
     <meta charset="utf-8" />
     <title>Warehouse Master Ordering Website</title>
+    <link href="websiteStyle.css" rel="stylesheet">
 
-    <style>
-        body {
-            background-color: steelblue;
-        }
-
-        h1 {
-            text-indent: 10px;
-            padding: 5px 0;
-            font-family: "Arial Black";
-            color: black;
-            border-radius: 10px;
-            background-color: lightsteelblue;
-        }
-
-        h2 {
-            font-family: "Arial Black";
-            color: steelblue;
-        }
-
-        form {
-            text-align: center;
-            padding: 190px 0;
-            border-radius: 10px;
-            background-color: lightsteelblue;
-            vertical-align: middle;
-        }
-    </style>
 </head>
 <body>
-<script>
-
-    document.getElementById("Login").addEventListener("click", function (event) {
-        event.preventDefault()
-    });
-</script>
-
-<h1>Warehouse Master</h1>
+<a href="WMOW.html">Warehouse Master</a>
 
 <form id="Login">
-    <h2>Login:</h2>
+    <h2>Login</h2>
     <input name="username" type="text" placeholder="Username"><br>
     <input name="password" type="text" placeholder="Password"><br>
-    <input type="submit" value="Login" onclick="logic()">
-    <input type="submit" value="Sign up" onclick="logic()">
+    <button type="button" name="un" value="Login" onclick="location.href='orderDatabase.html'">Sign In</button>
+    <button type="button" name="pw" value="Sign up" onclick="location.href='signUp.html'">Sign Up</button>
 </form>
+<script>
 
+</script>
 </body>
 </html>
