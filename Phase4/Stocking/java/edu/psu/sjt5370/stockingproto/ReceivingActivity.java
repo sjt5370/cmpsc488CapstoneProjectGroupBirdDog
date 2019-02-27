@@ -1,11 +1,8 @@
 package edu.psu.sjt5370.stockingproto;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
@@ -13,16 +10,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.SparseArray;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.vision.CameraSource;
@@ -31,8 +20,6 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.util.ArrayList;
 
 public class ReceivingActivity extends AppCompatActivity {
     BarcodeDetector barcodeDetector;
@@ -65,11 +52,11 @@ public class ReceivingActivity extends AppCompatActivity {
                 if (barcodeList.size() == 0) return;
                 try {
                     String value = ((Barcode) barcodeList.valueAt(0)).displayValue;
-                    //System.out.println("Display Value: " + value);
                     productID = Integer.parseInt(value);
                 } catch (ClassCastException ccex) { return; }
                 System.out.println(productID);
 
+                // cameraSource.stop() can not be called in this thread due to deadlock issue with API implementation
                 Handler handler = new Handler(Looper.getMainLooper());
                 handler.post(new Runnable() {
                     @Override
@@ -78,11 +65,10 @@ public class ReceivingActivity extends AppCompatActivity {
                         if (barcodeDetector != null) barcodeDetector.release();
                     }
                 });
-                //FIXME: cameraSource.stop(); can not be called in this thread due to deadlock issue with API implementation
-                new DatabaseManager().getDBConnection(new DatabaseManager.OnDatabaseReadyListener() {
+
+                DatabaseManager.getProduct(productID, new DatabaseManager.OnGetProductListener() {
                     @Override
-                    public void onDatabaseReady(Connection db) {
-                        Product product = DatabaseManager.getProduct(productID, db);
+                    public void onGetProduct(Product product) {
                         if (product != null) {
                             Intent intent = new Intent(ReceivingActivity.this, ProductReceiveActivity.class);
                             intent.putExtra("product", product);

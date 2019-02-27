@@ -2,7 +2,6 @@ package edu.psu.sjt5370.stockingproto;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,12 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.sql.Connection;
-
 public class ProductStockActivity extends AppCompatActivity {
     private Product product;
     private int index;
-    private int toMove;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,19 +33,15 @@ public class ProductStockActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Editable toMoveS = ((EditText) findViewById(R.id.moveQuantity)).getText();
+                int toMove;
                 if (TextUtils.isEmpty(toMoveS) || (toMove = Integer.parseInt(toMoveS.toString())) <= 0)
                     Toast.makeText(ProductStockActivity.this, getResources().getString(R.string.negative_quantity_response), Toast.LENGTH_LONG).show();
                 else if (toMove > product.getBulkStock())
                     Toast.makeText(ProductStockActivity.this, getResources().getString(R.string.insufficient_quantity_response), Toast.LENGTH_LONG).show();
                 else {
-                    new DatabaseManager().getDBConnection(new DatabaseManager.OnDatabaseReadyListener() {
-                        @Override
-                        public void onDatabaseReady(Connection db) {
-                            DatabaseManager.stockProduct(product.getID(), toMove, db);
-                            setResult(Activity.RESULT_OK, new Intent().putExtra("index", index));
-                            finish();
-                        }
-                    });
+                    DatabaseManager.stockProduct(product.getID(), toMove);
+                    setResult(Activity.RESULT_OK, new Intent().putExtra("index", index));
+                    finish();
                 }
             }
         });

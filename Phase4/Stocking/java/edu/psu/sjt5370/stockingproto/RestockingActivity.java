@@ -3,7 +3,6 @@ package edu.psu.sjt5370.stockingproto;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,9 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class RestockingActivity extends AppCompatActivity {
 
@@ -37,11 +34,11 @@ public class RestockingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        new DatabaseManager().getDBConnection(new DatabaseManager.OnDatabaseReadyListener() {
+        DatabaseManager.getProductList(new DatabaseManager.OnGetProductListListener() {
             @Override
-            public void onDatabaseReady(Connection db) {
+            public void onGetProductList(ArrayList<Product> productList) {
                 if (adapter.getCount() > 0) adapter.clear();
-                adapter.addAll(DatabaseManager.getProductList(db));    //FIXME: Database needs a "Restock Request" bit field, currently pulls all products in bulk every time the list refreshes
+                adapter.addAll(productList);
             }
         });
     }

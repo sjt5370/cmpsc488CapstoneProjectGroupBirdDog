@@ -2,7 +2,7 @@
     <string name="app_name">Stocking Proto</string>
 
     <string name="login_bar">Sign in</string>
-    <string name="email_field_hint">Employee ID</string>
+    <string name="email_field_hint">Employee Username</string>
     <string name="password_field_hint">Password</string>
     <string name="forgot_password_button">Forgot?</string>
     <string name="forgot_password_response">Too Bad!</string>
