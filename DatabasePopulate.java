@@ -1,4 +1,3 @@
-
 package tester;
 import java.util.Scanner;
 /**
@@ -9,14 +8,14 @@ public class Tester {
 
     public static void main(String[] args) {
         
-        int n = 1000;
+        int n = 10000;
         int zero = 0;
-        int orderNum = 0;
+        int orderNum = 10000;
         for(int i = 0; i < 1000; i++)
         {
             n = n + 1;
             System.out.print("Insert into product values (" + n + ", 'product" + n + 
-                    "', 'this is product1', 'manufacture" + n + ", " + (n%5) + "');");
+                    "', 'this is product1', 'manufacture" + n + "', " + n + ", " + 1 + ");");
             System.out.println("");
             
             System.out.print("Insert into inventory values (" + n + ", " + n + ", " +
@@ -45,9 +44,9 @@ public class Tester {
                         ", " + n + ", " + n + ", " + (j%2) + ");");                    
                     System.out.println("");
                     
-                    System.out.print("Insert into order_history values (" + n + ", " +
-                            orderNum + ", " + n + ", " + n + ");");                    
-                    System.out.println("");
+                 /*   System.out.print("Insert into order_history values (" + n + ", " +
+                            orderNum + ", " + n + ");");                    
+                    System.out.println("");*/
                 }
             }
         }
