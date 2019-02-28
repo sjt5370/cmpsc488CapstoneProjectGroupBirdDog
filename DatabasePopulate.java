@@ -9,14 +9,14 @@ public class Tester {
 
     public static void main(String[] args) {
         
-        int n = 0;
+        int n = 1000;
         int zero = 0;
         int orderNum = 0;
         for(int i = 0; i < 1000; i++)
         {
             n = n + 1;
             System.out.print("Insert into product values (" + n + ", 'product" + n + 
-                    "', 'this is product1', 'manufacture" + n + "');");
+                    "', 'this is product1', 'manufacture" + n + ", " + (n%5) + "');");
             System.out.println("");
             
             System.out.print("Insert into inventory values (" + n + ", " + n + ", " +
@@ -42,11 +42,11 @@ public class Tester {
                 for(int j = 0; j < 3; j++){
                     orderNum = orderNum + 1;
                     System.out.print("Insert into order_info values (" + orderNum + 
-                        ", '" + n + ", '" + n + (j%2) + ");");                    
+                        ", " + n + ", " + n + ", " + (j%2) + ");");                    
                     System.out.println("");
                     
-                    System.out.print("Insert into order_info values (" + n + ", '" +
-                            orderNum + ", '" + n + ", '" + n + (j%2) + ");");                    
+                    System.out.print("Insert into order_history values (" + n + ", " +
+                            orderNum + ", " + n + ", " + n + ");");                    
                     System.out.println("");
                 }
             }
