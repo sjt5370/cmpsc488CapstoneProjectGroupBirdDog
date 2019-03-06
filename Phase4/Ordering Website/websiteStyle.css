@@ -4,8 +4,7 @@ body {
     max-width: 100%;
 }
 
-a {
-
+a.title {
     text-indent: 10px;
     text-decoration: none;
     padding: 10px 20px;
@@ -15,8 +14,16 @@ a {
     background-color: lightsteelblue;
     border-radius: 10px;
     border-style: solid;
+}
 
-
+a.option {
+    font-size: 14px;
+    text-indent: 10px;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-family: "Arial Black";
+    color: black;
+    display: block;
 }
 
 h2 {
@@ -25,19 +32,20 @@ h2 {
 }
 
 form {
-    text-align: center;
-    padding: 15% 0;
-    border-radius: 10px;
-    border-style: solid;
-    background-color: lightsteelblue;
-    vertical-align: middle;
+     text-align: center;
+     padding: 15% 0;
+     border-radius: 10px;
+     border-style: solid;
+     background-color: lightsteelblue;
 }
 
-input[type=text], select {
+input[type=text], select, textarea {
     padding: 12px 20px;
     margin: 8px 0;
-    display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
+}
+
+button.order {
+    padding: 7px 10px;
 }
