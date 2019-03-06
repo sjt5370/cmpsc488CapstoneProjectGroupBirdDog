@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Account Information Page</title>
+        <link href="websiteStyle.css" rel="stylesheet">
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            h2 {
+                text-align: center;
+            }
+            h3 {
+                font-family: "Arial Black";
+                color: steelblue;
+            }
+            .row {
+                border-radius: 10px;
+                border-style: solid;
+                background-color: lightsteelblue;
+            }
+            .column {
+                margin-bottom: 10px;
+                float: left;
+                width: 50%;
+                padding: 10px;
+                border-radius: 10px;
+                border-style: solid;
+                background-color: lightsteelblue;
+            }
+            #oh {
+                width: 100%;
+                height: 395px;
+            }
+        </style>
+
+    </head>
+        <body>
+            <a href="orderDatabase.html" class="title">Warehouse Master</a>
+
+            <div class="row">
+                <h2>Account Information</h2>
+                <div class="column">
+                    <select id="at" name="account type">
+                        <option value="customer">Customer</option>
+                        <option value="employee">Employee</option>
+                    </select><br>
+                    <input id="fn" name="firstname" type="text" placeholder="First Name"><br>
+                    <input id="ln" name="lastname" type="text" placeholder="Last Name"><br>
+                    <input id="un" name="username" type="text" placeholder="New Username"><br>
+                    <input id="pw" name="password" type="text" placeholder="New password"><br>
+                    <input id="cpw" name="confirm password" type="text" placeholder="Confirm password"><br>
+                    <input id="em" name="email" type="text" placeholder="Email Address"><br>
+                    <input id="addr" name="address" type="text" placeholder="Home Address"><br>
+                    <button type="button" name="button" onclick="location.href='accountInfoPage.html'">Confirm Edits</button>
+                </div>
+                <div class="column">
+                    <h3>Order History</h3>
+                    <textarea id="oh" name="order history"></textarea>
+                </div>
+            </div>
+
+            <script>
+
+            </script>
+        </body>
+</html>
