@@ -32,3 +32,5 @@ C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog
 C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\obj\Debug\dbConnector.Properties.Resources.resources
 C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\obj\Debug\dbConnector.csproj.GenerateResource.cache
 C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\obj\Debug\dbConnector.csproj.CoreCompileInputs.cache
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\obj\Debug\GetConditonPage.g.cs
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\dbConnector\dbConnector\obj\Debug\GetConditonPage.baml

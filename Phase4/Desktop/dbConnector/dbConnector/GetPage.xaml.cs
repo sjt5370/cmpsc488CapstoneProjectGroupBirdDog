@@ -35,5 +35,12 @@ namespace dbConnector
         {
             
         }
+
+        private void ButtonCondition_Click(object sender, RoutedEventArgs e)
+        {
+            String selection = this.textSelect.Text;
+            String tableName = labelTableName.Content.ToString();
+                        
+        }
     }
 }
