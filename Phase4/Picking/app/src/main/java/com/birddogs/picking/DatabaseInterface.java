@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DatabaseInterface {
-    interface OnGetPalletListener { void OnGetPallet(Pallet pallet);}
+    interface OnGetPalletListener { void onGetPallet(Pallet pallet);}
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "warehouse.db";
@@ -19,30 +19,38 @@ public class DatabaseInterface {
     private static final int PORT = 1433;
     private static final String USERNAME = "masterUser";
     private static final String PASSWORD = "master1234";
+    public static int curr_id = 1;
 
-    public static void getNewPallet(int id, OnGetPalletListener listener) { new GetNewPalletAsync().execute(id, listener);}
-    private static class GetNewPallectAsync extends AsyncTask<Object, Void, Pallet>{
-        int id;
+    public static void getNewPallet(OnGetPalletListener listener) { new getNewPalletAsync().execute(listener);}
+    private static class getNewPalletAsync extends AsyncTask<OnGetPalletListener, Void, Pallet>{
         OnGetPalletListener listener;
 
         @Override
-        protected Pallet doInBackground(Object... params){
-            id = (int) params[0];
-            listener = (OnGetPalletListener) params[1];
+        protected Pallet doInBackground(OnGetPalletListener... params){
+            listener = params[0];
             StringBuilder command = new StringBuilder();
-            command.append("select ");
-            command.append("from pallet ");
-            command.append("where pallet.next = 1");
-            Pallet pallet = null;
+            command.append("select pallet.prod_id as prod_id, prod_name, prod_desc, proirity, quantity ");
+            command.append("from pallet, product ");
+            command.append("where pallet.prod_id = product.prod_id and pallet.pallet_id = " + curr_id + ";");
+            System.out.println(command.toString());
+
+
+            Pallet pallet = new Pallet();
+            Product product = null;
             Statement st = null;
             ResultSet rs = null;
             Connection c = connect();
             try{
                 st = c.createStatement();
                 rs = st.executeQuery(command.toString());
-                if(rs.next()){
-                    pallet = new Pallet();
-                    pallet.setProductList(rs.getString("products"));
+                while(rs.next()){
+                    product = new Product();
+                    product.setID(rs.getInt("prod_id"));
+                    product.setName(rs.getString("prod_name"));
+                    product.setDescription(rs.getString("prod_desc"));
+                    product.setPriority(rs.getInt("proirity"));
+                    product.setQuantity(rs.getInt("quantity"));
+                    pallet.addProduct(product);
                 }
             } catch (SQLException | NullPointerException ex){
                 ex.printStackTrace();
@@ -61,7 +69,7 @@ public class DatabaseInterface {
         }
 
         @Override
-        protected void onPostExecute(Pallet pallet){ listener.onGetPallet(product);}
+        protected void onPostExecute(Pallet pallet){ listener.onGetPallet(pallet);}
     }
 
     private static Connection connect(){

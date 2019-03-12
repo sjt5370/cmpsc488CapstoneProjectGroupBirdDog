@@ -14,7 +14,8 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 
 public class Order extends AppCompatActivity {
-    static ArrayList<String> palette;
+    private Pallet pallet;
+    private boolean firstTime = true;
     static ArrayList<String> pickedProducts;
 
     @Override
@@ -22,26 +23,45 @@ public class Order extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 
-        final LinearLayout lm = (LinearLayout) findViewById(R.id.layout);
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        pallet = new Pallet();
+        System.out.println(pallet.toString() + "hi");
+        DatabaseInterface.getNewPallet(new DatabaseInterface.OnGetPalletListener(){
+            @Override
+            public void onGetPallet(Pallet pallet2){
+                pallet = pallet2;
+                System.out.println(pallet.toString() + "hi");
+                //set list of checkboxes
+                final LinearLayout lm = (LinearLayout) findViewById(R.id.layout);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+                if(firstTime) {
+                    for (int i = 0; i < pallet.getSize(); i++) {
+                        CheckBox c = new CheckBox(Order.this);
+                        c.setText(pallet.getID(i) + ": " + pallet.getName(i) + "     x" + pallet.getQuantity(i));
+                        c.setId(i);
+                        c.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                clicked(v, pallet);
+                            }
+                        });
 
-        //get palette
-        palette = DatabaseInterface.getNewPalette();
-
-        for(int i = 0; i < palette.size(); i++){
-            CheckBox c = new CheckBox(this);
-            c.setText(palette.get(i));
-            c.setId(i);
-            c.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    clicked(v, palette);
+                        if(DatabaseInterface.curr_id < 10000){DatabaseInterface.curr_id++;}
+                        else{DatabaseInterface.curr_id = 1;}
+                        //c.setLayoutParams(params);
+                        lm.addView(c);
+                    }
+                    firstTime = false;
                 }
-            });
-            //c.setLayoutParams(params);
-            lm.addView(c);
-        }
+            }
+
+        });
+
+
     }
 
     @Override
@@ -50,14 +70,14 @@ public class Order extends AppCompatActivity {
     }
 
     //checks that all products are scanned and enables/disables finish/hold buttons
-    public void clicked(View view, ArrayList products){
+    public void clicked(View view, Pallet pallet){
         //get buttons
         Button finish = (Button) findViewById(R.id.finishPalette);
         Button hold = (Button) findViewById(R.id.holdButton);
         Button scan = (Button) findViewById(R.id.scanButton);
         boolean fin = true;
 
-        for(int i = 0; i < products.size(); i++){
+        for(int i = 0; i < pallet.getSize(); i++){
             CheckBox c = findViewById(i);
             if(!c.isChecked()){
                 fin = false;
@@ -105,6 +125,7 @@ public class Order extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     DatabaseInterface.cancelPalette(pickedProducts);
+                    pallet = new Pallet();
                     Order.this.finish();
                 }
             }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
