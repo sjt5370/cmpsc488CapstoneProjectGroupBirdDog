@@ -6,19 +6,25 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class RestockingActivity extends AppCompatActivity {
 
     private ArrayList<Product> productList;
+    private ArrayList<Product> displayList;
     private ProductListAdapter adapter;
 
     @Override
@@ -27,8 +33,27 @@ public class RestockingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_restocking);
         this.setTitle(getResources().getString(R.string.restocking_bar));
         productList = new ArrayList<>();
-        adapter = new ProductListAdapter(this, R.layout.product, productList);
+        displayList = new ArrayList<>();
+        adapter = new ProductListAdapter(this, R.layout.product, displayList);
         ((ListView) findViewById(R.id.productList)).setAdapter(adapter);
+        ((Button) findViewById(R.id.searchButton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Editable queryField = ((EditText) findViewById(R.id.searchField)).getText();
+                String query;
+                if (TextUtils.isEmpty(queryField)) {
+                    displayList.clear();
+                    displayList.addAll(productList);
+                } else {
+                    displayList.clear();
+                    query = queryField.toString();
+                    for (Product product : productList)
+                        if (product.getProductName().contains(query))
+                            displayList.add(product);
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
@@ -36,9 +61,22 @@ public class RestockingActivity extends AppCompatActivity {
         super.onResume();
         DatabaseManager.getProductList(new DatabaseManager.OnGetProductListListener() {
             @Override
-            public void onGetProductList(ArrayList<Product> productList) {
-                if (adapter.getCount() > 0) adapter.clear();
-                adapter.addAll(productList);
+            public void onGetProductList(ArrayList<Product> productList2) {
+                if (productList.size() > 0) productList.clear();
+                productList.addAll(productList2);
+                Editable queryField = ((EditText) findViewById(R.id.searchField)).getText();
+                String query;
+                if (TextUtils.isEmpty(queryField)) {
+                    displayList.clear();
+                    displayList.addAll(productList);
+                } else {
+                    displayList.clear();
+                    query = queryField.toString();
+                    for (Product product : productList)
+                        if (product.getProductName().contains(query))
+                            displayList.add(product);
+                }
+                adapter.notifyDataSetChanged();
             }
         });
     }
@@ -63,16 +101,18 @@ public class RestockingActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putParcelableArrayList("productList", productList);
+        savedInstanceState.putParcelableArrayList("displayList", displayList);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        productList = savedInstanceState.getParcelableArrayList("productList");
+        productList = savedInstanceState.getParcelableArrayList("displayList");
+        if (displayList == null)
+            displayList = new ArrayList<>();
         if (productList == null)
             productList = new ArrayList<>();
-        adapter = new ProductListAdapter(this, R.layout.product, productList);
+        adapter = new ProductListAdapter(this, R.layout.product, displayList);
         ((ListView) findViewById(R.id.productList)).setAdapter(adapter);
     }
 
@@ -80,8 +120,11 @@ public class RestockingActivity extends AppCompatActivity {
     public void onActivityResult(int reqCode, int resCode, Intent result) {
         if (reqCode == 0 && resCode == Activity.RESULT_OK) {
             int index = result.getIntExtra("index", -1);
-            if (index >= 0 && index < productList.size()) {
-                productList.remove(index);
+            if (index >= 0 && index < displayList.size()) {
+                Product product = displayList.get(index);
+                displayList.remove(product);
+                productList.remove(product);
+                //productList.remove(index);
                 adapter.notifyDataSetChanged();
             }
         }
@@ -91,7 +134,7 @@ public class RestockingActivity extends AppCompatActivity {
         public ProductListAdapter(Context context, int resource, ArrayList<Product> products) { super(context, resource, products); }
 
         @Override
-        public Product getItem(int position) { return productList.get(position); }
+        public Product getItem(int position) { return displayList.get(position); }
 
         @Override
         @NonNull
