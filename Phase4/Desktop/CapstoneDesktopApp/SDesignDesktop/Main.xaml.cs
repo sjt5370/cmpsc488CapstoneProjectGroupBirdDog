@@ -23,6 +23,7 @@ namespace SDesignDesktop
         {
             InitializeComponent();
             MainWindow.Content = new LoginPage();
+            
         }
     }
 }

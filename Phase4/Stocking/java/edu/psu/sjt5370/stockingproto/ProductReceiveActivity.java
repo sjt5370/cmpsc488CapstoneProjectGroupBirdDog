@@ -11,11 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.sql.Connection;
-
 public class ProductReceiveActivity extends AppCompatActivity {
     private Product product;
-    private int toMove;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +30,12 @@ public class ProductReceiveActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Editable toMoveS = ((EditText) findViewById(R.id.receiveQuantity)).getText();
+                int toMove;
                 if (TextUtils.isEmpty(toMoveS) || (toMove = Integer.parseInt(toMoveS.toString())) <= 0)
                     Toast.makeText(ProductReceiveActivity.this, getResources().getString(R.string.negative_quantity_response), Toast.LENGTH_LONG).show();
                 else {
-                    new DatabaseManager().getDBConnection(new DatabaseManager.OnDatabaseReadyListener() {
-                        @Override
-                        public void onDatabaseReady(Connection db) {
-                            DatabaseManager.receiveProduct(product.getID(), toMove, db);
-                            finish();
-                        }
-                    });
+                    DatabaseManager.receiveProduct(product.getID(), toMove);
+                    finish();
                 }
             }
         });

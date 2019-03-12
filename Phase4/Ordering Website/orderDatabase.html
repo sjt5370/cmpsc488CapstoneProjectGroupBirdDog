@@ -1,23 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Warehouse Master Ordering Website</title>
-    <link href="websiteStyle.css" rel="stylesheet">
+    <head>
+        <meta charset="utf-8" />
+        <title>Ordering Page</title>
+        <link href="websiteStyle.css" rel="stylesheet">
+        <style>
 
-</head>
-<body>
-<a href="WMOW.html">Warehouse Master</a>
+            h2 {
+                margin-top: 0px;
+                padding: 20px;
+                width: 97%;
+                border-color: black;
+                border-width: 3px;
+                border-radius: 10px;
+                border-style: solid;
+                background-color: lightsteelblue;
+            }
 
-<form id="Login">
-    <h2>Login</h2>
-    <!--<input name="username" type="text" placeholder="Username"><br>
-    <input name="password" type="text" placeholder="Password"><br>
-    <button type="button" name="un" value="Login" onclick="location.href='http://google.com'"></button>
-    <button type="button" name="pw" value="Sign up" onclick="location.href='http://google.com'"></button>-->
-</form>
-<script>
+            #info {
+                float: right;
+            }
+            #so {
+                float: right;
+            }
 
-</script>
-</body>
+            #input {
+                margin-bottom: 0px;
+            }
+
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-content {
+                background-color: #f6f6f6;
+                overflow: auto;
+                border: 1px solid #ddd;
+                z-index: 1;
+            }
+
+            .dropdown a:hover {background-color: #ddd;}
+
+            input[type=text] {
+                padding: 12px 20px;
+                width: 600px;
+                margin: 8px 0;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+        </style>
+
+    </head>
+        <body>
+            <a href="orderDatabase.html" class="title">Warehouse Master</a>
+            <button id="so" type="button" name="button" onclick="location.href='WMOW.html'">Sign Out</button>
+            <button id="info" type="button" name="button" onclick="location.href='accountInfoPage.html'">Account Info</button>
+
+            <h2>Place Order</h2>
+            <div id="orderList" class="dropdown">
+
+                <input type="text" placeholder="Search.." id="input" onkeyup="filterFunction()">
+                <button type="button" name="po" class="order" onclick="location.href='http://google.com'">Place Order</button>
+                <!--<select id="oo" name="order options">
+                    <option value="blank">Blank</option>
+                </select>-->
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#about" class="option">About</a>
+                    <a href="#base" class="option">Base</a>
+                    <a href="#blog" class="option">Blog</a>
+                    <a href="#contact" class="option">Contact</a>
+                    <a href="#custom" class="option">Custom</a>
+                    <a href="#support" class="option">Support</a>
+                    <a href="#tools" class="option">Tools</a>
+                </div>
+            </div>
+            <script>
+                function filterFunction() {
+                    let input, filter, div, a, i;
+                    input = document.getElementById("input");
+                    filter = input.value.toUpperCase();
+                    div = document.getElementById("myDropdown");
+                    a = div.getElementsByTagName("a");
+                    for (i = 0; i < a.length; i++) {
+                        let txtValue = a[i].textContent || a[i].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            a[i].style.display = "";
+                        } else {
+                            a[i].style.display = "none";
+                        }
+                    }
+                }
+            </script>
+        </body>
 </html>

@@ -2,7 +2,7 @@
     <string name="app_name">Stocking Proto</string>
 
     <string name="login_bar">Sign in</string>
-    <string name="email_field_hint">Employee ID</string>
+    <string name="email_field_hint">Employee Username</string>
     <string name="password_field_hint">Password</string>
     <string name="forgot_password_button">Forgot?</string>
     <string name="forgot_password_response">Too Bad!</string>
@@ -15,6 +15,12 @@
     <string name="receiving_button">Receiving</string>
 
     <string name="restocking_bar">Select product to restock:</string>
+    <string name="search_hint">Search</string>
+    <string-array name="search_array">
+        <item>Product Name</item>
+        <item>Manufacturer</item>
+        <item>Description</item>
+    </string-array>
 
     <string name="by_manufacturer">by Unlisted Manufacturer</string>
     <string name="description">No item description available…</string>
@@ -31,9 +37,10 @@
     <string name="camera_needed">Camera permissions required to scan barcodes!</string>
 
     <string name="new_product_bar">New Product</string>
-    <string name="name_label">Product Name:</string>
-    <string name="manufacturer_label">Manufacturer:</string>
-    <string name="description_label">Description:</string>
-    <string name="price_label">Price:</string>
+    <string name="name_label">Product Name</string>
+    <string name="manufacturer_label">Manufacturer</string>
+    <string name="description_label">Description</string>
+    <string name="price_label">Price</string>
     <string name="empty_fields_response">Fields cannot be blank.</string>
+
 </resources>

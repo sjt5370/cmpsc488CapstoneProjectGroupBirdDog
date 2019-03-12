@@ -8,7 +8,7 @@
       Height="1080" Width="1920"
       Title="LoginPage" Background="SteelBlue">
     <Grid>
-        <StackPanel Margin="645,245,1035,575" RenderTransformOrigin="0.5,0.5">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
             <Label x:Name="label" Content="Login" FontSize="17" FontWeight="Bold"  HorizontalContentAlignment="Center"/>
             <TextBlock Margin="70,0">Username:</TextBlock>
             <TextBox x:Name="textBox1" Height="20" Width="100" TextWrapping="Wrap" Background="LightGray"  HorizontalAlignment="Center" BorderBrush="Black" />

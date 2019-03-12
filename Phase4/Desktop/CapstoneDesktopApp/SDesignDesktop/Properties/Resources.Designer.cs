@@ -59,14 +59,5 @@ namespace SDesignDesktop.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string RoundedBorder {
-            get {
-                return ResourceManager.GetString("RoundedBorder", resourceCulture);
-            }
-        }
     }
 }
