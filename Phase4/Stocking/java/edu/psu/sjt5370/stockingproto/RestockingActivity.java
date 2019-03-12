@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,8 @@ public class RestockingActivity extends AppCompatActivity {
     private ArrayList<Product> productList;
     private ArrayList<Product> displayList;
     private ProductListAdapter adapter;
+    private Spinner spinner;
+    //private ArrayAdapter<CharSequence> spinnerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,24 +37,17 @@ public class RestockingActivity extends AppCompatActivity {
         this.setTitle(getResources().getString(R.string.restocking_bar));
         productList = new ArrayList<>();
         displayList = new ArrayList<>();
+
         adapter = new ProductListAdapter(this, R.layout.product, displayList);
         ((ListView) findViewById(R.id.productList)).setAdapter(adapter);
+
+        spinner = findViewById(R.id.searchBySpinner);
+        spinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.search_array, android.R.layout.simple_spinner_dropdown_item));
+
         ((Button) findViewById(R.id.searchButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Editable queryField = ((EditText) findViewById(R.id.searchField)).getText();
-                String query;
-                if (TextUtils.isEmpty(queryField)) {
-                    displayList.clear();
-                    displayList.addAll(productList);
-                } else {
-                    displayList.clear();
-                    query = queryField.toString();
-                    for (Product product : productList)
-                        if (product.getProductName().contains(query))
-                            displayList.add(product);
-                }
-                adapter.notifyDataSetChanged();
+                search();
             }
         });
     }
@@ -64,19 +60,7 @@ public class RestockingActivity extends AppCompatActivity {
             public void onGetProductList(ArrayList<Product> productList2) {
                 if (productList.size() > 0) productList.clear();
                 productList.addAll(productList2);
-                Editable queryField = ((EditText) findViewById(R.id.searchField)).getText();
-                String query;
-                if (TextUtils.isEmpty(queryField)) {
-                    displayList.clear();
-                    displayList.addAll(productList);
-                } else {
-                    displayList.clear();
-                    query = queryField.toString();
-                    for (Product product : productList)
-                        if (product.getProductName().contains(query))
-                            displayList.add(product);
-                }
-                adapter.notifyDataSetChanged();
+                search();
             }
         });
     }
@@ -128,6 +112,38 @@ public class RestockingActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         }
+    }
+
+    private void search() {
+        Editable queryField = ((EditText) findViewById(R.id.searchField)).getText();
+        String query;
+        if (TextUtils.isEmpty(queryField)) {
+            displayList.clear();
+            displayList.addAll(productList);
+        } else {
+            displayList.clear();
+            query = queryField.toString();
+            switch(spinner.getSelectedItem().toString()) {
+                case "Product Name":
+                    for (Product product : productList)
+                        if (product.getProductName().contains(query))
+                            displayList.add(product);
+                    break;
+                case "Manufacturer":
+                    for (Product product : productList)
+                        if (product.getManufacturer().contains(query))
+                            displayList.add(product);
+                    break;
+                case "Description":
+                    for (Product product : productList)
+                        if (product.getDescription().contains(query))
+                            displayList.add(product);
+                    break;
+                default:
+                    System.exit(1);
+            }
+        }
+        adapter.notifyDataSetChanged();
     }
 
     private class ProductListAdapter extends ArrayAdapter<Product> {
