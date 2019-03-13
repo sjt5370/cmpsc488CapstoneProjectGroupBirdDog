@@ -32,9 +32,13 @@ create table employee_account (
 	foreign key(acc_id) references master_account);
 	
 create table customer_account (
-	acc_id int primary key,
-	acc_address varchar(255) not null,
+	acc_id int primary key,	
 	email varchar(50) not null,
+	cus_name varchar(255) not null,
+	addr_street varchar(100) not null,
+	addr_city varchar(100) not null,
+	addr_state varchar(2) not null,
+	addr_zip integer not null,
 	foreign key(acc_id) references master_account);
 	
 create table order_info(
