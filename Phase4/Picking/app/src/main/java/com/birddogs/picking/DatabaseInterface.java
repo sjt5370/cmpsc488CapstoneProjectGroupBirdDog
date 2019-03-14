@@ -34,7 +34,6 @@ public class DatabaseInterface {
             command.append("where pallet.prod_id = product.prod_id and pallet.pallet_id = " + curr_id + ";");
             System.out.println(command.toString());
 
-
             Pallet pallet = new Pallet();
             Product product = null;
             Statement st = null;

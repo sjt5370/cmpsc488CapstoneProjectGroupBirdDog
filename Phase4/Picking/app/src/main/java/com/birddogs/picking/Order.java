@@ -28,12 +28,10 @@ public class Order extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         pallet = new Pallet();
-        System.out.println(pallet.toString() + "hi");
         DatabaseInterface.getNewPallet(new DatabaseInterface.OnGetPalletListener(){
             @Override
             public void onGetPallet(Pallet pallet2){
                 pallet = pallet2;
-                System.out.println(pallet.toString() + "hi");
                 //set list of checkboxes
                 final LinearLayout lm = (LinearLayout) findViewById(R.id.layout);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
@@ -49,12 +47,11 @@ public class Order extends AppCompatActivity {
                                 clicked(v, pallet);
                             }
                         });
-
-                        if(DatabaseInterface.curr_id < 10000){DatabaseInterface.curr_id++;}
-                        else{DatabaseInterface.curr_id = 1;}
                         //c.setLayoutParams(params);
                         lm.addView(c);
                     }
+                    if(DatabaseInterface.curr_id < 10000){DatabaseInterface.curr_id++;}
+                    else{DatabaseInterface.curr_id = 1;}
                     firstTime = false;
                 }
             }
