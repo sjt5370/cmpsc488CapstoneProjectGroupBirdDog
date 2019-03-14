@@ -64,6 +64,9 @@
     <Compile Include="AddRoute.xaml.cs">
       <DependentUpon>AddRoute.xaml</DependentUpon>
     </Compile>
+    <Compile Include="createAcc.xaml.cs">
+      <DependentUpon>createAcc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditPage.xaml.cs">
       <DependentUpon>EditPage.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,10 @@
     <Page Include="AddRoute.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="createAcc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="EditPage.xaml">
       <SubType>Designer</SubType>

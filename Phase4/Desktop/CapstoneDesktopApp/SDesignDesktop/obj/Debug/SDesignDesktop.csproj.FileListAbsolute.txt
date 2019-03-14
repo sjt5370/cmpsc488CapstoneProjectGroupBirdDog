@@ -56,3 +56,5 @@ C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog
 C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\CapstoneDesktopApp\SDesignDesktop\obj\Debug\SDesignDesktop.csproj.CoreCompileInputs.cache
 C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\CapstoneDesktopApp\SDesignDesktop\obj\Debug\SDesignDesktop.exe
 C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\CapstoneDesktopApp\SDesignDesktop\obj\Debug\SDesignDesktop.pdb
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\CapstoneDesktopApp\SDesignDesktop\obj\Debug\createAcc.g.cs
+C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\CapstoneDesktopApp\SDesignDesktop\obj\Debug\createAcc.baml
