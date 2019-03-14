@@ -45,8 +45,8 @@ namespace SDesignDesktop
             } else if(accType == "Employee Account")
             {
                 CreateEmployeeAccount(name, accIdInt, 0, username, password, job);
-            } 
-
+            }
+            SDesignDesktop.Main.GetWindow(this).Content = new LoginPage();
         }
 
         public void CreateEmployeeAccount(String name, String accId, int accType, String username, String password, String jobType)
