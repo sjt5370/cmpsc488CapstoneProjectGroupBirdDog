@@ -1,0 +1,131 @@
+﻿<Page x:Class="SDesignDesktop.ViewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SDesignDesktop"
+      mc:Ignorable="d" 
+      Height="1080" Width="1920"
+      Title="ViewPage" Background="SteelBlue" Loaded="Page_Loaded">
+
+    <Grid>
+        <WebBrowser x:Name="Gmaps" Margin="775,65,405,315" />
+        <ListBox Margin="20,10,0,0" Name="RouteList" Height="495" Width="480" VerticalAlignment="Top" HorizontalAlignment="Left" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" Background="SlateGray">
+            <ListBoxItem Content="Route 101" FontSize="20" FontWeight="Bold"></ListBoxItem>
+            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                </ListBox>
+            </ListBoxItem>
+
+            <ListBoxItem Content="Route 102" FontWeight="Bold" FontSize="20"></ListBoxItem>
+            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                </ListBox>
+            </ListBoxItem>
+
+            <ListBoxItem Content="Route 103" FontWeight="Bold" FontSize="20"></ListBoxItem>
+            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                </ListBox>
+            </ListBoxItem>
+
+            <ListBoxItem Content="Route 104" FontWeight="Bold" FontSize="20"></ListBoxItem>
+            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                </ListBox>
+            </ListBoxItem>
+
+            <ListBoxItem Content="Route 105" FontWeight="Bold" FontSize="20"></ListBoxItem>
+            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                    <ListBoxItem Content="Account Name                    Order Size"/>
+                </ListBox>
+            </ListBoxItem>
+        </ListBox>
+
+        <StackPanel HorizontalAlignment="Left" Height="125" VerticalAlignment="Top" Width="160" Margin="545,320,0,0" RenderTransformOrigin="0.496,0.498">
+            <Button x:Name="AddRoute" Content="Create Route" Height="35" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Click="AddRoute_Click"/>
+           
+        </StackPanel>
+        <Button x:Name="logout" Content="Logout" Height="35" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Width="80" Margin="1430,15,410,1030" Click="Logout_Click"/>
+        <StackPanel HorizontalAlignment="Left"  Width="245" Margin="515,65,0,785.4">
+            <Label Content="Summary" Height="40" FontSize="23" HorizontalAlignment="Center" FontWeight="Bold"/>
+            <Label Content="Total Items:" Height="30" FontSize="15" FontWeight="DemiBold" Margin="0,0,-0.4,0"/>
+            <TextBlock FontSize="15" HorizontalAlignment="Center">XXXXX</TextBlock>
+            <Label Content="Total Routes:" Height="30" FontSize="15" FontWeight="DemiBold" Margin="0,0,-0.4,0"/>
+            <TextBlock FontSize="15" HorizontalAlignment="Center">XXXXX</TextBlock>
+            <Label Content="Active Pickers:" Height="30" FontSize="15" FontWeight="DemiBold" Margin="0,0,-0.4,0"/>
+            <TextBlock FontSize="15" HorizontalAlignment="Center">XXXXX</TextBlock>
+        </StackPanel>
+        <StackPanel Margin="19,510,1415,255">
+            <TextBlock Text="Order View" FontSize="30" HorizontalAlignment="Center"/>
+            <ListBox x:Name="listBox" Height="215" Margin="0,0,0.4,0">
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+                <ListBoxItem Content="Product Name              Quantity                Time" FontSize="15"/>
+            </ListBox>
+
+        </StackPanel>
+        <StackPanel Margin="500,500,1169,270">
+            <TextBlock Text="Edit Routes" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Account Number:" FontSize="18" HorizontalAlignment="Center" Margin="0,15"/>
+            <TextBox x:Name="textBox" Height="23" TextWrapping="Wrap" Width="100" Background="LightGray"/>
+            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Route Number:" FontSize="18" HorizontalAlignment="Center" Margin="0,15"/>
+            <TextBox x:Name="textBox2" Height="23" TextWrapping="Wrap" Width="100" Background="LightGray"/>
+            <Button x:Name="Add" Content="Add" Width="60" Height="25" Margin="50,10" Background="SlateGray" BorderThickness="3" FontSize="16"/>
+        </StackPanel>
+        <Frame x:Name="View" Margin="420,845,-420,-845" Navigated="View_Navigated"/>
+    </Grid>
+</Page>
