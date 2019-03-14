@@ -34,8 +34,8 @@ namespace SDesignDesktop
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            View.Content = new LoginPage();
             Gmaps.Dispose();
+            SDesignDesktop.Main.GetWindow(this).Content = new LoginPage();
         }
 
         private void AddRoute_Click(object sender, RoutedEventArgs e)
