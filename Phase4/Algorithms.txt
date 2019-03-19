@@ -1,0 +1,14 @@
+﻿//	Routing Algorithm	//
+
+
+Plot all order addresses and group into clusters equal to # of available trucks
+        Clusters will attempt to have equal heuristic of workload = # stop X product volume
+
+
+For each stop not grouped w/in some distance TBD of the closest cluster, recalculate the workload of the cluster if it were to include that stop.
+	If the workload is still acceptable or the priority is high enough that it must be included, include the stop in that cluster and continue.
+	If the workload is now above an acceptable level, try to include the stop with the next nearest cluster with the TBD distance.
+	If a stop cannot be included in the cluster, exclude it from today’s routes and increase its priority.
+
+
+Calculate a route for each cluster using Google Maps or something similar.
