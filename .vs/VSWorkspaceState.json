@@ -4,9 +4,10 @@
     "\\Phase4",
     "\\Phase4\\Desktop",
     "\\Phase4\\Desktop\\CapstoneDesktopApp",
+    "\\Phase4\\Desktop\\CapstoneDesktopApp\\SDesignDesktop",
     "\\Phase4\\Desktop\\dbConnector",
     "\\Phase4\\Desktop\\dbConnector\\dbConnector"
   ],
-  "SelectedNode": "\\Phase4\\Desktop\\dbConnector\\dbConnector.sln",
+  "SelectedNode": "\\Phase4\\Desktop\\CapstoneDesktopApp\\SDesignDesktop.sln",
   "PreviewInSolutionExplorer": false
 }

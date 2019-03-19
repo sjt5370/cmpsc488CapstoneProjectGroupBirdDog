@@ -84,7 +84,7 @@
 
         <StackPanel HorizontalAlignment="Left" Height="125" VerticalAlignment="Top" Width="160" Margin="545,320,0,0" RenderTransformOrigin="0.496,0.498">
             <Button x:Name="AddRoute" Content="Create Route" Height="35" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Click="AddRoute_Click"/>
-           
+
         </StackPanel>
         <Button x:Name="logout" Content="Logout" Height="35" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Width="80" Margin="1430,15,410,1030" Click="Logout_Click"/>
         <StackPanel HorizontalAlignment="Left"  Width="245" Margin="515,65,0,785.4">
