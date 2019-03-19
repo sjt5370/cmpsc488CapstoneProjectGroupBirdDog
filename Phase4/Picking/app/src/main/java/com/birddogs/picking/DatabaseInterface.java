@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 public class DatabaseInterface {
     interface OnGetPalletListener { void onGetPallet(Pallet pallet);}
+    interface OnGetUsersListener { void onGetUsers(HashMap<String, User> users);}
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "warehouse.db";
@@ -95,15 +96,52 @@ public class DatabaseInterface {
         System.out.println("Disconnected!");
     }
 
+    public static void getUsers(OnGetUsersListener listener) { new getUsersAsync().execute(listener);}
+    private static class getUsersAsync extends AsyncTask<OnGetUsersListener, Void, HashMap<String, User>>{
+        OnGetUsersListener listener;
 
+        @Override
+        protected HashMap<String, User> doInBackground(OnGetUsersListener... params){
+            listener = params[0];
+            StringBuilder command = new StringBuilder();
+            command.append("select master_account.acc_id, acc_type, username, password, first_name, last_name, job, productivity ");
+            command.append("from master_account, employee_account ");
+            command.append("where master_account.acc_id = employee_account.acc_id;");
+            System.out.println(command.toString());
 
+            HashMap<String, User> users = new HashMap<>();
+            User user = null;
+            Statement st = null;
+            ResultSet rs = null;
+            Connection c = connect();
+            try{
+                st = c.createStatement();
+                rs = st.executeQuery(command.toString());
+                while(rs.next()){
+                    String username = rs.getString("username");
+                    user = new User(rs.getInt("acc_id"), rs.getInt("acc_type"), username,
+                            rs.getString("password"), rs.getString("first_name"), rs.getString("last_name"),
+                            rs.getString("job"), rs.getInt("productivity"));
+                    users.put(username, user);
+                }
+            } catch (SQLException | NullPointerException ex){
+                ex.printStackTrace();
+                System.exit(1);
+            }finally{
+                try{
+                    rs.close();
+                    st.close();
+                    disconnect(c);
+                } catch(Exception ex){
+                    ex.printStackTrace();
+                    System.exit(1);
+                }
+            }
+            return users;
+        }
 
-    static ArrayList<String> products;
-    public static ArrayList getNewPalette(){
-        //get next palette in queue
-        products = new ArrayList();
-        dummyData();
-        return products;
+        @Override
+        protected void onPostExecute(HashMap<String, User> users){ listener.onGetUsers(users);}
     }
 
     public static HashMap<String, String> getUsers(){
@@ -120,10 +158,5 @@ public class DatabaseInterface {
     public static void cancelPalette(ArrayList<String> products){
         //replaces shelf stock for already scanned products
         //returns palette to order queue
-    }
-    private static void dummyData(){
-        for(int i = 0; i < 20; i++){
-            products.add("Product " + i);
-        }
     }
 }
