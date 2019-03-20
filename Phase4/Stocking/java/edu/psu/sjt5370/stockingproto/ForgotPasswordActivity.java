@@ -53,29 +53,22 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                         Toast.makeText(ForgotPasswordActivity.this, getResources().getString(R.string.password_match_failed), Toast.LENGTH_LONG).show();
                         authPending = false;
                     } else {
-                        /*
-                        DatabaseManager.authenticate(username.toString(), password.toString(), new DatabaseManager.OnAuthenticationListener() {
+                        DatabaseManager.changePassword(username.toString(), fname.toString(), lname.toString(), Integer.parseInt(id.toString()), newpassS, new DatabaseManager.OnPasswordChangedListener() {
                             @Override
-                            public void onAuthentication(boolean authGranted) {
-                                if (authGranted) {
-                                    Intent intent = new Intent(LoginActivity.this, StockingActivity.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
+                            public void OnPasswordChanged(boolean passChanged) {
+                                if (passChanged) {
                                     finish();
+                                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                 } else {
-                                    //FIXME: Highlight textboxes as invalid
-                                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_failed), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ForgotPasswordActivity.this, getResources().getString(R.string.login_failed), Toast.LENGTH_LONG).show();
+                                    authPending = false;
                                 }
-                                authPending = false;
                             }
                         });
-                        */
                     }
-                }
-
-                else {
+                } else {
                     //FIXME: Highlight textboxes as invalid
-                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_failed), Toast.LENGTH_LONG).show();
+                    Toast.makeText(ForgotPasswordActivity.this, getResources().getString(R.string.empty_fields_response), Toast.LENGTH_LONG).show();
                     authPending = false;
                 }
             } catch (Exception ex) {

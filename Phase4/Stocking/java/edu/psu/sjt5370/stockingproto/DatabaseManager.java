@@ -312,7 +312,7 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
     }
 
     public static void changePassword(String username, String fname, String lname, int id, String newpass, OnPasswordChangedListener listener) {
-        new ChangePasswordAsyncTask().execute(username, fname, lname, id, newpass);
+        new ChangePasswordAsyncTask().execute(username, fname, lname, id, newpass, listener);
     }
     private static class ChangePasswordAsyncTask extends AsyncTask<Object, Void, Boolean> {
         String username;
@@ -331,15 +331,15 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
             newpass = (String) params[4];
             listener = (OnPasswordChangedListener) params[5];
             StringBuilder command1 = new StringBuilder();
-            command1.append("select username, password, job ");
+            command1.append("select username, first_name, last_name ");
             command1.append("from master_account, employee_account ");
             command1.append("where master_account.acc_id = employee_account.acc_id and master_account.acc_id = \'");
             command1.append(id);
             command1.append("\';");
             StringBuilder command2 = new StringBuilder();
-            command2.append("update master_account set password = ");
+            command2.append("update master_account set password = \'");
             command2.append(newpass);
-            command2.append(" where acc_id = ");
+            command2.append("\' where acc_id = ");
             command2.append(id);
             command2.append(";");
 
@@ -348,14 +348,11 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
             Connection c = connect();
             try {
                 st = c.createStatement();
-                rs = st.executeQuery(command.toString());
-                if (!rs.next()) {
-                    rs.close();
-                    return false;
-                }
-                acc_type = (rs.getInt("acc_type") == 1);   //FIXME: true for employee or customer?
-                job = rs.getString("job");
-                correctPass = rs.getString("password");     //FIXME: needs encryption
+                rs = st.executeQuery(command1.toString());
+                if (!rs.next() || !username.equals(rs.getString("username")) ||
+                        !fname.equals(rs.getString("first_name")) || !lname.equals(rs.getString("last_name"))) return false;
+                //rs.close();
+                st.executeUpdate(command2.toString());
             } catch (SQLException | NullPointerException ex) {
                 ex.printStackTrace();
                 System.exit(1);
@@ -369,6 +366,7 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
                     System.exit(1);
                 }
             }
+            return true;
         }
 
         @Override
