@@ -170,6 +170,7 @@ public class RestockingActivity extends AppCompatActivity {
             }
             view.setTag(position);
             ((TextView) view.findViewById(R.id.listName)).setText(getItem(position).getProductName());
+            ((TextView) view.findViewById(R.id.listManufacturer)).setText("by " + getItem(position).getManufacturer());
             return view;
         }
     }
