@@ -60,6 +60,8 @@ public class Scan extends AppCompatActivity {
                     }
                     System.out.println(productID);
 
+                    Order.returnedId = productID;
+
                     Handler handler = new Handler(Looper.getMainLooper());
                     handler.post(new Runnable() {
 
@@ -115,6 +117,7 @@ public class Scan extends AppCompatActivity {
     }
 
     public void back(View view){
+        Order.returnedId = -1;
         Scan.this.finish();
     }
 

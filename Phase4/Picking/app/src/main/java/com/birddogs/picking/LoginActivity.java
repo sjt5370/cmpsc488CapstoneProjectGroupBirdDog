@@ -8,13 +8,14 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String LOGIN_MESSAGE = "com.birddogs.picking.MESSAGE";
-    private HashMap<String, User> users;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,28 +30,39 @@ public class LoginActivity extends AppCompatActivity {
     //opens Main Page when Login Button is clicked
     public void login(View view){
         final Intent intent = new Intent(this, MainActivity.class);
-        EditText id = (EditText) findViewById(R.id.employeeID);
-        EditText pass = (EditText) findViewById(R.id.employeePassword);
+        final EditText id = (EditText) findViewById(R.id.employeeID);
+        final EditText pass = (EditText) findViewById(R.id.employeePassword);
+        final TextView error = (TextView) findViewById(R.id.LoginError);
 
         //checks users
         final String u = id.getText().toString();
         final String p = pass.getText().toString();
 
-        users = new HashMap<>();
+        user = new User();
         DatabaseInterface.getUsers(new DatabaseInterface.OnGetUsersListener(){
             @Override
-            public void onGetUsers(HashMap<String, User> users2){
-                users = users2;
-                if(users.containsKey(u)){
-                    if(p.equals(users.get(u).getPassword())){
-                        if(users.get(u).getJob().equals("picker")) {
-                            String n = users.get(u).getFirst_name() + " " + users.get(u).getLast_name();
+            public void onGetUsers(User user2){
+                user = user2;
+                if(user != null) {
+                    if (user.getPassword().equals(p)) {
+                        if (user.getJob().equals("picker")) {
+                            pass.setText("");
+                            String n = user.getFirst_name() + " " + user.getLast_name();
                             intent.putExtra(LOGIN_MESSAGE, n);
                             startActivity(intent);
+                        }else{
+                            error.setText("You are not authorized to use this app");
+                            error.setVisibility(View.VISIBLE);
                         }
+                    }else{
+                        error.setText("Invalid Password");
+                        error.setVisibility(View.VISIBLE);
                     }
+                }else{
+                    error.setText("Please enter a valid Username");
+                    error.setVisibility(View.VISIBLE);
                 }
             }
-        });
+        }, u);
     }
 }
