@@ -34,6 +34,35 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        Editable username = ((EditText) findViewById(R.id.emailField)).getText();
+        Editable fname = ((EditText) findViewById(R.id.nameField)).getText();
+        Editable lname = ((EditText) findViewById(R.id.surnameField)).getText();
+        Editable id = ((EditText) findViewById(R.id.employeeIDField)).getText();
+        Editable newpass = ((EditText) findViewById(R.id.newPasswordField)).getText();
+        Editable checkpass = ((EditText) findViewById(R.id.repeatPasswordField)).getText();
+        if (!TextUtils.isEmpty(username)) savedInstanceState.putString("username", username.toString());
+        if (!TextUtils.isEmpty(fname)) savedInstanceState.putString("fname", fname.toString());
+        if (!TextUtils.isEmpty(lname)) savedInstanceState.putString("lname", lname.toString());
+        if (!TextUtils.isEmpty(id)) savedInstanceState.putString("id", id.toString());
+        if (!TextUtils.isEmpty(newpass)) savedInstanceState.putString("newpass", newpass.toString());
+        if (!TextUtils.isEmpty(checkpass)) savedInstanceState.putString("checkpass", checkpass.toString());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        String s;
+        if ((s = savedInstanceState.getString("username")) != null) ((EditText) findViewById(R.id.emailField)).setText(s);
+        if ((s = savedInstanceState.getString("fname")) != null) ((EditText) findViewById(R.id.nameField)).setText(s);
+        if ((s = savedInstanceState.getString("lname")) != null) ((EditText) findViewById(R.id.surnameField)).setText(s);
+        if ((s = savedInstanceState.getString("id")) != null) ((EditText) findViewById(R.id.employeeIDField)).setText(s);
+        if ((s = savedInstanceState.getString("newpass")) != null) ((EditText) findViewById(R.id.newPasswordField)).setText(s);
+        if ((s = savedInstanceState.getString("checkpass")) != null) ((EditText) findViewById(R.id.repeatPasswordField)).setText(s);
+    }
+
     private void changePassword() {
         if (!authPending) {
             authPending = true;
