@@ -13,6 +13,7 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
     interface OnAuthenticationListener { void onAuthentication(boolean authGranted); }
     interface OnGetProductListListener { void onGetProductList(ArrayList<Product> productList); }
     interface OnGetProductListener { void onGetProduct(Product product); }
+    interface OnPasswordChangedListener { void OnPasswordChanged(boolean passChanged); }
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "warehouse.db";
@@ -308,6 +309,68 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
             }
             return null;
         }
+    }
+
+    public static void changePassword(String username, String fname, String lname, int id, String newpass, OnPasswordChangedListener listener) {
+        new ChangePasswordAsyncTask().execute(username, fname, lname, id, newpass, listener);
+    }
+    private static class ChangePasswordAsyncTask extends AsyncTask<Object, Void, Boolean> {
+        String username;
+        String fname;
+        String lname;
+        int id;
+        String newpass;
+        OnPasswordChangedListener listener;
+
+        @Override
+        protected Boolean doInBackground(Object... params) {
+            username = (String) params[0];
+            fname = (String) params[1];
+            lname = (String) params[2];
+            id = (int) params[3];
+            newpass = (String) params[4];
+            listener = (OnPasswordChangedListener) params[5];
+            StringBuilder command1 = new StringBuilder();
+            command1.append("select username, first_name, last_name ");
+            command1.append("from master_account, employee_account ");
+            command1.append("where master_account.acc_id = employee_account.acc_id and master_account.acc_id = \'");
+            command1.append(id);
+            command1.append("\';");
+            StringBuilder command2 = new StringBuilder();
+            command2.append("update master_account set password = \'");
+            command2.append(newpass);
+            command2.append("\' where acc_id = ");
+            command2.append(id);
+            command2.append(";");
+
+            Statement st = null;
+            ResultSet rs = null;
+            Connection c = connect();
+            try {
+                st = c.createStatement();
+                rs = st.executeQuery(command1.toString());
+                if (!rs.next() || !username.equals(rs.getString("username")) ||
+                        !fname.equals(rs.getString("first_name")) || !lname.equals(rs.getString("last_name"))) return false;
+                //rs.close();
+                st.executeUpdate(command2.toString());
+            } catch (SQLException | NullPointerException ex) {
+                ex.printStackTrace();
+                System.exit(1);
+            } finally {
+                try {
+                    rs.close();
+                    st.close();
+                    disconnect(c);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    System.exit(1);
+                }
+            }
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean passChanged) { listener.OnPasswordChanged(passChanged); }
     }
 
     public static void authenticate(String username, String password, OnAuthenticationListener listener) { new AuthenticateAsyncTask().execute(username, password, listener); }

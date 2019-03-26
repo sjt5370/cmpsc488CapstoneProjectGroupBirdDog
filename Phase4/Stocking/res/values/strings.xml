@@ -5,10 +5,16 @@
     <string name="email_field_hint">Employee Username</string>
     <string name="password_field_hint">Password</string>
     <string name="forgot_password_button">Forgot?</string>
-    <string name="forgot_password_response">Too Bad!</string>
+    <string name="password_match_failed">Entered passwords do not match!</string>
     <string name="login_button">Log In</string>
     <string name="logout_button">Log Out</string>
     <string name="login_failed">Invalid ID or password!</string>
+    <string name="name_field_hint">First Name</string>
+    <string name="surname_field_hint">Last Name</string>
+    <string name="employee_id_hint">Employee ID</string>
+    <string name="new_password_field_hint">New Password</string>
+    <string name="repeat_password_field_hint">Re-type Password</string>
+    <string name="change_password_button">Confirm</string>
 
     <string name="stocking_bar">Select a job:</string>
     <string name="restocking_button">Restocking</string>
