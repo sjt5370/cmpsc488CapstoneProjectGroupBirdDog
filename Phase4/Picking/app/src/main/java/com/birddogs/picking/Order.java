@@ -21,7 +21,8 @@ import static com.birddogs.picking.DatabaseInterface.curr_id;
 public class Order extends AppCompatActivity {
     private HashMap<Integer, Product> pallet;
     private boolean firstTime = true;
-    public static int returnedId;
+    public static int returnedId = -1;
+    private Set<Integer> prods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class Order extends AppCompatActivity {
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 
                 if(firstTime) {
-                    Set<Integer> prods = pallet.keySet();
+                    prods = pallet.keySet();
                     int i = 0;
                     for(Integer prod : prods){
                         CheckBox c = new CheckBox(Order.this);
@@ -44,12 +45,12 @@ public class Order extends AppCompatActivity {
 
                         String txt = pallet.get(prod).getDescription() + "\nManufacturer: " + pallet.get(prod).getManu();
                         v.setText(txt);
-                        v.setId(100000 + i);
+                        v.setId(100000 + prod);
                         v.setPadding(100, 10, 5, 10);
                         v.setVisibility(View.GONE);
 
                         c.setText(pallet.get(prod).getID() + ": " + pallet.get(prod).getName() + "     x" + pallet.get(prod).getQuantity());
-                        c.setId(i);
+                        c.setId(prod);
                         c.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -76,11 +77,9 @@ public class Order extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-
         if(returnedId != -1){
             DatabaseInterface.removeInventory(returnedId, pallet.get(returnedId).getQuantity());
         }
-
     }
 
     @Override
@@ -105,12 +104,24 @@ public class Order extends AppCompatActivity {
             v.setVisibility(View.VISIBLE);
         }
 
-        for(int i = 0; i < pallet.size(); i++){
-            CheckBox c = findViewById(i);
+        for(Integer prod : prods){
+            CheckBox c = findViewById(prod);
             if(!c.isChecked()){
                 fin = false;
             }
         }
+        CheckBox c = (CheckBox) view;
+        int i = c.getId();
+        System.out.println(i);
+        if(c.isChecked()) {
+            //temporary solution to camera emulation
+            //c.setChecked(false);
+            DatabaseInterface.removeInventory(i, pallet.get(i).getQuantity());
+            //end temp
+        }else{
+            c.setChecked(true);
+        }
+
         //check for checked and update buttons
         if(fin){
             finish.setEnabled(true);
