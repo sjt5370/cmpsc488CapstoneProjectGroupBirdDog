@@ -5,7 +5,9 @@ create table product(
 	manu varchar(50),
 	price float not null,
 	proirity int not null,
-	unique( prod_name, prod_desc, manu ));
+	volume real not null,
+	unique(prod_name, prod_desc, manu),
+	check(not volume < 0));
 
 create table inventory(
 	prod_id int primary key,
