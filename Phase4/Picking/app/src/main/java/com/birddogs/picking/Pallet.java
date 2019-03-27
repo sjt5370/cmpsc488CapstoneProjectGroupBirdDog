@@ -25,6 +25,7 @@ public class Pallet{
     public String getDescription(int i) {
         return products.get(i).getDescription();
     }
+    public String getManu(int i) { return products.get(i).getManu(); }
     public int getPriority(int i){
         return products.get(i).getPriority();
     }
