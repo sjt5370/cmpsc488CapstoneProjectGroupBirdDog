@@ -73,6 +73,8 @@ create table pallet(
 	route_id int not null,
 	order_num int,
 	quantity int not null,
+	fulfilled bit not null,
+	hold bit not null,
 	primary key (pallet_id, order_num, prod_id),
 	foreign key (order_num, prod_id) references order_item,
 	foreign key (route_id, order_num) references route_info,
