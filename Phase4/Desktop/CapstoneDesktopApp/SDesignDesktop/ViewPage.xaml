@@ -82,9 +82,17 @@
             </ListBoxItem>
         </ListBox>
 
-        <StackPanel HorizontalAlignment="Left" Height="125" VerticalAlignment="Top" Width="160" Margin="545,320,0,0" RenderTransformOrigin="0.496,0.498">
+        <StackPanel HorizontalAlignment="Left" Height="125" VerticalAlignment="Top" Width="185" Margin="545,320,0,0" RenderTransformOrigin="0.496,0.498">
             <Button x:Name="AddRoute" Content="Create Route" Height="35" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Click="AddRoute_Click"/>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="RandomRoutes" Content="Smart Route" Height="35" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Click="RandomRoutes_Click"/>
+                <TextBox x:Name="numRoutes"  Width="35" Height="35" FontSize="22" HorizontalContentAlignment="Center" BorderThickness="2" Background="LightGray"  BorderBrush="DarkGray" FontWeight="DemiBold">0</TextBox>
+                <StackPanel Orientation="Vertical" Height="35">
+                    <Button x:Name="numUp" Content="  ^  " Click="NumUp_Click" Height="17.5"></Button>
+                    <Button x:Name="numDown" Content="  v  " Click="NumDown_Click" Height="17.5"></Button>
+                </StackPanel>
 
+            </StackPanel>
         </StackPanel>
         <Button x:Name="logout" Content="Logout" Height="35" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Width="80" Margin="1430,15,410,1030" Click="Logout_Click"/>
         <StackPanel HorizontalAlignment="Left"  Width="245" Margin="515,65,0,785.4">
