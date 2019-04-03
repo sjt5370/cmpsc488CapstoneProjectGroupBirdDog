@@ -28,9 +28,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ForgotPasswordActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
             android:name=".StockingActivity"
             android:theme="@style/AppTheme" />
         <activity

@@ -46,6 +46,7 @@ namespace SDesignDesktop
             add.Show();
         }
         private static ArrayList centers = new ArrayList();
+        private static ArrayList orderData = new ArrayList();
         private void RandomRoutes_Click(object sender, RoutedEventArgs e)
         {
             int numCenterPoints = Convert.ToInt32(numRoutes.Text);
@@ -63,9 +64,26 @@ namespace SDesignDesktop
 
         private static void ClusterAlg()
         {
+            int totalOrders; //Number of orders for the day
+            double min = 1000;
+            double dist = 0;
+            int orderCount = 0;
+            int ClustNum = 0;
+            Boolean finished = false;
+            Data nextOrder = null;
 
+            while (orderCount < totalOrders)
+            {
+
+            }
         }
-
+        private static double calcDist(Data d, Center_Point c)
+        {
+            double distY = Math.Pow((c.getY() - d.getY()), 2);
+            double distX = Math.Pow((c.getX() - d.getX()), 2);
+            double EuclidDist = Math.Sqrt(distY + distX);
+            return EuclidDist;
+        }
         public double random(double max, double min)
         {
             Random random = new Random();
@@ -74,8 +92,8 @@ namespace SDesignDesktop
         }
         private class Center_Point
         {
-            private double xCoord = 0.0;
-            private double yCoord = 0.0;
+            private double xCoord = 0;
+            private double yCoord = 0;
             public Center_Point()
             {
                 return;
@@ -105,6 +123,51 @@ namespace SDesignDesktop
                 return this.yCoord;
             }
 
+        }
+
+        private class Data
+        {
+            private double nX = 0;
+            private double nY = 0;
+            private int nCluster = 0;
+            
+            public Data()
+            {
+                return;
+            }
+            public Data(double x,double y)
+            {
+                this.nX = x;
+                this.nY = y;
+                return;
+            }
+            public void setX(double x)
+            {
+                this.nX = x;
+                return;
+            }
+            public double getX()
+            {
+                return this.nX;
+            }
+            public void setY(double y)
+            {
+                this.nY = y;
+                return;
+            }
+            public double getY()
+            {
+                return this.nY;
+            }
+            public void setCluster(int clustNum)
+            {
+                this.nCluster = clustNum;
+                return;
+            }
+            public int whichCluster()
+            {
+                return this.nCluster;
+            }
         }
 
         private void NumUp_Click(object sender, RoutedEventArgs e)

@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 public class StockingActivity extends AppCompatActivity {
 
@@ -23,21 +22,7 @@ public class StockingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ((ImageView) findViewById(R.id.restockingImage)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(StockingActivity.this, RestockingActivity.class);
-                startActivity(intent);
-            }
-        });
         ((Button) findViewById(R.id.receivingButton)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(StockingActivity.this, ReceivingActivity.class);
-                startActivity(intent);
-            }
-        });
-        ((ImageView) findViewById(R.id.receivingImage)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StockingActivity.this, ReceivingActivity.class);

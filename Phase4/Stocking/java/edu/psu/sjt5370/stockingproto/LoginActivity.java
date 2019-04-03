@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {  //FIXME: All back buttons should be custom to avoid restarting activities
@@ -20,14 +19,11 @@ public class LoginActivity extends AppCompatActivity {  //FIXME: All back button
         super.onCreate(savedInstanceState);
         authPending = false;
         setContentView(R.layout.activity_login);
-        //((ImageView) findViewById(R.id.titleImage)).setImageDrawable(getResources().getDrawable(R.drawable.we));
         ((Button) findViewById(R.id.forgotPasswordButton)).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
-                        startActivity(intent);
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        Toast.makeText(LoginActivity.this, getResources().getString(R.string.forgot_password_response), Toast.LENGTH_SHORT).show();
                     }
                 }
         );

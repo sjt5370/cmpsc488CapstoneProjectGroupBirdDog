@@ -5,37 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
-
-    <LinearLayout
-        android:id="@+id/listProduct"
-        android:orientation="vertical"
-        android:background="@android:drawable/editbox_background"
-        android:backgroundTint="@color/colorPrimary"
-        android:layout_marginBottom="8dp"
+    <TextView
+        android:id="@+id/listName"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="80dp">
-
-        <TextView
-            android:id="@+id/listName"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/listManufacturer"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            android:textSize="12sp" />
-    </LinearLayout>
+        android:background="@android:drawable/editbox_background"
+        android:backgroundTint="#F0F0F0"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

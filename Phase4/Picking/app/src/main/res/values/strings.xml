@@ -11,5 +11,4 @@
     <string name="scanButton">Scan Product</string>
     <string name="camera_needed">Camera Needed</string>
     <string name="return_button">Return</string>
-    <string name="login_error">Login Error</string>
 </resources>
