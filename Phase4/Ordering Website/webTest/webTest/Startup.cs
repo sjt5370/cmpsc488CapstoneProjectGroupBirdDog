@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using webTest.Data;
+using webTest.Models;
 
 namespace webTest
 {
@@ -34,9 +35,10 @@ namespace webTest
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc();
 
-            services.AddDbContext<TestContext>(options => options.UseSqlServer(Configuration["Data:ConnStringName:ConnectionString"]));
+            var connection = webTest.Models.Helper.GetRDSConnectionString();
+            services.AddDbContext<TestContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

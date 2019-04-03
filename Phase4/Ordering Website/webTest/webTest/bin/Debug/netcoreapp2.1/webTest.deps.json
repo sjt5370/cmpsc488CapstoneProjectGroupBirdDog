@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "b5e3b2acf2002cf021fddd1f8a6ae9e1aa2f31e6"
+    "signature": "f67a59cbf34f0dc80c9861e1e138aedfda447952"
   },
   "compilationOptions": {
     "defines": [
@@ -24,7 +24,9 @@
     ".NETCoreApp,Version=v2.1": {
       "webTest/1.0.0": {
         "dependencies": {
-          "AWSSDK.RDS": "3.3.100.2",
+          "AWSSDK.Core": "3.3.100.3",
+          "AWSSDK.ElasticBeanstalk": "3.3.100.3",
+          "AWSSDK.RDS": "3.3.100.3",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0"
@@ -36,25 +38,39 @@
           "webTest.dll": {}
         }
       },
-      "AWSSDK.Core/3.3.100.2": {
+      "AWSSDK.Core/3.3.100.3": {
         "runtime": {
           "lib/netstandard2.0/AWSSDK.Core.dll": {
             "assemblyVersion": "3.3.0.0",
-            "fileVersion": "3.3.100.2"
+            "fileVersion": "3.3.100.3"
           }
         },
         "compile": {
           "lib/netstandard2.0/AWSSDK.Core.dll": {}
         }
       },
-      "AWSSDK.RDS/3.3.100.2": {
+      "AWSSDK.ElasticBeanstalk/3.3.100.3": {
         "dependencies": {
-          "AWSSDK.Core": "3.3.100.2"
+          "AWSSDK.Core": "3.3.100.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AWSSDK.ElasticBeanstalk.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.3.100.3"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/AWSSDK.ElasticBeanstalk.dll": {}
+        }
+      },
+      "AWSSDK.RDS/3.3.100.3": {
+        "dependencies": {
+          "AWSSDK.Core": "3.3.100.3"
         },
         "runtime": {
           "lib/netstandard2.0/AWSSDK.RDS.dll": {
             "assemblyVersion": "3.3.0.0",
-            "fileVersion": "3.3.100.2"
+            "fileVersion": "3.3.100.3"
           }
         },
         "compile": {
@@ -3181,19 +3197,26 @@
       "serviceable": false,
       "sha512": ""
     },
-    "AWSSDK.Core/3.3.100.2": {
+    "AWSSDK.Core/3.3.100.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-g+DCqrYRxNYv+1K8i7rNDLj4Q6U25g7e8a4z9e2GOUuTZmIHqUFRJFssQPiF+1rY8rTsaHCw0eOoQONmYuC4qg==",
-      "path": "awssdk.core/3.3.100.2",
-      "hashPath": "awssdk.core.3.3.100.2.nupkg.sha512"
+      "sha512": "sha512-TttzG9oQVBLNPB4jp2JO5hXo2JZpj9kEvkJh7gqvLFi99qXSenLg61WVred9NDLs6yeXiRYe8/FhuUIh5wRAIw==",
+      "path": "awssdk.core/3.3.100.3",
+      "hashPath": "awssdk.core.3.3.100.3.nupkg.sha512"
     },
-    "AWSSDK.RDS/3.3.100.2": {
+    "AWSSDK.ElasticBeanstalk/3.3.100.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-nmsRDh3U5o+u9A7KCY0h7DyhVtzxS333x9p1UaF508YrAtp1S0QD7zg9h6ymrzoDswoC7+Z1674oPr3NumGAxQ==",
-      "path": "awssdk.rds/3.3.100.2",
-      "hashPath": "awssdk.rds.3.3.100.2.nupkg.sha512"
+      "sha512": "sha512-wk5IeCNRcwzTfCCsGq25YhC9n9vyozqVY66jFZxrSiWG+XGXn5FlXbGAHIY7UCu/a6S9Ta/byZ4GojnHx7SRoA==",
+      "path": "awssdk.elasticbeanstalk/3.3.100.3",
+      "hashPath": "awssdk.elasticbeanstalk.3.3.100.3.nupkg.sha512"
+    },
+    "AWSSDK.RDS/3.3.100.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pC3H9qz2pHQfRn6V+F1D3ItGHigYprF1A7YPTM4d9Hmhd9VX6XLUiRp3hdKcuX/dLbW12FQB/V/UMAexqJQPZg==",
+      "path": "awssdk.rds/3.3.100.3",
+      "hashPath": "awssdk.rds.3.3.100.3.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor.Design/2.1.2": {
       "type": "package",

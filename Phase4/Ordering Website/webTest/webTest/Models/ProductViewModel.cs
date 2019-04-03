@@ -22,5 +22,7 @@ namespace webTest.Models
 
         [Required]
         public float Price { get; set; }
+
+        public int Priority { get; set; }
     }
 }

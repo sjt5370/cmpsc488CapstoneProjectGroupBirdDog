@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "AWSSDK.Core/3.3.100.2": {
+      "AWSSDK.Core/3.3.100.3": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/AWSSDK.Core.dll": {}
@@ -11,10 +11,22 @@
           "lib/netstandard2.0/AWSSDK.Core.dll": {}
         }
       },
-      "AWSSDK.RDS/3.3.100.2": {
+      "AWSSDK.ElasticBeanstalk/3.3.100.3": {
         "type": "package",
         "dependencies": {
-          "AWSSDK.Core": "[3.3.100.2, 3.4.0)"
+          "AWSSDK.Core": "[3.3.100.3, 3.4.0)"
+        },
+        "compile": {
+          "lib/netstandard2.0/AWSSDK.ElasticBeanstalk.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AWSSDK.ElasticBeanstalk.dll": {}
+        }
+      },
+      "AWSSDK.RDS/3.3.100.3": {
+        "type": "package",
+        "dependencies": {
+          "AWSSDK.Core": "[3.3.100.3, 3.4.0)"
         },
         "compile": {
           "lib/netstandard2.0/AWSSDK.RDS.dll": {}
@@ -4358,15 +4370,15 @@
     }
   },
   "libraries": {
-    "AWSSDK.Core/3.3.100.2": {
-      "sha512": "g+DCqrYRxNYv+1K8i7rNDLj4Q6U25g7e8a4z9e2GOUuTZmIHqUFRJFssQPiF+1rY8rTsaHCw0eOoQONmYuC4qg==",
+    "AWSSDK.Core/3.3.100.3": {
+      "sha512": "TttzG9oQVBLNPB4jp2JO5hXo2JZpj9kEvkJh7gqvLFi99qXSenLg61WVred9NDLs6yeXiRYe8/FhuUIh5wRAIw==",
       "type": "package",
-      "path": "awssdk.core/3.3.100.2",
+      "path": "awssdk.core/3.3.100.3",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "awssdk.core.3.3.100.2.nupkg.sha512",
+        "awssdk.core.3.3.100.3.nupkg.sha512",
         "awssdk.core.nuspec",
         "lib/MonoAndroid10/AWSSDK.Core.XML",
         "lib/MonoAndroid10/AWSSDK.Core.dll",
@@ -4407,16 +4419,56 @@
         "tools/account-management.ps1"
       ]
     },
-    "AWSSDK.RDS/3.3.100.2": {
-      "sha512": "nmsRDh3U5o+u9A7KCY0h7DyhVtzxS333x9p1UaF508YrAtp1S0QD7zg9h6ymrzoDswoC7+Z1674oPr3NumGAxQ==",
+    "AWSSDK.ElasticBeanstalk/3.3.100.3": {
+      "sha512": "wk5IeCNRcwzTfCCsGq25YhC9n9vyozqVY66jFZxrSiWG+XGXn5FlXbGAHIY7UCu/a6S9Ta/byZ4GojnHx7SRoA==",
       "type": "package",
-      "path": "awssdk.rds/3.3.100.2",
+      "path": "awssdk.elasticbeanstalk/3.3.100.3",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "analyzers/dotnet/cs/AWSSDK.ElasticBeanstalk.CodeAnalysis.dll",
+        "awssdk.elasticbeanstalk.3.3.100.3.nupkg.sha512",
+        "awssdk.elasticbeanstalk.nuspec",
+        "lib/MonoAndroid10/AWSSDK.ElasticBeanstalk.XML",
+        "lib/MonoAndroid10/AWSSDK.ElasticBeanstalk.dll",
+        "lib/MonoTouch10/AWSSDK.ElasticBeanstalk.XML",
+        "lib/MonoTouch10/AWSSDK.ElasticBeanstalk.dll",
+        "lib/MonoTouch10/AWSSDK.ElasticBeanstalk.pdb",
+        "lib/Xamarin.iOS10/AWSSDK.ElasticBeanstalk.XML",
+        "lib/Xamarin.iOS10/AWSSDK.ElasticBeanstalk.dll",
+        "lib/net35/AWSSDK.ElasticBeanstalk.dll",
+        "lib/net35/AWSSDK.ElasticBeanstalk.pdb",
+        "lib/net35/AWSSDK.ElasticBeanstalk.xml",
+        "lib/net45/AWSSDK.ElasticBeanstalk.dll",
+        "lib/net45/AWSSDK.ElasticBeanstalk.pdb",
+        "lib/net45/AWSSDK.ElasticBeanstalk.xml",
+        "lib/netstandard1.3/AWSSDK.ElasticBeanstalk.dll",
+        "lib/netstandard1.3/AWSSDK.ElasticBeanstalk.pdb",
+        "lib/netstandard1.3/AWSSDK.ElasticBeanstalk.xml",
+        "lib/netstandard2.0/AWSSDK.ElasticBeanstalk.dll",
+        "lib/netstandard2.0/AWSSDK.ElasticBeanstalk.pdb",
+        "lib/netstandard2.0/AWSSDK.ElasticBeanstalk.xml",
+        "lib/portable-net45+win8+wpa81+wp8/AWSSDK.ElasticBeanstalk.XML",
+        "lib/portable-net45+win8+wpa81+wp8/AWSSDK.ElasticBeanstalk.dll",
+        "lib/portable-net45+win8+wpa81+wp8/AWSSDK.ElasticBeanstalk.pdb",
+        "lib/uap/AWSSDK.ElasticBeanstalk.XML",
+        "lib/uap/AWSSDK.ElasticBeanstalk.dll",
+        "lib/uap/AWSSDK.ElasticBeanstalk.pdb",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    },
+    "AWSSDK.RDS/3.3.100.3": {
+      "sha512": "pC3H9qz2pHQfRn6V+F1D3ItGHigYprF1A7YPTM4d9Hmhd9VX6XLUiRp3hdKcuX/dLbW12FQB/V/UMAexqJQPZg==",
+      "type": "package",
+      "path": "awssdk.rds/3.3.100.3",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "analyzers/dotnet/cs/AWSSDK.RDS.CodeAnalysis.dll",
-        "awssdk.rds.3.3.100.2.nupkg.sha512",
+        "awssdk.rds.3.3.100.3.nupkg.sha512",
         "awssdk.rds.nuspec",
         "lib/MonoAndroid10/AWSSDK.RDS.XML",
         "lib/MonoAndroid10/AWSSDK.RDS.dll",
@@ -11899,7 +11951,9 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "AWSSDK.RDS >= 3.3.100.2",
+      "AWSSDK.Core >= 3.3.100.3",
+      "AWSSDK.ElasticBeanstalk >= 3.3.100.3",
+      "AWSSDK.RDS >= 3.3.100.3",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0"
@@ -11912,11 +11966,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nicholas\\Desktop\\webTest\\webTest\\webTest.csproj",
+      "projectUniqueName": "C:\\Users\\Nicholas\\Source\\Repos\\NicholasTHall\\cmpsc488CapstoneProjectGroupBirdDog\\Phase4\\Ordering Website\\webTest\\webTest\\webTest.csproj",
       "projectName": "webTest",
-      "projectPath": "C:\\Users\\Nicholas\\Desktop\\webTest\\webTest\\webTest.csproj",
+      "projectPath": "C:\\Users\\Nicholas\\Source\\Repos\\NicholasTHall\\cmpsc488CapstoneProjectGroupBirdDog\\Phase4\\Ordering Website\\webTest\\webTest\\webTest.csproj",
       "packagesPath": "C:\\Users\\Nicholas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nicholas\\Desktop\\webTest\\webTest\\obj\\",
+      "outputPath": "C:\\Users\\Nicholas\\Source\\Repos\\NicholasTHall\\cmpsc488CapstoneProjectGroupBirdDog\\Phase4\\Ordering Website\\webTest\\webTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11946,9 +12000,17 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
+          "AWSSDK.Core": {
+            "target": "Package",
+            "version": "[3.3.100.3, )"
+          },
+          "AWSSDK.ElasticBeanstalk": {
+            "target": "Package",
+            "version": "[3.3.100.3, )"
+          },
           "AWSSDK.RDS": {
             "target": "Package",
-            "version": "[3.3.100.2, )"
+            "version": "[3.3.100.3, )"
           },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
