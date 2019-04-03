@@ -10,47 +10,39 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
-
-import static com.birddogs.picking.DatabaseInterface.curr_id;
 
 public class Order extends AppCompatActivity {
-    private HashMap<Integer, Product> pallet;
+    private Pallet pallet;
     private boolean firstTime = true;
-    public static int returnedId = -1;
-    private Set<Integer> prods;
+    static ArrayList<String> pickedProducts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        pallet = new Pallet();
+        System.out.println(pallet.toString() + "hi");
         DatabaseInterface.getNewPallet(new DatabaseInterface.OnGetPalletListener(){
             @Override
-            public void onGetPallet(HashMap<Integer, Product> pallet2){
+            public void onGetPallet(Pallet pallet2){
                 pallet = pallet2;
+                System.out.println(pallet.toString() + "hi");
                 //set list of checkboxes
                 final LinearLayout lm = (LinearLayout) findViewById(R.id.layout);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 
                 if(firstTime) {
-                    prods = pallet.keySet();
-                    int i = 0;
-                    for(Integer prod : prods){
+                    for (int i = 0; i < pallet.getSize(); i++) {
                         CheckBox c = new CheckBox(Order.this);
-                        TextView v = new TextView(Order.this);
-
-                        String txt = pallet.get(prod).getDescription() + "\nManufacturer: " + pallet.get(prod).getManu();
-                        v.setText(txt);
-                        v.setId(100000 + prod);
-                        v.setPadding(100, 10, 5, 10);
-                        v.setVisibility(View.GONE);
-
-                        c.setText(pallet.get(prod).getID() + ": " + pallet.get(prod).getName() + "     x" + pallet.get(prod).getQuantity());
-                        c.setId(prod);
+                        c.setText(pallet.getID(i) + ": " + pallet.getName(i) + "     x" + pallet.getQuantity(i));
+                        c.setId(i);
                         c.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -58,28 +50,18 @@ public class Order extends AppCompatActivity {
                             }
                         });
 
-
+                        if(DatabaseInterface.curr_id < 10000){DatabaseInterface.curr_id++;}
+                        else{DatabaseInterface.curr_id = 1;}
                         //c.setLayoutParams(params);
                         lm.addView(c);
-                        lm.addView(v);
-                        i++;
                     }
-                    if(curr_id < 10000){
-                        curr_id++;}
-                    else{
-                        curr_id = 1;}
                     firstTime = false;
                 }
             }
 
         });
-    }
-    @Override
-    protected void onResume(){
-        super.onResume();
-        if(returnedId != -1){
-            DatabaseInterface.removeInventory(returnedId, pallet.get(returnedId).getQuantity());
-        }
+
+
     }
 
     @Override
@@ -88,40 +70,19 @@ public class Order extends AppCompatActivity {
     }
 
     //checks that all products are scanned and enables/disables finish/hold buttons
-    public void clicked(View view, HashMap<Integer, Product> pallet){
+    public void clicked(View view, Pallet pallet){
         //get buttons
         Button finish = (Button) findViewById(R.id.finishPalette);
         Button hold = (Button) findViewById(R.id.holdButton);
         Button scan = (Button) findViewById(R.id.scanButton);
-        int j = view.getId();
-        j = j + 100000;
-        TextView v = (TextView) findViewById(j);
         boolean fin = true;
 
-        if(v.getVisibility() == View.VISIBLE){
-            v.setVisibility(View.GONE);
-        }else {
-            v.setVisibility(View.VISIBLE);
-        }
-
-        for(Integer prod : prods){
-            CheckBox c = findViewById(prod);
+        for(int i = 0; i < pallet.getSize(); i++){
+            CheckBox c = findViewById(i);
             if(!c.isChecked()){
                 fin = false;
             }
         }
-        CheckBox c = (CheckBox) view;
-        int i = c.getId();
-        System.out.println(i);
-        if(c.isChecked()) {
-            //temporary solution to camera emulation
-            //c.setChecked(false);
-            DatabaseInterface.removeInventory(i, pallet.get(i).getQuantity());
-            //end temp
-        }else{
-            c.setChecked(true);
-        }
-
         //check for checked and update buttons
         if(fin){
             finish.setEnabled(true);
@@ -149,7 +110,6 @@ public class Order extends AppCompatActivity {
             alert.setMessage("").setCancelable(false).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    DatabaseInterface.removePallet();
                     Order.this.finish();
                 }
             }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -164,8 +124,8 @@ public class Order extends AppCompatActivity {
             alert.setMessage("").setCancelable(false).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    DatabaseInterface.returnInventory(pallet);
-                    pallet = new HashMap<>();
+                    DatabaseInterface.cancelPalette(pickedProducts);
+                    pallet = new Pallet();
                     Order.this.finish();
                 }
             }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

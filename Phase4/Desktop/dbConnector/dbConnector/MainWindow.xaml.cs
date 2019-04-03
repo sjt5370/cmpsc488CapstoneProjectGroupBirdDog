@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -45,10 +42,9 @@ namespace dbConnector
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int id = 0;
-            string address = "1600+Pennsylvania+Ave+NW,Washington,DC,20500";
-            /*using (SqlConnection connection = new SqlConnection("Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;"))
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM customer_account WHERE acc_id = " + id, connection))
+            List data = new List();
+            using (SqlConnection connection = new SqlConnection("Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;"))
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM product WHERE prod_id = 1", connection))
             {
                 connection.Open();
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -59,21 +55,9 @@ namespace dbConnector
                         // Read advances to the next row.
                         while (reader.Read())
                         {
-                            address = reader.GetString(reader.GetOrdinal("addr_street")) + " " + reader.GetString(reader.GetOrdinal("addr_city")) + " " + reader.GetString(reader.GetOrdinal("addr_state")) + " " + reader.GetString(reader.GetOrdinal("addr_zip"));
+                            this.textBoxData.Text = this.textBoxData.Text + reader.GetString(reader.GetOrdinal("prod_name"))+ " " + reader.GetString(reader.GetOrdinal("prod_desc"));
                         }
                     }
-                }
-                connection.Close();
-            } */
-
-            
-            string url = "http://www.mapquestapi.com/geocoding/v1/address?key=nOXiWChDoFPzIEHhm2YCilplmnTr0WBh&location=" + address;
-            WebRequest request = WebRequest.Create(url);
-            using (WebResponse response = (HttpWebResponse)request.GetResponse())
-            {
-                using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
-                {
-                    this.textBoxData.Text = this.textBoxData.Text + reader.ReadToEnd().ToString();                                      
                 }
             }
         }

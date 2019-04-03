@@ -13,14 +13,73 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
     interface OnAuthenticationListener { void onAuthentication(boolean authGranted); }
     interface OnGetProductListListener { void onGetProductList(ArrayList<Product> productList); }
     interface OnGetProductListener { void onGetProduct(Product product); }
-    interface OnPasswordChangedListener { void OnPasswordChanged(boolean passChanged); }
 
-    //public static final int DATABASE_VERSION = 1;
-    //public static final String DATABASE_NAME = "warehouse.db";
+    public static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "warehouse.db";
     private static final String URL = "jdbc:jtds:sqlserver://mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com:1433;databaseName=warehouse;user=masterUser;password=master1234;sslProtocol=TLSv1";
-    //private static final int PORT = 1433;
-    //private static final String USERNAME = "masterUser";
-    //private static final String PASSWORD = "master1234";
+    private static final int PORT = 1433;
+    private static final String USERNAME = "masterUser";
+    private static final String PASSWORD = "master1234";
+    private static final String CLEAR_TABLES =
+                    "drop table if exists order_history;\n" +
+                    "drop table if exists customer_account;\n" +
+                    "drop table if exists employee_account;\n" +
+                    "drop table if exists master_account;\n" +
+                    "drop table if exists inventory;\n" +
+                    "drop table if exists product;\n";
+    private static final String PROD_TABLE =
+            "create table product (prod_id int primary key, prod_name varchar(100), prod_desc varchar(255), manu varchar(50), price float, unique( prod_name, prod_desc, manu));";
+    private static final String INV_TABLE =
+            "create table inventory (prod_id int primary key, inv_bulk int not null, inv_shelf int not null, foreign key (prod_id) references product, check (not inv_bulk < 0), check (not inv_shelf < 0));";
+    private static final String MASTER_ACC_TABLE =
+            "create table master_account (acc_id int primary key, acc_type bit not null, password varchar(30) not null);";
+    private static final String EMPL_ACC_TABLE =
+            "create table employee_account (acc_id int primary key, job varchar(30), productivity int not null, foreign key(acc_id) references master_account);";
+    private static final String CUST_ACC_TABLE =
+            "create table customer_account (acc_id int primary key, acc_address varchar(255) not null, email varchar(50) not null, foreign key(acc_id) references master_account);";
+    private static final String ORDER_HIST_TABLE =
+            "create table order_history (acc_id int primary key, order_num int not null, prod_id int not null, quantity int not null, foreign key(acc_id) references customer_account, unique (order_num, prod_id), foreign key(prod_id) references product, check(not quantity < 0));";
+
+    //public DatabaseManager() {}
+
+    /*
+    private static void addBasics(Connection c) {    //FIXME: TEMPORARY, ONLY CALL ONCE
+        System.out.println("Initializing...");
+
+        Statement st = null;
+        try {
+            st = c.createStatement();
+            st.executeUpdate("insert into master_account values (12345, 1, 'stocker', 'password');");
+            st.executeUpdate("insert into employee_account values (12345, 'John', 'Doe', 'stocker', 0);");
+        } catch (SQLException | NullPointerException ex) {
+            ex.printStackTrace();
+            System.exit(1);
+        } finally {
+            try {
+                st.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                System.exit(1);
+            }
+        }
+
+
+        Random r = new Random();
+        for (int i = 0; i < 20; i++) {
+            Product p = new Product();
+            p.setID(i + 1);
+            p.setShelfStock(r.nextInt(999) + 1);
+            p.setBulkStock(r.nextInt(999) + 1);
+            p.setManufacturer("TestManu #" + (r.nextInt(10) + 1));
+            p.setProductName("TestProd #" + (i + 1));
+            p.setDescription("An example product.");
+            p.setPrice(r.nextDouble() * 100);
+            p.setPriority(r.nextInt() % 3);
+            addProduct(p);
+        }
+        System.out.println("Initialized!");
+    }
+    */
 
     public static void addProduct(Product product) { new AddProductAsyncTask().execute(product); }
     private static class AddProductAsyncTask extends AsyncTask<Product, Void, Void> {
@@ -42,8 +101,6 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
             command1.append(product.getPrice());
             command1.append(", ");
             command1.append(product.getPriority());
-            command1.append(", ");
-            command1.append(product.getVolume());
             command1.append(");");
             StringBuilder command2 = new StringBuilder();
             command2.append("insert into inventory values (");
@@ -87,7 +144,7 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
             id = (int) params[0];
             listener = (OnGetProductListener) params[1];
             StringBuilder command = new StringBuilder();
-            command.append("select product.prod_id as prod_id, prod_name, prod_desc, manu, price, proirity, volume, inv_bulk, inv_shelf, stock_flag ");
+            command.append("select product.prod_id as prod_id, prod_name, prod_desc, manu, price, proirity, inv_bulk, inv_shelf, stock_flag ");
             command.append("from product, inventory ");
             command.append("where product.prod_id = inventory.prod_id and product.prod_id = ");
             command.append(id);
@@ -107,7 +164,6 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
                     product.setManufacturer(rs.getString("manu"));
                     product.setPrice(rs.getDouble("price"));
                     product.setPriority(rs.getInt("proirity"));
-                    product.setVolume(rs.getDouble("volume"));
                     product.setBulkStock(rs.getInt("inv_bulk"));
                     product.setShelfStock(rs.getInt("inv_shelf"));
                     if (rs.getInt("stock_flag") == 1) product.requestStock();
@@ -145,7 +201,7 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
             Connection c = connect();
             try {
                 st = c.createStatement();
-                rs = st.executeQuery("select product.prod_id as prod_id, prod_name, prod_desc, manu, price, proirity, volume, inv_bulk, inv_shelf, stock_flag from product, inventory where product.prod_id = inventory.prod_id and (inv_shelf = 0 or stock_flag = 1) and not inv_bulk = 0;");
+                rs = st.executeQuery("select product.prod_id as prod_id, prod_name, prod_desc, manu, price, proirity, inv_bulk, inv_shelf, stock_flag from product, inventory where product.prod_id = inventory.prod_id and (inv_shelf = 0 or stock_flag = 1) and not inv_bulk = 0;");
                 while (rs.next()) {
                     Product product = new Product();
                     product.setID(rs.getInt("prod_id"));
@@ -154,7 +210,6 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
                     product.setManufacturer(rs.getString("manu"));
                     product.setPrice(rs.getDouble("price"));
                     product.setPriority(rs.getInt("proirity"));
-                    product.setVolume(rs.getDouble("volume"));
                     product.setBulkStock(rs.getInt("inv_bulk"));
                     product.setShelfStock(rs.getInt("inv_shelf"));
                     if (rs.getInt("stock_flag") == 1) product.requestStock();
@@ -255,68 +310,6 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
         }
     }
 
-    public static void changePassword(String username, String fname, String lname, int id, String newpass, OnPasswordChangedListener listener) {
-        new ChangePasswordAsyncTask().execute(username, fname, lname, id, newpass, listener);
-    }
-    private static class ChangePasswordAsyncTask extends AsyncTask<Object, Void, Boolean> {
-        String username;
-        String fname;
-        String lname;
-        int id;
-        String newpass;
-        OnPasswordChangedListener listener;
-
-        @Override
-        protected Boolean doInBackground(Object... params) {
-            username = (String) params[0];
-            fname = (String) params[1];
-            lname = (String) params[2];
-            id = (int) params[3];
-            newpass = (String) params[4];
-            listener = (OnPasswordChangedListener) params[5];
-            StringBuilder command1 = new StringBuilder();
-            command1.append("select username, first_name, last_name ");
-            command1.append("from master_account, employee_account ");
-            command1.append("where master_account.acc_id = employee_account.acc_id and master_account.acc_id = \'");
-            command1.append(id);
-            command1.append("\';");
-            StringBuilder command2 = new StringBuilder();
-            command2.append("update master_account set password = \'");
-            command2.append(newpass);
-            command2.append("\' where acc_id = ");
-            command2.append(id);
-            command2.append(";");
-
-            Statement st = null;
-            ResultSet rs = null;
-            Connection c = connect();
-            try {
-                st = c.createStatement();
-                rs = st.executeQuery(command1.toString());
-                if (!rs.next() || !username.equals(rs.getString("username")) ||
-                        !fname.equals(rs.getString("first_name")) || !lname.equals(rs.getString("last_name"))) return false;
-                //rs.close();
-                st.executeUpdate(command2.toString());
-            } catch (SQLException | NullPointerException ex) {
-                ex.printStackTrace();
-                System.exit(1);
-            } finally {
-                try {
-                    rs.close();
-                    st.close();
-                    disconnect(c);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    System.exit(1);
-                }
-            }
-            return true;
-        }
-
-        @Override
-        protected void onPostExecute(Boolean passChanged) { listener.OnPasswordChanged(passChanged); }
-    }
-
     public static void authenticate(String username, String password, OnAuthenticationListener listener) { new AuthenticateAsyncTask().execute(username, password, listener); }
     private static class AuthenticateAsyncTask extends AsyncTask<Object, Void, Boolean> {
         String username;
@@ -340,6 +333,7 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
             String correctPass = "", job = "";
 
             Connection c = connect();
+            //addBasics(c);                   //FIXME: REMOVE
             try {
                 st = c.createStatement();
                 rs = st.executeQuery(command.toString());

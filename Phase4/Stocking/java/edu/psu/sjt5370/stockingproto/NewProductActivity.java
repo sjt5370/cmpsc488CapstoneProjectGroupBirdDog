@@ -30,10 +30,7 @@ public class NewProductActivity extends AppCompatActivity {
                 Editable manu = ((EditText) findViewById(R.id.manufacturerField)).getText();
                 Editable price = ((EditText) findViewById(R.id.priceField)).getText();
                 Editable bulk = ((EditText) findViewById(R.id.receiveQuantity)).getText();
-                Editable priority = ((EditText) findViewById(R.id.priorityField)).getText();
-                Editable volume = ((EditText) findViewById(R.id.volumeField)).getText();
-                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(desc) || TextUtils.isEmpty(manu) || TextUtils.isEmpty(price)
-                        || TextUtils.isEmpty(bulk) || TextUtils.isEmpty(priority) || TextUtils.isEmpty(volume)) {
+                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(desc) || TextUtils.isEmpty(manu) || TextUtils.isEmpty(price) || TextUtils.isEmpty(bulk)) {
                     Toast.makeText(NewProductActivity.this, getResources().getString(R.string.empty_fields_response), Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -42,8 +39,7 @@ public class NewProductActivity extends AppCompatActivity {
                 product.setManufacturer(manu.toString());
                 product.setPrice(Double.parseDouble(price.toString()));
                 product.setBulkStock(Integer.parseInt(bulk.toString()));
-                product.setPriority(Integer.parseInt(priority.toString()));
-                product.setVolume(Double.parseDouble(volume.toString()));
+                product.setPriority(0);                                 //FIXME: Add priority EditText field
 
                 DatabaseManager.addProduct(product);                    //FIXME: Does not currently check that unique is enforced
                 finish();
