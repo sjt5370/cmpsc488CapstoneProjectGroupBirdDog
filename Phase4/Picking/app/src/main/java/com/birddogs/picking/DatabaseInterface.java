@@ -21,7 +21,7 @@ public class DatabaseInterface {
     private static final int PORT = 1433;
     private static final String USERNAME = "masterUser";
     private static final String PASSWORD = "master1234";
-    public static int curr_id = 1;
+    public static int curr_id = 0;
 
     public static void getNewPallet(OnGetPalletListener listener) { new getNewPalletAsync().execute(listener);}
     private static class getNewPalletAsync extends AsyncTask<OnGetPalletListener, Void, HashMap<Integer, Product>>{
@@ -31,9 +31,13 @@ public class DatabaseInterface {
         protected HashMap<Integer, Product> doInBackground(OnGetPalletListener... params){
             listener = params[0];
             StringBuilder command = new StringBuilder();
-            command.append("select pallet.prod_id as prod_id, prod_name, prod_desc, manu, proirity, quantity ");
-            command.append("from pallet, product ");
-            command.append("where pallet.prod_id = product.prod_id and pallet.pallet_id = " + curr_id + ";");
+            command.append("select pallet_id, pallet.prod_id as prod_id, prod_name, prod_desc, manu, proirity, quantity " +
+                    "from pallet, product " +
+                    "where pallet.prod_id = product.prod_id and pallet.pallet_id = " +
+                    "(select min(pallet_id) as next_pallet from pallet " +
+                    "where fulfilled = 0 and hold = 0 and order_num = " +
+                    "(select min(order_num) as next_order from order_full " +
+                    "where complete = 0 and urgency <= all(select urgency from order_full)));");
             System.out.println(command.toString());
 
             HashMap<Integer, Product> pallet = new HashMap<>();
@@ -46,6 +50,7 @@ public class DatabaseInterface {
                 rs = st.executeQuery(command.toString());
                 while(rs.next()){
                     product = new Product();
+                    curr_id = rs.getInt("pallet_id");
                     product.setID(rs.getInt("prod_id"));
                     product.setName(rs.getString("prod_name"));
                     product.setDescription(rs.getString("prod_desc"));
@@ -131,6 +136,16 @@ public class DatabaseInterface {
                     System.exit(1);
                 }
             }
+            command = new StringBuilder();
+            cmd = "update pallet set hold = 1 where pallet_id = " + curr_id + ";";
+            command.append(cmd);
+            try {
+                st = c.createStatement();
+                st.executeUpdate(command.toString());
+            } catch (SQLException | NullPointerException ex){
+                ex.printStackTrace();
+                System.exit(1);
+            }
             try {
                 st.close();
                 disconnect(c);
@@ -141,8 +156,8 @@ public class DatabaseInterface {
             return null;
         }
     }
-    public static void removePallet() { new removePalletAsyncTask().execute(); }
-    private static class removePalletAsyncTask extends AsyncTask<Void, Void, Void> {
+    public static void fulfillPallet() { new fulfillPalletAsyncTask().execute(); }
+    private static class fulfillPalletAsyncTask extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void...params){
@@ -150,7 +165,7 @@ public class DatabaseInterface {
             String cmd = "";
 
             Statement st = null;
-            cmd = "delete from pallet where pallet_id = " + (curr_id - 1) + ";";
+            cmd = "update pallet set fulfilled = 1 where pallet_id = " + curr_id + ";";
             command.append(cmd);
             Connection c = connect();
             try {

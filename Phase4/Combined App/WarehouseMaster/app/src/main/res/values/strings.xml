@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Warehouse Master</string>
+
+    <string name="employee_name">[Employee Name]</string>
+    <string name="next_palette">Next Palette</string>
+    <string name="logout">Logout</string>
+    <string name="finish_palette">Finish Palette</string>
+    <string name="hold_palette">Place Palette On Hold</string>
+    <string name="employee_id">Employee ID</string>
+    <string name="password">********</string>
+    <string name="loginButton">Login</string>
+    <string name="scanButton">Scan Product</string>
+    <string name="return_button">Return</string>
+    <string name="login_error">Login Error</string>
+
+    <string name="login_bar">Sign in</string>
+    <string name="email_field_hint">Employee Username</string>
+    <string name="password_field_hint">Password</string>
+    <string name="forgot_password_button">Forgot?</string>
+    <string name="password_match_failed">Entered passwords do not match!</string>
+    <string name="login_button">Log In</string>
+    <string name="logout_button">Log Out</string>
+    <string name="login_failed">Invalid login credentials!</string>
+    <string name="login_unauthorized">You are not authorized to use this app!</string>
+    <string name="name_field_hint">First Name</string>
+    <string name="surname_field_hint">Last Name</string>
+    <string name="employee_id_hint">Employee ID</string>
+    <string name="new_password_field_hint">New Password</string>
+    <string name="repeat_password_field_hint">Re-type Password</string>
+    <string name="change_password_button">Confirm</string>
+
+    <string name="stocking_bar">Select a job</string>
+    <string name="restocking_button">Restocking</string>
+    <string name="receiving_button">Receiving</string>
+
+    <string name="restocking_bar">Select stockProduct to restock:</string>
+    <string name="search_hint">Search</string>
+    <string-array name="search_array">
+        <item>Product Name</item>
+        <item>Manufacturer</item>
+        <item>Description</item>
+    </string-array>
+
+    <string name="by_manufacturer">by Unlisted Manufacturer</string>
+    <string name="description">No item description available…</string>
+    <string name="shelf_stock_quantity">Quantity on Shelves</string>
+    <string name="bulk_stock_quantity">Quantity in Bulk</string>
+    <string name="to_move_quantity">Quantity to Move to Shelf</string>
+    <string name="move_button">Move</string>
+    <string name="negative_quantity_response">Enter a number greater than zero.</string>
+    <string name="insufficient_quantity_response">Enter a number less than bulk stock.</string>
+
+    <string name="receiving_bar">Scan a barcode:</string>
+    <string name="pick_up_button">Pick Up</string>
+    <string name="to_receive_quantity">Quantity to Receive</string>
+
+    <string name="camera_needed">Camera permissions required to scan barcodes!</string>
+
+    <string name="new_product_bar">New Product</string>
+    <string name="name_label">Product Name</string>
+    <string name="manufacturer_label">Manufacturer</string>
+    <string name="description_label">Description</string>
+    <string name="price_label">Price</string>
+    <string name="priority_label">Fragility</string>
+    <string name="volume_label">Volume (cm^3)</string>
+    <string name="empty_fields_response">Fields cannot be blank.</string>
+
+</resources>

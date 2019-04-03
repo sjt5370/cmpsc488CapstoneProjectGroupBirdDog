@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.psu.birddogs.warehousemaster.ProductStockActivity">
+
+    <Button
+        android:id="@+id/pickUpButton"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="@string/pick_up_button"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:id="@+id/productScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/pickUpButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/nameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/name_label"
+                android:labelFor="@id/nameField"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/nameField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:maxLength="100"
+                android:padding="2dp"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/nameLabel"
+                app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
+
+            <TextView
+                android:id="@+id/manufacturerLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/manufacturer_label"
+                android:labelFor="@id/manufacturerField"
+                app:layout_constraintStart_toStartOf="@+id/nameLabel"
+                app:layout_constraintTop_toBottomOf="@+id/nameField" />
+
+            <EditText
+                android:id="@+id/manufacturerField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:maxLength="50"
+                android:padding="2dp"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/nameField"
+                app:layout_constraintStart_toStartOf="@+id/nameField"
+                app:layout_constraintTop_toBottomOf="@+id/manufacturerLabel" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/manufacturerField"
+                app:layout_constraintStart_toStartOf="@+id/manufacturerLabel"
+                app:layout_constraintTop_toBottomOf="@+id/manufacturerField">
+
+                <TextView
+                    android:id="@+id/priceLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:labelFor="@id/priceField"
+                    android:text="@string/price_label" />
+
+                <EditText
+                    android:id="@+id/priceField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="numberDecimal"
+                    android:maxLength="9"
+                    android:padding="2dp"
+                    android:layout_marginStart="8dp"
+                    android:textAlignment="textEnd"
+                    android:layout_weight="2"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/moveLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="0"
+                    android:labelFor="@id/receiveQuantity"
+                    android:text="@string/to_receive_quantity" />
+
+                <EditText
+                    android:id="@+id/receiveQuantity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:padding="2dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="14sp"
+                    android:layout_weight="2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout1"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout1"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
+
+                <TextView
+                    android:id="@+id/priorityLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:labelFor="@id/priorityField"
+                    android:text="@string/priority_label" />
+
+                <EditText
+                    android:id="@+id/priorityField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:inputType="numberSigned"
+                    android:maxLength="2"
+                    android:padding="2dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/volumeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="0"
+                    android:labelFor="@id/volumeField"
+                    android:text="@string/volume_label" />
+
+                <EditText
+                    android:id="@+id/volumeField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:inputType="numberDecimal"
+                    android:maxLength="9"
+                    android:padding="2dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/descriptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/description_label"
+                android:labelFor="@id/descriptionField"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+            <ScrollView
+                android:id="@+id/descriptionScrollView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+                app:layout_constraintTop_toBottomOf="@id/descriptionLabel">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/descriptionField"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ems="20"
+                        android:inputType="textMultiLine"
+                        android:padding="2dp"
+                        android:textSize="14sp"
+                        android:maxLength="255"
+                        app:layout_constraintBottom_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="parent" />
+
+                </android.support.constraint.ConstraintLayout>
+            </ScrollView>
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

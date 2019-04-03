@@ -8,38 +8,36 @@
 
     <Button
         android:id="@+id/finishPalette"
-        android:layout_width="159dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@android:color/holo_blue_light"
         android:enabled="false"
         android:onClick="alert"
         android:text="@string/finish_palette"
-        android:textSize="18sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/holdButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scanButton" />
 
     <Button
         android:id="@+id/holdButton"
-        android:layout_width="188dp"
-        android:layout_height="31dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
         android:background="@android:color/holo_blue_dark"
         android:onClick="alert"
         android:text="@string/hold_palette"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/finishPalette" />
 
     <Button
         android:id="@+id/scanButton"
-        android:layout_width="250dp"
-        android:layout_height="82dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@android:color/holo_blue_light"
         android:onClick="openScan"
         android:text="@string/scanButton"
@@ -52,10 +50,10 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="395dp"
-        android:layout_height="341dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="0dp"
+        android:layout_height="449dp"
         android:background="@android:drawable/editbox_dropdown_light_frame"
+        android:scrollbarStyle="outsideOverlay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -64,8 +62,9 @@
             android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-        </LinearLayout>
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"></LinearLayout>
 
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

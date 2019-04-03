@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,8 +16,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
-
-import static com.birddogs.picking.DatabaseInterface.curr_id;
 
 public class Order extends AppCompatActivity {
     private HashMap<Integer, Product> pallet;
@@ -51,6 +50,7 @@ public class Order extends AppCompatActivity {
 
                         c.setText(pallet.get(prod).getID() + ": " + pallet.get(prod).getName() + "     x" + pallet.get(prod).getQuantity());
                         c.setId(prod);
+                        c.setGravity(Gravity.CENTER);
                         c.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -64,10 +64,6 @@ public class Order extends AppCompatActivity {
                         lm.addView(v);
                         i++;
                     }
-                    if(curr_id < 10000){
-                        curr_id++;}
-                    else{
-                        curr_id = 1;}
                     firstTime = false;
                 }
             }
@@ -128,11 +124,6 @@ public class Order extends AppCompatActivity {
             hold.setEnabled(false);
             scan.setEnabled(false);
         }
-        else{
-            finish.setEnabled(false);
-            hold.setEnabled(true);
-            scan.setEnabled(true);
-        }
     }
 
     public void openScan(View view){
@@ -149,7 +140,7 @@ public class Order extends AppCompatActivity {
             alert.setMessage("").setCancelable(false).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    DatabaseInterface.removePallet();
+                    DatabaseInterface.fulfillPallet();
                     Order.this.finish();
                 }
             }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
