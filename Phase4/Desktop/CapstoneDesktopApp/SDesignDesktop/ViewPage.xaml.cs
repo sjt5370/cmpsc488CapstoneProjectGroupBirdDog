@@ -45,11 +45,12 @@ namespace SDesignDesktop
             Window add = new AddRoute();
             add.Show();
         }
-        private static ArrayList centers = new ArrayList();
-        private static ArrayList orderData = new ArrayList();
+        private static List<Center_Point> centers = new List<Center_Point>();
+        private static List<Data> orderData = new List<Data>();
+        private static int numCenterPoints = 0;
         private void RandomRoutes_Click(object sender, RoutedEventArgs e)
         {
-            int numCenterPoints = Convert.ToInt32(numRoutes.Text);
+            numCenterPoints = Convert.ToInt32(numRoutes.Text);
             double xLow, xHigh, yLow, yHigh;
             //query database to find the above double values for the coordinates in the orders for today
             double x, y;
@@ -64,17 +65,99 @@ namespace SDesignDesktop
 
         private static void ClusterAlg()
         {
-            int totalOrders; //Number of orders for the day
+            int totalOrders = 0;
             double min = 1000;
             double dist = 0;
             int orderCount = 0;
             int ClustNum = 0;
             Boolean finished = false;
             Data nextOrder = null;
+            Stack<Data> orderCoors = new Stack<Data>();
+            //Grab every set of coordinates insert into orderCoors as Data type objects
+            //increase the value of total orders with each push
 
             while (orderCount < totalOrders)
             {
+                nextOrder = orderCoors.Pop();
+                orderData.Add(nextOrder);
+                min = 1000;
+                for (int i = 0; i < numCenterPoints; i++)
+                {
+                    dist = calcDist(nextOrder, centers[i]);
+                    if (dist < min)
+                    {
+                        min = dist;
+                        ClustNum = i;
+                    }
+                }
+                nextOrder.setCluster(ClustNum);
 
+                for (int a = 0; a < numCenterPoints; a++)
+                {
+                    double sumX = 0;
+                    double sumY = 0;
+                    int ordersInRoute = 0;
+                    for (int b = 0; b < orderData.Count; b++)
+                    {
+                        if (orderData[b].whichCluster() == a)
+                        {
+                            sumX = sumX + orderData[b].getX();
+                            sumY = sumY + orderData[b].getY();
+                            ordersInRoute++;
+                        }
+                    }
+                    if (ordersInRoute > 0)
+                    {
+                        centers[a].setX(sumX / ordersInRoute);
+                        centers[a].setY(sumY / ordersInRoute);
+                    }
+                }
+                orderCount++;
+            }
+
+            while (!finished)
+            {
+                for (int a = 0; a < numCenterPoints; a++)
+                {
+                    double sumX = 0;
+                    double sumY = 0;
+                    int ordersInRoute = 0;
+                    for (int b = 0; b < orderData.Count; b++)
+                    {
+                        if (orderData[b].whichCluster() == a)
+                        {
+                            sumX = sumX + orderData[b].getX();
+                            sumY = sumY + orderData[b].getY();
+                            ordersInRoute++;
+                        }
+                    }
+                    if (ordersInRoute > 0)
+                    {
+                        centers[a].setX(sumX / ordersInRoute);
+                        centers[a].setY(sumY / ordersInRoute);
+                    }
+                }
+                finished = true;
+                for(int i = 0; i < orderData.Count; i++)
+                {
+                    Data temp = orderData[i];
+                    min = 1000;
+                    for(int j = 0; j < orderData.Count; j++)
+                    {
+                        dist = calcDist(temp, centers[j]);
+                        if(dist < min)
+                        {
+                            min = dist;
+                            ClustNum = j;
+                        }
+                    }
+                    if(temp.whichCluster() != ClustNum)
+                    {
+                        temp.setCluster(ClustNum);
+                        orderData[i] = temp;
+                        finished = false;
+                    }
+                }
             }
         }
         private static double calcDist(Data d, Center_Point c)
