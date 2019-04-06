@@ -1,0 +1,11 @@
+C:\Users\StJudge\source\repos\Palletization\Palletization\bin\Debug\netcoreapp2.0\Palletization.deps.json
+C:\Users\StJudge\source\repos\Palletization\Palletization\bin\Debug\netcoreapp2.0\Palletization.runtimeconfig.json
+C:\Users\StJudge\source\repos\Palletization\Palletization\bin\Debug\netcoreapp2.0\Palletization.runtimeconfig.dev.json
+C:\Users\StJudge\source\repos\Palletization\Palletization\bin\Debug\netcoreapp2.0\Palletization.dll
+C:\Users\StJudge\source\repos\Palletization\Palletization\bin\Debug\netcoreapp2.0\Palletization.pdb
+C:\Users\StJudge\source\repos\Palletization\Palletization\obj\Debug\netcoreapp2.0\Palletization.csproj.CoreCompileInputs.cache
+C:\Users\StJudge\source\repos\Palletization\Palletization\obj\Debug\netcoreapp2.0\Palletization.AssemblyInfoInputs.cache
+C:\Users\StJudge\source\repos\Palletization\Palletization\obj\Debug\netcoreapp2.0\Palletization.AssemblyInfo.cs
+C:\Users\StJudge\source\repos\Palletization\Palletization\obj\Debug\netcoreapp2.0\Palletization.dll
+C:\Users\StJudge\source\repos\Palletization\Palletization\obj\Debug\netcoreapp2.0\Palletization.pdb
+C:\Users\StJudge\source\repos\Palletization\Palletization\obj\Debug\netcoreapp2.0\Palletization.csprojAssemblyReference.cache
