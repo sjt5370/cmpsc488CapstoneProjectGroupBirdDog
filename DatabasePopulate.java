@@ -35,7 +35,9 @@ public class Tester {
             
             if(zero == 1){
                 System.out.print("Insert into customer_account values (" + n + 
-                        ", '" + n + " tester ave', 'abc1234atpsu');");                    
+                        ", 'abc1234atpsu', 'customer account " + n + "', '" + n +  " tester ave', 'Tester Town', 'TS', 12345);");                    
+                System.out.println("");
+                System.out.println("Insert into coordinates values (" + n + ", " + (n % 90) + ", " + (n % 180) + ");");
                 System.out.println("");
                 
                 for(int j = 0; j < 3; j++){
