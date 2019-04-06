@@ -1,0 +1,5 @@
+Still needs:
+    - To combine pallets with empty space when there are too many pallets
+    - Strict palletization as a fallback for when combining doesn't work
+    - To add pallets to pallet table
+    - To be tested with a large amount of orders
