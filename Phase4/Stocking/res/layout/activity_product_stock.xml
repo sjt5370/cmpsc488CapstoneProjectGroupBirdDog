@@ -109,8 +109,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/moveQuantity"
-        app:layout_constraintBottom_toTopOf="@id/descriptionScrollView"
-        />
+        app:layout_constraintBottom_toTopOf="@id/descriptionScrollView" />
 
     <ScrollView
         android:id="@+id/descriptionScrollView"
