@@ -10,7 +10,7 @@ namespace WebTest.Models
     {
         [Key]
         public int acc_id { get; set; }
-        public int acc_type { get; set; }
+        public Boolean acc_type { get; set; }
         public string username { get; set; }
         public string password { get; set; }
     }

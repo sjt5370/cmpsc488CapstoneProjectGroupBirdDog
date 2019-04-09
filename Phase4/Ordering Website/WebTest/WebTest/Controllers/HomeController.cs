@@ -24,19 +24,25 @@ namespace WebTest.Controllers
 
         public IActionResult Login()
         {
-            var account = _db.master_account.DefaultIfEmpty();
+            var account = _db.master_account.ToList();
             return View(account);
         }
 
         public IActionResult AccountInfo()
         {
-            var account = _db.customer_account.DefaultIfEmpty();
-            return View(account);
+            var account = _db.customer_account.ToList();
+            return View();
         }
 
-       /* public IActionResult AccountOrderHistory()
+       public IActionResult AccountOrderHistory()
         {
             var orders = _db.order_full.ToList();
+            return View(orders);
+        }
+
+        /*public IActionResult OrderItems()
+        {
+            var orders = _db.order_item.ToList();
             return View(orders);
         }*/
 
