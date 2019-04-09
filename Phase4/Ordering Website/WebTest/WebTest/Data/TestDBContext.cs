@@ -18,11 +18,11 @@ namespace WebTest.Data
         public DbSet<MasterAccount> master_account { get; set; }
         public DbSet<CustomerAccount> customer_account { get; set; }
         public DbSet<AccountOrder> order_full { get; set; }
-        //public DbSet<OrderItem> order_item { get; set; }
+        public DbSet<OrderItem> order_item { get; set; }
 
-       /* protected override void OnModelCreating(ModelBuilder modelBuilder)
+       protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<OrderItem>().HasKey(c => { c.order_num, c.prod_id });
-        }*/
+            modelBuilder.Entity<OrderItem>().HasKey(c => new { c.order_num, c.prod_id });
+        }
     }
 }
