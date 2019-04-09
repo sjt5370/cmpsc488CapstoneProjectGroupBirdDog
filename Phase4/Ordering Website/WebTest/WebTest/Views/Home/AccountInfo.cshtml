@@ -1,0 +1,54 @@
+﻿@model WebTest.Models.CustomerAccount
+
+@{
+    ViewData["Title"] = "AccountInfo";
+}
+
+<h2>AccountInfo</h2>
+
+<div>
+    <h4>CustomerAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cus_name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cus_name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.addr_street)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.addr_street)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.addr_city)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.addr_city)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.addr_state)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.addr_state)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.addr_zip)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.addr_zip)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.acc_id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

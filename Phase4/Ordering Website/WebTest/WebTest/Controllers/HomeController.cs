@@ -22,6 +22,24 @@ namespace WebTest.Controllers
             return View(products);
         }
 
+        public IActionResult Login()
+        {
+            var account = _db.master_account.DefaultIfEmpty();
+            return View(account);
+        }
+
+        public IActionResult AccountInfo()
+        {
+            var account = _db.customer_account.DefaultIfEmpty();
+            return View(account);
+        }
+
+       /* public IActionResult AccountOrderHistory()
+        {
+            var orders = _db.order_full.ToList();
+            return View(orders);
+        }*/
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

@@ -12541,11 +12541,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nicholas\\Desktop\\WebTest\\WebTest\\WebTest.csproj",
+      "projectUniqueName": "C:\\Users\\Nicholas\\Source\\Repos\\NicholasTHall\\cmpsc488CapstoneProjectGroupBirdDog\\Phase4\\Ordering Website\\WebTest\\WebTest\\WebTest.csproj",
       "projectName": "WebTest",
-      "projectPath": "C:\\Users\\Nicholas\\Desktop\\WebTest\\WebTest\\WebTest.csproj",
+      "projectPath": "C:\\Users\\Nicholas\\Source\\Repos\\NicholasTHall\\cmpsc488CapstoneProjectGroupBirdDog\\Phase4\\Ordering Website\\WebTest\\WebTest\\WebTest.csproj",
       "packagesPath": "C:\\Users\\Nicholas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nicholas\\Desktop\\WebTest\\WebTest\\obj\\",
+      "outputPath": "C:\\Users\\Nicholas\\Source\\Repos\\NicholasTHall\\cmpsc488CapstoneProjectGroupBirdDog\\Phase4\\Ordering Website\\WebTest\\WebTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
