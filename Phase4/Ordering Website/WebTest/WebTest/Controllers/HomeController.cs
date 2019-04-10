@@ -11,40 +11,40 @@ namespace WebTest.Controllers
 {
     public class HomeController : Controller
     {
-        private TestDBContext _db;
+        private TestDBContext _dbContext;
         public HomeController(TestDBContext db)
         {
-            _db = db;
+            _dbContext = db;
         }
         public IActionResult Index()
         {
-            var products = _db.product.ToList();
+            var products = _dbContext.product.ToList();
             return View(products);
         }
 
         public IActionResult Login()
         {
-            var account = _db.master_account.ToList();
+            var account = _dbContext.master_account.ToList();
             return View(account);
         }
 
         public IActionResult AccountInfo()
         {
-            var account = _db.customer_account.ToList();
+            var account = _dbContext.customer_account.ToList();
             return View();
         }
 
        public IActionResult AccountOrderHistory()
         {
-            var orders = _db.order_full.ToList();
+            var orders = _dbContext.order_full.ToList();
             return View(orders);
         }
 
-        /* public IActionResult OrderItems()
+        public IActionResult OrderItems()
         {
-            var orders = _db.order_item.ToList();
+            var orders = _dbContext.order_item.ToList();
             return View(orders);
-        }*/
+        }
 
         public IActionResult About()
         {
