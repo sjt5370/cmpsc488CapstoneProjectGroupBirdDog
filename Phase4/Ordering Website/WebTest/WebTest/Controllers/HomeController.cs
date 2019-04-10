@@ -40,6 +40,34 @@ namespace WebTest.Controllers
             return View(orders);
         }
 
+        [HttpGet]
+        public IActionResult CreateOrder()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateOrder(AccountOrder model)
+        {
+            _dbContext.order_full.Add(model);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult CreateOrder2()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateOrder2(OrderItem model)
+        {            
+            _dbContext.order_item.Add(model);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         public IActionResult OrderItems()
         {
             var orders = _dbContext.order_item.ToList();

@@ -3,9 +3,7 @@
     "",
     "\\Phase4",
     "\\Phase4\\Ordering Website",
-    "\\Phase4\\Ordering Website\\WebTest",
-    "\\Phase4\\Ordering Website\\WebTest\\WebTest\\obj\\Release",
-    "\\Phase4\\Ordering Website\\WebTest\\WebTest\\obj\\Release\\netcoreapp2.1"
+    "\\Phase4\\Ordering Website\\WebTest"
   ],
   "SelectedNode": "\\Phase4\\Ordering Website\\WebTest\\WebTest.sln",
   "PreviewInSolutionExplorer": false
