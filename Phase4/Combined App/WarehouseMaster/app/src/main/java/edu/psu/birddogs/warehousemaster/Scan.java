@@ -71,6 +71,7 @@ public class Scan extends AppCompatActivity {
                             if (bcD != null) bcD.release();
                         }
                     });
+                    finish();
                 }
             }
         });

@@ -53,9 +53,10 @@ public class Order extends AppCompatActivity {
                         c.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                clicked(v, pallet);
+                                check(v, true);     //FIXME: Change to false for final version
                             }
                         });
+                        //c.setClickable(false);        FIXME: Uncomment for final version
 
 
                         //c.setLayoutParams(params);
@@ -72,57 +73,29 @@ public class Order extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        if(returnedId != -1){
-            DatabaseManager.removeInventory(returnedId, pallet.get(returnedId).getQuantity());
-        }
+        if (returnedId != -1) check(findViewById(returnedId), true);
+    }
+
+    private void check(View v, boolean b) {
+        int j = v.getId();
+        j = j + 100000;
+        ((CheckBox) v).setChecked(b);
+        ((CheckBox) v).setClickable(b);
+        if (b) {
+            returnedId = -1;
+            ((TextView) findViewById(j)).setVisibility(View.VISIBLE);
+            for (Integer prod : prods)
+                if (!((CheckBox) findViewById(prod)).isChecked()) b = false;
+        } else ((TextView) findViewById(j)).setVisibility(View.GONE);
+
+        ((Button) findViewById(R.id.finishPalette)).setEnabled(b);
+        ((Button) findViewById(R.id.holdButton)).setEnabled(!b);
+        ((Button) findViewById(R.id.scanButton)).setEnabled(!b);
     }
 
     @Override
     public void onBackPressed() {
         moveTaskToBack(false);
-    }
-
-    //checks that all products are scanned and enables/disables finish/hold buttons
-    public void clicked(View view, HashMap<Integer, PickProduct> pallet){
-        //get buttons
-        Button finish = (Button) findViewById(R.id.finishPalette);
-        Button hold = (Button) findViewById(R.id.holdButton);
-        Button scan = (Button) findViewById(R.id.scanButton);
-        int j = view.getId();
-        j = j + 100000;
-        TextView v = (TextView) findViewById(j);
-        boolean fin = true;
-
-        if(v.getVisibility() == View.VISIBLE){
-            v.setVisibility(View.GONE);
-        }else {
-            v.setVisibility(View.VISIBLE);
-        }
-
-        for(Integer prod : prods){
-            CheckBox c = findViewById(prod);
-            if(!c.isChecked()){
-                fin = false;
-            }
-        }
-        CheckBox c = (CheckBox) view;
-        int i = c.getId();
-        System.out.println(i);
-        if(c.isChecked()) {
-            //temporary solution to camera emulation
-            //c.setChecked(false);
-            DatabaseManager.removeInventory(i, pallet.get(i).getQuantity());
-            //end temp
-        }else{
-            c.setChecked(true);
-        }
-
-        //check for checked and update buttons
-        if(fin){
-            finish.setEnabled(true);
-            hold.setEnabled(false);
-            scan.setEnabled(false);
-        }
     }
 
     public void openScan(View view){
@@ -139,7 +112,7 @@ public class Order extends AppCompatActivity {
             alert.setMessage("").setCancelable(false).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    DatabaseManager.fulfillPallet();
+                    DatabaseManager.fulfillPallet(pallet);
                     Order.this.finish();
                 }
             }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -148,13 +121,12 @@ public class Order extends AppCompatActivity {
                     dialog.cancel();
                 }
             });
-        }
-        else if(view.getId() == R.id.holdButton) {
+        } else if(view.getId() == R.id.holdButton) {
             alert.setTitle("Place Palette on Hold and Exit?");
             alert.setMessage("").setCancelable(false).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    DatabaseManager.returnInventory(pallet);
+                    DatabaseManager.hold(pallet);
                     pallet = new HashMap<>();
                     Order.this.finish();
                 }

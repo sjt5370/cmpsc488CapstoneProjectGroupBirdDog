@@ -311,25 +311,18 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
         protected void onPostExecute(HashMap<Integer, PickProduct> pallet){ listener.onGetPallet(pallet);}
     }
 
-    public static void removeInventory(int id, int quant) { new removeInventoryAsyncTask().execute(id, quant); }
-    private static class removeInventoryAsyncTask extends AsyncTask<Integer, Void, Void> {
-        int id;
-        int quant;
+    public static void hold(HashMap<Integer, PickProduct> products) { new returnInventoryAsyncTask().execute(products); }
+    private static class returnInventoryAsyncTask extends AsyncTask<HashMap<Integer, PickProduct>, Void, Void> {
+        HashMap<Integer, PickProduct> prods;
         @Override
-        protected Void doInBackground(Integer... params){
-            id = params[0];
-            quant = params[1];
-
-            StringBuilder command = new StringBuilder();
-            String cmd = "update inventory set inv_shelf = inv_shelf - "+quant+" where prod_id = " + id + ";";
-            command.append(cmd);
-
+        protected Void doInBackground(HashMap<Integer, PickProduct> ... params){
+            prods = params[0];
             Statement st = null;
             Connection c = connect();
             try {
                 st = c.createStatement();
-                st.executeUpdate(command.toString());
-            } catch (SQLException | NullPointerException ex) {
+                st.executeUpdate("update pallet set hold = 1 where pallet_id = " + curr_id + ";");
+            } catch (SQLException | NullPointerException ex){
                 ex.printStackTrace();
                 System.exit(1);
             } finally {
@@ -340,51 +333,6 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
                     ex.printStackTrace();
                     System.exit(1);
                 }
-            }
-            return null;
-        }
-    }
-
-    public static void returnInventory(HashMap<Integer, PickProduct> products) { new returnInventoryAsyncTask().execute(products); }
-    private static class returnInventoryAsyncTask extends AsyncTask<HashMap<Integer, PickProduct>, Void, Void> {
-        HashMap<Integer, PickProduct> prods;
-        @Override
-        protected Void doInBackground(HashMap<Integer, PickProduct> ... params){
-            prods = params[0];
-            StringBuilder command = new StringBuilder();
-            String cmd = "";
-
-            Statement st = null;
-            Connection c = connect();
-            Set<Integer> keys = prods.keySet();
-            for(Integer key : keys){
-                cmd = "update inventory set inv_shelf = inv_shelf + " + prods.get(key).getQuantity() + " where prod_id = " + key + ";";
-                command.append(cmd);
-                try {
-                    st = c.createStatement();
-                    st.executeUpdate(command.toString());
-                    command = new StringBuilder();
-                } catch (SQLException | NullPointerException ex) {
-                    ex.printStackTrace();
-                    System.exit(1);
-                }
-            }
-            command = new StringBuilder();
-            cmd = "update pallet set hold = 1 where pallet_id = " + curr_id + ";";
-            command.append(cmd);
-            try {
-                st = c.createStatement();
-                st.executeUpdate(command.toString());
-            } catch (SQLException | NullPointerException ex){
-                ex.printStackTrace();
-                System.exit(1);
-            }
-            try {
-                st.close();
-                disconnect(c);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                System.exit(1);
             }
             return null;
         }
@@ -440,32 +388,62 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
         protected void onPostExecute(User user){ listener.onGetUsers(user);}
     }
 
-    public static void fulfillPallet() { new fulfillPalletAsyncTask().execute(); }
-    private static class fulfillPalletAsyncTask extends AsyncTask<Void, Void, Void> {
+    public static void fulfillPallet(HashMap<Integer, PickProduct> pallet) { new fulfillPalletAsyncTask().execute(pallet); }
+    private static class fulfillPalletAsyncTask extends AsyncTask<HashMap<Integer, PickProduct>, Void, Void> {
+        HashMap<Integer, PickProduct> pallet;
 
         @Override
-        protected Void doInBackground(Void...params){
-            StringBuilder command = new StringBuilder();
+        protected Void doInBackground(HashMap<Integer, PickProduct>...params){
+            pallet = params[0];
 
-            Statement st = null;
-            String cmd = "update pallet set fulfilled = 1 where pallet_id = " + curr_id + ";";
-            command.append(cmd);
+            Statement st;
             Connection c = connect();
-            try {
-                st = c.createStatement();
-                st.executeUpdate(command.toString());
-            } catch (SQLException | NullPointerException ex) {
-                ex.printStackTrace();
-                System.exit(1);
-            } finally {
+
+            Set<Integer> keySet = pallet.keySet();
+            for (int key : keySet) {
+                PickProduct product = pallet.get(key);
+                /*
+                int stock = 0;
                 try {
+                    st = c.createStatement();
+                    ResultSet rs = st.executeQuery("select inv_shelf from inventory where prod_id = " + product.getID() + ";");
+                    if (rs.next()) stock = rs.getInt("inv_shelf");
+                    rs.close();
                     st.close();
-                    disconnect(c);
-                } catch (Exception ex) {
+                } catch (SQLException | NullPointerException ex) {
                     ex.printStackTrace();
                     System.exit(1);
                 }
+                */
+                //if (stock - product.getQuantity() >= 0) {
+                    try {
+                        st = c.createStatement();
+                        st.executeUpdate("update inventory set inv_shelf = inv_shelf - " + product.getQuantity() + " where prod_id = " + product.getID() + ";");
+                        st.close();
+                    } catch (SQLException | NullPointerException ex) {
+                        ex.printStackTrace();
+                        System.exit(1);
+                    }
+                //} else hold(pallet);    // FIXME?
             }
+
+            try {
+                st = c.createStatement();
+                st.executeUpdate("update pallet set fulfilled = 1 where pallet_id = " + curr_id + ";");
+                st.close();
+            } catch (SQLException | NullPointerException ex) {
+                ex.printStackTrace();
+                System.exit(1);
+            }
+
+            try {
+                disconnect(c);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                System.exit(1);
+            }
+
+
             return null;
         }
     }
