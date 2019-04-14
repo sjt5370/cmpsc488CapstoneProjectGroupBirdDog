@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -19,6 +20,7 @@ import java.util.Set;
 public class Order extends AppCompatActivity {
     private HashMap<Integer, PickProduct> pallet;
     private boolean firstTime = true;
+    private boolean finishing = false;
     public static int returnedId = -1;
     private Set<Integer> prods;
 
@@ -29,6 +31,10 @@ public class Order extends AppCompatActivity {
         DatabaseManager.getNewPallet(new DatabaseManager.OnGetPalletListener(){
             @Override
             public void onGetPallet(HashMap<Integer, PickProduct> pallet2){
+                if (pallet2.size() == 0) {
+                    Toast.makeText(Order.this, getResources().getString(R.string.no_palettes), Toast.LENGTH_LONG).show();
+                    Order.this.finish();
+                }
                 pallet = pallet2;
                 //set list of checkboxes
                 final LinearLayout lm = (LinearLayout) findViewById(R.id.layout);
@@ -36,7 +42,6 @@ public class Order extends AppCompatActivity {
 
                 if(firstTime) {
                     prods = pallet.keySet();
-                    int i = 0;
                     for(Integer prod : prods){
                         CheckBox c = new CheckBox(Order.this);
                         TextView v = new TextView(Order.this);
@@ -53,16 +58,15 @@ public class Order extends AppCompatActivity {
                         c.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                check(v, true);     //FIXME: Change to false for final version
+                                check(v, false);
                             }
                         });
-                        //c.setClickable(false);        FIXME: Uncomment for final version
+                        c.setClickable(false);
 
 
                         //c.setLayoutParams(params);
                         lm.addView(c);
                         lm.addView(v);
-                        i++;
                     }
                     firstTime = false;
                 }
@@ -70,23 +74,48 @@ public class Order extends AppCompatActivity {
 
         });
     }
+
     @Override
     protected void onResume(){
         super.onResume();
-        if (returnedId != -1) check(findViewById(returnedId), true);
+        if (returnedId != -1) {
+            View v = findViewById(returnedId);
+            if (v != null) check(v, true);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (!finishing) for (int key : prods) {
+            PickProduct product = pallet.get(key);
+            if (product.getScanned())
+                DatabaseManager.returnInventory(product.getID(), product.getQuantity());
+        }
+        finish();
     }
 
     private void check(View v, boolean b) {
         int j = v.getId();
-        j = j + 100000;
+        PickProduct product = pallet.get(j);
         ((CheckBox) v).setChecked(b);
         ((CheckBox) v).setClickable(b);
+
+        j = j + 100000;
         if (b) {
+            if (!product.getScanned())
+                DatabaseManager.removeInventory(product.getID(), product.getQuantity());
+            product.setScanned(true);
             returnedId = -1;
             ((TextView) findViewById(j)).setVisibility(View.VISIBLE);
             for (Integer prod : prods)
                 if (!((CheckBox) findViewById(prod)).isChecked()) b = false;
-        } else ((TextView) findViewById(j)).setVisibility(View.GONE);
+        } else {
+            if (product.getScanned())
+                DatabaseManager.returnInventory(product.getID(), product.getQuantity());
+            product.setScanned(false);
+            ((TextView) findViewById(j)).setVisibility(View.GONE);
+        }
 
         ((Button) findViewById(R.id.finishPalette)).setEnabled(b);
         ((Button) findViewById(R.id.holdButton)).setEnabled(!b);
@@ -112,6 +141,7 @@ public class Order extends AppCompatActivity {
             alert.setMessage("").setCancelable(false).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    finishing = true;
                     DatabaseManager.fulfillPallet(pallet);
                     Order.this.finish();
                 }
@@ -127,7 +157,6 @@ public class Order extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     DatabaseManager.hold(pallet);
-                    pallet = new HashMap<>();
                     Order.this.finish();
                 }
             }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

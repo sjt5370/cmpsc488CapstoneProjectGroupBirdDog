@@ -2,10 +2,11 @@
     <string name="app_name">Warehouse Master</string>
 
     <string name="employee_name">[Employee Name]</string>
-    <string name="next_palette">Next Palette</string>
+    <string name="next_palette">Next Pallet</string>
     <string name="logout">Logout</string>
-    <string name="finish_palette">Finish Palette</string>
-    <string name="hold_palette">Place Palette On Hold</string>
+    <string name="finish_palette">Finish Pallet</string>
+    <string name="hold_palette">Place Pallet On Hold</string>
+    <string name="no_palettes">No pallets to display!</string>
     <string name="employee_id">Employee ID</string>
     <string name="password">********</string>
     <string name="loginButton">Login</string>
