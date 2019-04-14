@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Warehouse Master</string>
 
     <string name="employee_name">[Employee Name]</string>
@@ -7,7 +7,7 @@
     <string name="hold_palette">Place Pallet On Hold</string>
     <string name="no_palettes">No pallets to display!</string>
     <string name="employee_id">Employee ID</string>
-    <string name="password">********</string>\
+    <string name="password">********</string>
     <string name="scanButton">Scan Product</string>
     <string name="return_button">Return</string>
     <string name="login_error">Login Error</string>
