@@ -3,16 +3,20 @@
 
     <string name="employee_name">[Employee Name]</string>
     <string name="next_palette">Next Pallet</string>
-    <string name="logout">Logout</string>
     <string name="finish_palette">Finish Pallet</string>
     <string name="hold_palette">Place Pallet On Hold</string>
     <string name="no_palettes">No pallets to display!</string>
     <string name="employee_id">Employee ID</string>
-    <string name="password">********</string>
-    <string name="loginButton">Login</string>
+    <string name="password">********</string>\
     <string name="scanButton">Scan Product</string>
     <string name="return_button">Return</string>
     <string name="login_error">Login Error</string>
+
+    <string name="logout_confirmation">Are you sure you want to log out?</string>
+    <string name="hold_confirmation">Place pallet on hold and exit?</string>
+    <string name="finish_confirmation">Finish pallet and exit?</string>
+    <string name="confirm_button">Confirm</string>
+    <string name="cancel_button">Cancel</string>
 
     <string name="login_bar">Sign in</string>
     <string name="email_field_hint">Employee Username</string>
@@ -34,7 +38,7 @@
     <string name="restocking_button">Restocking</string>
     <string name="receiving_button">Receiving</string>
 
-    <string name="restocking_bar">Select stockProduct to restock:</string>
+    <string name="restocking_bar">Select product to restock:</string>
     <string name="search_hint">Search</string>
     <string-array name="search_array">
         <item>Product Name</item>

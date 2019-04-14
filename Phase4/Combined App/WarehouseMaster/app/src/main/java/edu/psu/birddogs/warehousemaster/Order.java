@@ -46,7 +46,7 @@ public class Order extends AppCompatActivity {
                         CheckBox c = new CheckBox(Order.this);
                         TextView v = new TextView(Order.this);
 
-                        String txt = pallet.get(prod).getDescription() + "\nManufacturer: " + pallet.get(prod).getManu();
+                        String txt = pallet.get(prod).getDescription() + '\n' + getResources().getString(R.string.manufacturer_label) + ": " + pallet.get(prod).getManu();
                         v.setText(txt);
                         v.setId(100000 + prod);
                         v.setPadding(100, 10, 5, 10);
@@ -137,29 +137,29 @@ public class Order extends AppCompatActivity {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
         if(view.getId() == R.id.finishPalette){
-            alert.setTitle("Finish Palette and Exit?");
-            alert.setMessage("").setCancelable(false).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            alert.setTitle(getResources().getString(R.string.finish_palette));
+            alert.setMessage(getResources().getString(R.string.finish_confirmation)).setCancelable(false).setPositiveButton(getResources().getString(R.string.confirm_button), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     finishing = true;
                     DatabaseManager.fulfillPallet(pallet);
                     Order.this.finish();
                 }
-            }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            }).setNegativeButton(getResources().getString(R.string.cancel_button), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
                 }
             });
         } else if(view.getId() == R.id.holdButton) {
-            alert.setTitle("Place Palette on Hold and Exit?");
-            alert.setMessage("").setCancelable(false).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            alert.setTitle(getResources().getString(R.string.hold_palette));
+            alert.setMessage(getResources().getString(R.string.hold_confirmation)).setCancelable(false).setPositiveButton(getResources().getString(R.string.confirm_button), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     DatabaseManager.hold(pallet);
                     Order.this.finish();
                 }
-            }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            }).setNegativeButton(getResources().getString(R.string.cancel_button), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();

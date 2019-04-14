@@ -39,14 +39,14 @@ public class MainActivity extends AppCompatActivity {
     public void logout(View view){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-        alert.setTitle("Are you sure you want to Logout?");
+        alert.setTitle(getResources().getString(R.string.logout_button));
 
-        alert.setMessage("").setCancelable(false).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+        alert.setMessage(getResources().getString(R.string.logout_confirmation)).setCancelable(false).setPositiveButton(getResources().getText(R.string.confirm_button), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 MainActivity.this.finish();
             }
-        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        }).setNegativeButton(getResources().getString(R.string.cancel_button), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
