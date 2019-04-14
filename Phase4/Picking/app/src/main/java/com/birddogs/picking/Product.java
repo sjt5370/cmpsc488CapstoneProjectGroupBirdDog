@@ -4,8 +4,14 @@ class Product {
     private int id;
     private String name;
     private String desc;
+    private String manu;
     private int priority;
     private int quantity;
+    private boolean scanned;
+
+    public Product(){
+        scanned = false;
+    }
 
     public void setID(int prod_id) {
         this.id = prod_id;
@@ -19,6 +25,8 @@ class Product {
         this.desc = description;
     }
 
+    public void setManu(String manu){this.manu = manu;}
+
     public void setPriority(int priority) {
         this.priority = priority;
     }
@@ -26,6 +34,8 @@ class Product {
     public void setQuantity(int quantity){
         this.quantity = quantity;
     }
+
+    public void setScanned(boolean scanned) { this.scanned = scanned; }
 
     public int getID(){
         return id;
@@ -36,10 +46,12 @@ class Product {
     public String getDescription() {
         return desc;
     }
+    public String getManu(){return manu;}
     public int getPriority(){
         return priority;
     }
     public int getQuantity(){
         return quantity;
     }
+    public boolean getScanned() { return scanned; }
 }

@@ -39,7 +39,7 @@ public class ReceivingActivity extends AppCompatActivity {
 
     private void continueCreate() {
         setContentView(R.layout.activity_receiving);
-        barcodeDetector = new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.QR_CODE).build();
+        barcodeDetector = new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.PRODUCT).build();
         cameraSource = new CameraSource.Builder(this, barcodeDetector).setRequestedPreviewSize(1920, 1280).setAutoFocusEnabled(true).build();
 
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WebTest.Models.CustomerAccount>
+
+@{
+    ViewData["Title"] = "AccountInfo";
+}
+
+<h2>AccountInfo</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cus_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.addr_street)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.addr_city)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.addr_state)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.addr_zip)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cus_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.addr_street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.addr_city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.addr_state)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.addr_zip)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.acc_id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.acc_id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.acc_id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
