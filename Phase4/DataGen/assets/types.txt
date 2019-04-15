@@ -1,0 +1,13 @@
+Pale Lager
+Pilsner
+Dark Lager
+Brown Ale
+Pale Ale
+IPA
+German Bock
+Porter
+Stout
+Belgian-Style Ale
+Wheat Beer
+Wild Ale
+Sour Ale
