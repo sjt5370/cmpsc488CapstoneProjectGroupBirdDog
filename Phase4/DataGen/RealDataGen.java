@@ -97,6 +97,20 @@ public class RealDataGen {
             zip.add(Integer.parseInt(st));
         }
         //
+        //delete previous data
+        //
+        //
+        System.out.println("delete from coordinates;");
+        System.out.println("delete from pallet;");
+        System.out.println("delete from route_info;");
+        System.out.println("delete from order_item;");
+        System.out.println("delete from order_full;");
+        System.out.println("delete from customer_account;");
+        System.out.println("delete from employee_account;");
+        System.out.println("delete from master_account;");
+        System.out.println("delete from inventory;");
+        System.out.println("delete from product;");
+        //
         //products
         //
         //
@@ -152,8 +166,8 @@ public class RealDataGen {
         //
         //
         for(int i = 1; i <= 100; i++){
-            System.out.println("Insert into master_account values (" + (10000 + i) + ", " + 0 + ", " + "username" + ", " + "password" + ");");
-            System.out.println("Insert into master_account values (" + (20000 + i) + ", " + 1 + ", " + "username" + ", " + "password" + ");");
+            System.out.println("Insert into master_account values (" + (10000 + i) + ", " + 0 + ", " + "'username" + (10000 + i) + "', " + "'password'" + ");");
+            System.out.println("Insert into master_account values (" + (20000 + i) + ", " + 1 + ", " + "'username" + (20000 + i) + "', " + "'password'" + ");");
         }
         //
         //employeeAccount
