@@ -16,25 +16,30 @@ namespace WebTest.Controllers
         {
             _dbContext = db;
         }
+
+        [HttpGet]
         public IActionResult Index()
         {
             var products = _dbContext.product.ToList();
             return View(products);
         }
 
+        [HttpGet]
         public IActionResult Login()
         {
             var account = _dbContext.master_account.ToList();
             return View(account);
         }
 
+        [HttpGet]
         public IActionResult AccountInfo()
         {
             var account = _dbContext.customer_account.ToList();
-            return View();
+            return View(account);
         }
 
-       public IActionResult AccountOrderHistory()
+        [HttpGet]
+        public IActionResult AccountOrderHistory()
         {
             var orders = _dbContext.order_full.ToList();
             return View(orders);
@@ -68,6 +73,7 @@ namespace WebTest.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public IActionResult OrderItems()
         {
             var orders = _dbContext.order_item.ToList();
