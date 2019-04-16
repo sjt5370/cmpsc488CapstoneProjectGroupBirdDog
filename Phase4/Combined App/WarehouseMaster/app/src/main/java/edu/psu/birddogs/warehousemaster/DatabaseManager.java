@@ -2,6 +2,7 @@ package edu.psu.birddogs.warehousemaster;
 
 import android.os.AsyncTask;
 
+import java.lang.ref.WeakReference;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,16 +12,67 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENERS IN ASYNCTASKS
+public class DatabaseManager {
     interface OnAuthenticationListener { void onAuthentication(boolean authGranted, String job); }
     interface OnGetProductListListener { void onGetProductList(ArrayList<StockProduct> productList); }
     interface OnGetProductListener { void onGetProduct(StockProduct product); }
     interface OnPasswordChangedListener { void OnPasswordChanged(boolean passChanged); }
-    interface OnGetPalletListener { void onGetPallet(HashMap<Integer, PickProduct> pallet);}
-    interface OnGetUsersListener { void onGetUsers(User users);}
+    interface OnGetPalletListener { void onGetPallet(HashMap<Integer, PickProduct> pallet); }
+    interface OnGetUsersListener { void onGetUsers(User users); }
+    interface OnCheckUniqueProductListener { void onCheckUniqueProduct(boolean unique); }
 
     private static final String URL = "jdbc:jtds:sqlserver://mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com:1433;databaseName=warehouse;user=masterUser;password=master1234;sslProtocol=TLSv1";
     public static int curr_id = 0;
+
+    public static void checkUniqueProduct(StockProduct product, OnCheckUniqueProductListener listener) { new CheckUniqueProductAsyncTask().execute(product, listener); }
+    private static class CheckUniqueProductAsyncTask extends AsyncTask<Object, Void, Boolean> {
+        StockProduct product;
+        WeakReference<OnCheckUniqueProductListener> weakListener;
+
+        @Override
+        protected Boolean doInBackground(Object... params) {
+            product = (StockProduct) params[0];
+            weakListener = new WeakReference<>((OnCheckUniqueProductListener) params[1]);
+            StringBuilder command = new StringBuilder();
+            command.append("select * from product where prod_name = '");
+            command.append(product.getProductName());
+            command.append("' and prod_desc = '");
+            command.append(product.getDescription());
+            command.append("' and manu = '");
+            command.append(product.getManufacturer());
+            command.append("';");
+
+
+            Connection c = connect();
+            Statement st = null;
+            ResultSet rs = null;
+            try {
+                st = c.createStatement();
+                rs = st.executeQuery(command.toString());
+                return !rs.next();
+            } catch (SQLException | NullPointerException ex) {
+                ex.printStackTrace();
+                System.exit(1);
+            } finally {
+                try {
+                    rs.close();
+                    st.close();
+                    disconnect(c);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    System.exit(1);
+                }
+            }
+            return false;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean unique) {
+            OnCheckUniqueProductListener listener = weakListener.get();
+            if (listener != null) listener.onCheckUniqueProduct(unique);
+        }
+    }
+
 
     public static void addProduct(StockProduct product) { new AddProductAsyncTask().execute(product); }
     private static class AddProductAsyncTask extends AsyncTask<StockProduct, Void, Void> {
@@ -32,13 +84,13 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
             StringBuilder command1 = new StringBuilder();
             command1.append("insert into product values (");
             command1.append(product.getID());
-            command1.append(", \'");
+            command1.append(", '");
             command1.append(product.getProductName());
-            command1.append("\', \'");
+            command1.append("', '");
             command1.append(product.getDescription());
-            command1.append("\', \'");
+            command1.append("', '");
             command1.append(product.getManufacturer());
-            command1.append("\', ");
+            command1.append("', ");
             command1.append(product.getPrice());
             command1.append(", ");
             command1.append(product.getPriority());
@@ -80,12 +132,12 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
     public static void getProduct(int id, OnGetProductListener listener) { new GetProductAsyncTask().execute(id, listener);}
     private static class GetProductAsyncTask extends AsyncTask<Object, Void, StockProduct> {
         int id;
-        OnGetProductListener listener;
+        WeakReference<OnGetProductListener> weakListener;
 
         @Override
         protected StockProduct doInBackground(Object... params) {
             id = (int) params[0];
-            listener = (OnGetProductListener) params[1];
+            weakListener = new WeakReference<>((OnGetProductListener) params[1]);
             StringBuilder command = new StringBuilder();
             command.append("select product.prod_id as prod_id, prod_name, prod_desc, manu, price, proirity, volume, inv_bulk, inv_shelf, stock_flag ");
             command.append("from product, inventory ");
@@ -129,16 +181,19 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
         }
 
         @Override
-        protected void onPostExecute(StockProduct product) { listener.onGetProduct(product); }
+        protected void onPostExecute(StockProduct product) {
+            OnGetProductListener listener = weakListener.get();
+            if (listener != null) listener.onGetProduct(product);
+        }
     }
 
     public static void getProductList(OnGetProductListListener listener) { new GetProductListAsyncTask().execute(listener); }
     private static class GetProductListAsyncTask extends AsyncTask<OnGetProductListListener, Void, ArrayList<StockProduct>> {
-        OnGetProductListListener listener;
+        WeakReference<OnGetProductListListener> weakListener;
 
         @Override
         protected ArrayList<StockProduct> doInBackground(OnGetProductListListener... params) {
-            listener = params[0];
+            weakListener = new WeakReference<>(params[0]);
             ArrayList<StockProduct> productList = new ArrayList<>();
             Statement st = null;
             ResultSet rs = null;
@@ -178,7 +233,10 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
         }
 
         @Override
-        protected void onPostExecute(ArrayList<StockProduct> productList) { listener.onGetProductList(productList); }
+        protected void onPostExecute(ArrayList<StockProduct> productList) {
+            OnGetProductListListener listener = weakListener.get();
+            if (listener != null) listener.onGetProductList(productList);
+        }
     }
 
     public static void stockProduct(int id, int quantity) { new StockProductAsyncTask().execute(id, quantity); }
@@ -318,27 +376,14 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
 
     public static void getNewPallet(OnGetPalletListener listener) { new getNewPalletAsync().execute(listener);}
     private static class getNewPalletAsync extends AsyncTask<OnGetPalletListener, Void, HashMap<Integer, PickProduct>>{
-        OnGetPalletListener listener;
+        WeakReference<OnGetPalletListener> weakListener;
 
         @Override
         protected HashMap<Integer, PickProduct> doInBackground(OnGetPalletListener... params){
-            listener = params[0];
+            weakListener = new WeakReference<>(params[0]);
 
             StringBuilder command = new StringBuilder();
-            /*
-            command.append("select pallet_id, pallet.prod_id as prod_id, prod_name, prod_desc, manu, proirity, quantity " +
-                    "from pallet, product " +
-                    "where pallet.prod_id = product.prod_id and pallet.pallet_id = " +
-                    "(select min(pallet_id) as next_pallet from pallet " +
-                    "where fulfilled = 0 and hold = 0 and order_num = " +
-                    "(select min(order_num) as next_order from order_full " +
-                    "where complete = 0 and urgency <= all(select urgency from order_full)));");
-            */
-
-
-            //command.append("with min_urgency as (select min(urgency) from pallet, order_full where pallet.order_num = order_full.order_num and complete = 0 and fulfilled = 0 and hold = 0) ");
             command.append("select pallet_id, pallet.prod_id as prod_id, prod_name, prod_desc, manu, proirity, quantity ");
-            //command.append("from pallet, product where pallet.prod_id = product.prod_id and pallet_id = case when min_urgency = 0 then ");
             command.append("from pallet, product where pallet.prod_id = product.prod_id and pallet_id = case when ");
             command.append("(select min(urgency) from pallet, order_full where pallet.order_num = order_full.order_num and complete = 0 and fulfilled = 0 and hold = 0) = 0 then ");
             command.append("(select min(pallet_id) from pallet, order_full where pallet.order_num = order_full.order_num and complete = 0 and fulfilled = 0 and hold = 0 and urgency = 0) ");
@@ -382,12 +427,16 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
         }
 
         @Override
-        protected void onPostExecute(HashMap<Integer, PickProduct> pallet){ listener.onGetPallet(pallet);}
+        protected void onPostExecute(HashMap<Integer, PickProduct> pallet) {
+            OnGetPalletListener listener = weakListener.get();
+            if (listener != null) listener.onGetPallet(pallet);
+        }
     }
 
     public static void hold(HashMap<Integer, PickProduct> products) { new returnInventoryAsyncTask().execute(products); }
     private static class returnInventoryAsyncTask extends AsyncTask<HashMap<Integer, PickProduct>, Void, Void> {
         HashMap<Integer, PickProduct> prods;
+
         @Override
         protected Void doInBackground(HashMap<Integer, PickProduct> ... params){
             prods = params[0];
@@ -414,7 +463,7 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
 
     public static void getUsers(OnGetUsersListener listener, String un) { new getUsersAsync(un).execute(listener);}
     private static class getUsersAsync extends AsyncTask<OnGetUsersListener, Void, User>{
-        OnGetUsersListener listener;
+        WeakReference<OnGetUsersListener> weakListener;
         String userName;
 
         public getUsersAsync(String un){
@@ -423,7 +472,7 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
 
         @Override
         protected User doInBackground(OnGetUsersListener... params){
-            listener = params[0];
+            weakListener = new WeakReference<>(params[0]);
             StringBuilder command = new StringBuilder();
             command.append("select master_account.acc_id, acc_type, username, password, first_name, last_name, job, productivity ");
             command.append("from master_account, employee_account ");
@@ -459,7 +508,10 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
         }
 
         @Override
-        protected void onPostExecute(User user){ listener.onGetUsers(user);}
+        protected void onPostExecute(User user) {
+            OnGetUsersListener listener = weakListener.get();
+            if (listener != null) listener.onGetUsers(user);
+        }
     }
 
     public static void fulfillPallet(HashMap<Integer, PickProduct> pallet) { new fulfillPalletAsyncTask().execute(pallet); }
@@ -498,7 +550,7 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
         String lname;
         int id;
         String newpass;
-        OnPasswordChangedListener listener;
+        WeakReference<OnPasswordChangedListener> weakListener;
 
         @Override
         protected Boolean doInBackground(Object... params) {
@@ -507,17 +559,17 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
             lname = (String) params[2];
             id = (int) params[3];
             newpass = (String) params[4];
-            listener = (OnPasswordChangedListener) params[5];
+            weakListener = new WeakReference<>((OnPasswordChangedListener) params[5]);
             StringBuilder command1 = new StringBuilder();
             command1.append("select username, first_name, last_name ");
             command1.append("from master_account, employee_account ");
-            command1.append("where master_account.acc_id = employee_account.acc_id and master_account.acc_id = \'");
+            command1.append("where master_account.acc_id = employee_account.acc_id and master_account.acc_id = '");
             command1.append(id);
-            command1.append("\';");
+            command1.append("';");
             StringBuilder command2 = new StringBuilder();
-            command2.append("update master_account set password = \'");
+            command2.append("update master_account set password = '");
             command2.append(newpass);
-            command2.append("\' where acc_id = ");
+            command2.append("' where acc_id = ");
             command2.append(id);
             command2.append(";");
 
@@ -548,26 +600,29 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
         }
 
         @Override
-        protected void onPostExecute(Boolean passChanged) { listener.OnPasswordChanged(passChanged); }
+        protected void onPostExecute(Boolean passChanged) {
+            OnPasswordChangedListener listener = weakListener.get();
+            if (listener != null) listener.OnPasswordChanged(passChanged);
+        }
     }
 
     public static void authenticate(String username, String password, OnAuthenticationListener listener) { new AuthenticateAsyncTask().execute(username, password, listener); }
     private static class AuthenticateAsyncTask extends AsyncTask<Object, Void, ArrayList<String>> {
         String username;
         String password;
-        OnAuthenticationListener listener;
+        WeakReference<OnAuthenticationListener> weakListener;
 
         @Override
         protected ArrayList<String> doInBackground(Object... params) {    //FIXME: SCRUB USERNAME OF SPECIAL CHARACTERS BEFORE CHECKING
             username = (String) params[0];
             password = (String) params[1];
-            listener = (OnAuthenticationListener) params[2];
+            weakListener = new WeakReference<>((OnAuthenticationListener) params[2]);
             StringBuilder command = new StringBuilder();
             command.append("select acc_type, password, job ");
             command.append("from master_account, employee_account ");
-            command.append("where master_account.acc_id = employee_account.acc_id and master_account.username = \'");
+            command.append("where master_account.acc_id = employee_account.acc_id and master_account.username = '");
             command.append(username);
-            command.append("\';");
+            command.append("';");
             Statement st = null;
             ResultSet rs = null;
             String acc_type = "false", correctPass = "";
@@ -603,7 +658,10 @@ public class DatabaseManager {          //FIXME: USE WEAK REFERENCES FOR LISTENE
             return retVal;
         }
         @Override
-        protected void onPostExecute(ArrayList<String> retVal) { listener.onAuthentication(retVal.get(0).equals("true"), retVal.get(1)); }
+        protected void onPostExecute(ArrayList<String> retVal) {
+            OnAuthenticationListener listener = weakListener.get();
+            if (listener != null) listener.onAuthentication(retVal.get(0).equals("true"), retVal.get(1));
+        }
     }
 
     private static Connection connect() {
