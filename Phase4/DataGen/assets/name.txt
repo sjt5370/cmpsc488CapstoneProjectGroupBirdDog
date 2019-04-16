@@ -6,7 +6,7 @@ Volkswagen Group
 MasterCard
 Wal-Mart
 Chase
-McDonald's
+McDonalds
 Nokia
 Adidas
 Beko
@@ -39,7 +39,7 @@ Hyundai
 Amazon.com
 Avon
 Sprite
-Jack Daniel's
+Jack Daniels
 H&M
 Allianz
 Google
@@ -71,7 +71,7 @@ Ralph Lauren Corporation
 Harley-Davidson Motor Company
 Nintendo
 Panasonic Corporation
-L'Oréal
+LOréal
 Hewlett-Packard
 Microsoft
 Oracle Corporation
