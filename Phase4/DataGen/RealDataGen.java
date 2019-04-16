@@ -192,7 +192,7 @@ public class RealDataGen {
                 job = "stocker";
             }
 
-            System.out.println("Insert into employee_account values (" + (10000 + i) + ", " + fName + ", " + lName + ", " + job + ", " + prod + ");");
+            System.out.println("Insert into employee_account values (" + (10000 + i) + ", '" + fName + "', '" + lName + "', '" + job + "', " + prod + ");");
         }
         //
         //customerAccount
@@ -208,14 +208,14 @@ public class RealDataGen {
             String sta = state.remove(add);
             Integer zi = zip.remove(add);
 
-            System.out.println("Insert into customer_account values (" + (20000 + i) + ", " + email + ", " + n + ", " + str + ", " + cit + ", " + sta + ", " + zi + ");");
+            System.out.println("Insert into customer_account values (" + (20000 + i) + ", '" + email + "', '" + n + "', '" + str + "', '" + cit + "', '" + sta + "', " + zi + ");");
         }
         //
         //order
         //
         //
         for(int i = 0; i < 50; i++){
-            int id = (int)(Math.random() * 100) + 10001;
+            int id = (int)(Math.random() * 100) + 20001;
             int urg = (int)(Math.random() * 10);
 
             System.out.println("Insert into order_full values (" + (101 + i) + ", " + id + ", 0, " + urg + ", 1);");
@@ -223,7 +223,7 @@ public class RealDataGen {
             int p = (int)((Math.random() * 50) + 1);
             for(int j = 0; j < p; j++){
                 int pid = (int)((Math.random() * 1000) + 1000);
-                int quan = (int)(Math.random() * 26);
+                int quan = (int)(Math.random() * 25 + 1);
 
                 System.out.println("Insert into order_item values (" + (101 + i) + ", " + pid + ", " + quan + ");");
             }
