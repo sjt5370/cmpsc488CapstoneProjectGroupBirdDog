@@ -27,7 +27,7 @@ namespace WebTest.Controllers
 
         [HttpGet]
         public async Task<IActionResult> LoginAsync()
-        {
+        {            
             var account = await _dbContext.master_account.ToListAsync();
             return View(account);
         }
@@ -35,14 +35,14 @@ namespace WebTest.Controllers
         [HttpGet]
         public async Task<IActionResult> AccountInfoAsync()
         {
-            var account = await _dbContext.customer_account.ToListAsync();
+            var account = await _dbContext.customer_account.Where(x => x.acc_id.Equals(20003)).ToListAsync();
             return View(account);
         }
 
         [HttpGet]
         public async Task<IActionResult> AccountOrderHistoryAsync()
         {
-            var orders = await _dbContext.order_full.ToListAsync();
+            var orders = await _dbContext.order_full.Where(x => x.acc_id.Equals(20003)).ToListAsync();
             return View(orders);
         }
 
