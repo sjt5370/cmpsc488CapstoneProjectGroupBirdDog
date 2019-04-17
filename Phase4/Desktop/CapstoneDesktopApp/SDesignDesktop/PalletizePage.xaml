@@ -6,9 +6,87 @@
       xmlns:local="clr-namespace:SDesignDesktop"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PalletizePage">
+      Title="PalletizePage" Background="SteelBlue">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListBox Margin="170,10,150,-55" Name="Pallets" Height="495" Width="480" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" Background="SlateGray" Grid.ColumnSpan="2">
+            <ListBoxItem Content="Pallet 1" FontSize="20" FontWeight="Bold"></ListBoxItem>
+            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                </ListBox>
+            </ListBoxItem>
+
+            <ListBoxItem Content="Pallet 2" FontWeight="Bold" FontSize="20"></ListBoxItem>
+            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                </ListBox>
+            </ListBoxItem>
+
+            <ListBoxItem Content="Pallet 3" FontWeight="Bold" FontSize="20"></ListBoxItem>
+            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                </ListBox>
+            </ListBoxItem>
+
+            <ListBoxItem Content="Pallet 4" FontWeight="Bold" FontSize="20"></ListBoxItem>
+            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                </ListBox>
+            </ListBoxItem>
+
+            <ListBoxItem Content="Pallet 5" FontWeight="Bold" FontSize="20"></ListBoxItem>
+            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
+                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                    <ListBoxItem Content="Order Number                    Order Size"/>
+                </ListBox>
+            </ListBoxItem>
+        </ListBox>
+
+        <Button x:Name="AddPallet" Content="Add" Height="36" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Margin="692,172,0,242" Click="AddPallet_Click" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="80"/>
+        <Button x:Name="EditPallet" Content="Edit" Height="35" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" Width="80" Click="EditPallet_Click" Grid.ColumnSpan="2" Margin="0,213,28,202"/>
+        <Button x:Name="DeletePallet" Content="Delete" Height="35" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" Width="80" Click="DeletePallet_Click" Grid.ColumnSpan="2" Margin="0,253,28,162"/>
     </Grid>
 </Page>
