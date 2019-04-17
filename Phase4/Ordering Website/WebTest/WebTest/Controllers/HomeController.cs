@@ -75,7 +75,7 @@ namespace WebTest.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> OrderItemsAysnc()
+        public async Task<IActionResult> OrderItemsAsync()
         {
             var orders = await _dbContext.order_item.ToListAsync();
             return View(orders);
