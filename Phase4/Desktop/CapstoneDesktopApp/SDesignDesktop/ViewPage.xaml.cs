@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 
 namespace SDesignDesktop
@@ -39,43 +42,224 @@ namespace SDesignDesktop
             Gmaps.Dispose();
             SDesignDesktop.Main.GetWindow(this).Content = new LoginPage();
         }
-
+        private static List<int> routesfchange = new List<int>();
+        private static List<int> accountfchange = new List<int>();
         private void AddRoute_Click(object sender, RoutedEventArgs e)
         {
-            Window add = new AddRoute();
-            add.Show();
+            SqlConnection connection2 = new SqlConnection("Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;");
+            SqlConnection connection = new SqlConnection("Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;");
+            using (connection)
+            {
+                connection2.Open();
+                connection.Open();
+                System.Windows.Controls.ListBoxItem edit = new ListBoxItem();
+                System.Windows.Controls.StackPanel stk = new StackPanel();
+                stk.SetValue(StackPanel.OrientationProperty, Orientation.Horizontal);
+                stk.SetValue(StackPanel.HorizontalAlignmentProperty, HorizontalAlignment.Center);
+                edit.SetValue(ListBoxItem.HorizontalContentAlignmentProperty, HorizontalAlignment.Center);
+                System.Windows.Controls.TextBlock account = new TextBlock();
+                account.Width = 100;
+                account.FontSize = 10;
+                account.SetValue(TextBlock.TextAlignmentProperty, TextAlignment.Left);
+                System.Windows.Controls.TextBlock newRoute = new TextBlock();
+                newRoute.Width = 15;
+                newRoute.FontSize = 10;
+                newRoute.SetValue(TextBlock.TextAlignmentProperty, TextAlignment.Right);
+                System.Windows.Controls.TextBlock move = new TextBlock();
+                move.Width = 35;
+                move.FontSize = 10;
+                move.SetValue(TextBlock.TextAlignmentProperty, TextAlignment.Left);
+                move.Text = "Move ";
+                System.Windows.Controls.TextBlock toRoute = new TextBlock();
+                toRoute.Width = 70;
+                toRoute.FontSize = 10;
+                toRoute.SetValue(TextBlock.TextAlignmentProperty, TextAlignment.Center);
+                toRoute.Text = " To route ";
+                newRoute.Text = Convert.ToString(textBox2.Text);
+                SqlCommand cust = new SqlCommand("SELECT cus_name FROM customer_account WHERE acc_id = " + tempID + ";", connection);
+                string name = Convert.ToString(cust.ExecuteScalar());
+                account.Text = name;
+                stk.Children.Add(move);
+                stk.Children.Add(account);
+                stk.Children.Add(toRoute);
+                stk.Children.Add(newRoute);
+                edit.Content = stk;
+                changes.Items.Add(edit);
+                routesfchange.Add(Convert.ToInt32(textBox2.Text));
+                accountfchange.Add(tempID);
+                //}
+                connection.Close();
+                connection2.Close();
+            }
         }
+        private static int tempID = 0;
+        private static int tempRoute = 0;
         private static List<Center_Point> centers = new List<Center_Point>();
         private static List<Data> orderData = new List<Data>();
         private static int numCenterPoints = 0;
+        private static Stack<Data> orderCoors = new Stack<Data>();
+        private static int totalOrders = 0;
+
+        System.Windows.Controls.ListBoxItem route = new ListBoxItem();
         private void RandomRoutes_Click(object sender, RoutedEventArgs e)
         {
-
+            routesfchange.Clear();
+            accountfchange.Clear();
+            totalOrders = 0;
+            tempID = 0;
+            tempRoute = 0;
+            centers.Clear();
+            orderData.Clear();
+            numCenterPoints = 0;
+            orderCoors.Clear();
+            int acc;
+            int order;
+            double Long;
+            double Lat;
+            string name;
+            int total;
             numCenterPoints = Convert.ToInt32(numRoutes.Text);
             double xLow, xHigh, yLow, yHigh;
-            //query database to find the above double values for the coordinates in the orders for today
             double x, y;
-            /*for(int i = 0; i < numCenterPoints; i++)
+            SqlConnection connection2 = new SqlConnection("Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;");
+            SqlConnection connection = new SqlConnection("Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;");
+            using (connection)
             {
-                x = random(xHigh, xLow);
-                y = random(yHigh, yLow);
-                centers.Add(new Center_Point(x, y));
-            }*/
-            ClusterAlg();
+                connection2.Open();
+                connection.Open();
+                using (SqlCommand orders = new SqlCommand("SELECT * FROM curr_stops", connection))
+                {
+                    using (SqlDataReader reader = orders.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            object[] tot = new object[1];
+                            object[] testarr = new object[5];
+                            reader.Read();
+                            reader.GetValues(testarr);
+                            xLow = Convert.ToDouble(testarr[4]);
+                            xHigh = Convert.ToDouble(testarr[4]);
+                            yLow = Convert.ToDouble(testarr[3]);
+                            yHigh = Convert.ToDouble(testarr[3]);
+                            while (reader.Read())
+                            {
+                                reader.GetValues(testarr);
+                                acc = Convert.ToInt32(testarr[0]);
+                                order = Convert.ToInt32(testarr[2]);
+                                Long = Convert.ToDouble(testarr[4]);
+                                Lat = Convert.ToDouble(testarr[3]);
+                                name = Convert.ToString(testarr[1]);
+                                using (SqlCommand ftotal = new SqlCommand("SELECT SUM(quantity) FROM order_item WHERE order_num = " + order + ";", connection2))
+                                {
+                                    total = Convert.ToInt32(ftotal.ExecuteScalar());
+                                }
+                                Data temp = new Data(acc, name, order, Lat, Long, total);
+                                if (Long < xLow) { xLow = Long; }
+                                if (Long > xHigh) { xHigh = Long; }
+                                if (Lat < yLow) { yLow = Lat; }
+                                if (Lat > yHigh) { yHigh = Lat; }
+                                orderCoors.Push(temp);
+                                totalOrders++;
+                            }
+                            for (int i = 0; i < numCenterPoints; i++)
+                            {
+                                x = random(xHigh, xLow);
+                                y = random(yHigh, yLow);
+                                centers.Add(new Center_Point(x, y));
+                            }
+                            connection.Close();
+                            connection2.Close();
+                            ClusterAlg();
+                        }
+
+                    }
+
+                }
+        
+            }
+            SqlConnection connection3 = new SqlConnection("Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;");
+            using (connection3)
+            {
+                connection3.Open();
+                using (SqlCommand clear = new SqlCommand("DELETE FROM route_info", connection3))
+                {
+                    clear.ExecuteNonQuery();
+                }
+                for (int i = 0; i < orderData.Count(); i++)
+                {
+                    Data temp = orderData[i];
+                    int rt = temp.whichCluster() + 101;
+                    SqlCommand fill = new SqlCommand("INSERT INTO route_info VALUES (" + rt + ", " + temp.getOrdernum() + ", " + 1 + ")", connection3);
+                    fill.ExecuteNonQuery();
+                }
+                updateGUI();
+                connection3.Close();
+            }
         }
+        public static ListBoxItem tempItem = new ListBoxItem();
+        // Method for specifying the stop to view 
+        public void order1_MouseDoubleClick(object se, RoutedEventArgs es, int accnum)
+        {
+            tempID = accnum;
+
+            textBox.Text = Convert.ToString(accnum);
+            SqlConnection connection = new SqlConnection("Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;");
+           
+            using (connection)
+            {
+                connection.Open();
+               
+                
+                SqlCommand getRoute = new SqlCommand("SELECT route_id FROM routelist WHERE acc_id = " + accnum + ";", connection);
+                tempRoute = Convert.ToInt32(getRoute.ExecuteScalar());
+                SqlCommand getProducts = new SqlCommand("SELECT prod_name, quantity FROM orders WHERE acc_id = " + accnum + ";", connection);
+                using (getProducts)
+                {
+                    SqlDataReader reader = getProducts.ExecuteReader();
+                    using (reader)
+                    {
+                        if (listBox.Items.Count != 0)
+                        {
+                            listBox.Items.Clear();
+                        }
+                        while (reader.Read())
+                        {
+                            System.Windows.Controls.ListBoxItem edit = new ListBoxItem();
+                            System.Windows.Controls.StackPanel stk = new StackPanel();
+                            stk.SetValue(StackPanel.OrientationProperty, Orientation.Horizontal);
+                            stk.SetValue(StackPanel.HorizontalAlignmentProperty, HorizontalAlignment.Left);
+                            edit.SetValue(ListBoxItem.HorizontalContentAlignmentProperty, HorizontalAlignment.Left);
+                            System.Windows.Controls.TextBlock prod = new TextBlock();
+                            prod.Width = 370;
+                            prod.FontSize = 12;
+                            prod.SetValue(TextBlock.TextAlignmentProperty, TextAlignment.Left);
+                            prod.Text = reader.GetString(0);
+                            System.Windows.Controls.TextBlock quant = new TextBlock();
+                            quant.Width = 80;
+                            quant.FontSize = 12;
+                            quant.SetValue(TextBlock.TextAlignmentProperty, TextAlignment.Right);
+                            quant.Text = Convert.ToString(reader.GetInt32(1));
+                            stk.Children.Add(prod);
+                            stk.Children.Add(quant);
+                            edit.Content = stk;
+                            listBox.Items.Add(edit);
+                        }
+                    }
+                }
+            }
+            connection.Close();
+
+        }
+
 
         private static void ClusterAlg()
         {
-            int totalOrders = 0;
             double min = 1000;
             double dist = 0;
             int orderCount = 0;
             int ClustNum = 0;
             Boolean finished = false;
-            Data nextOrder = null;
-            Stack<Data> orderCoors = new Stack<Data>();
-            //Grab every set of coordinates insert into orderCoors as Data type objects
-            //increase the value of total orders with each push
+            Data nextOrder;
 
             while (orderCount < totalOrders)
             {
@@ -102,8 +286,8 @@ namespace SDesignDesktop
                     {
                         if (orderData[b].whichCluster() == a)
                         {
-                            sumX = sumX + orderData[b].getX();
-                            sumY = sumY + orderData[b].getY();
+                            sumX = sumX + orderData[b].getLong();
+                            sumY = sumY + orderData[b].getLat();
                             ordersInRoute++;
                         }
                     }
@@ -127,8 +311,8 @@ namespace SDesignDesktop
                     {
                         if (orderData[b].whichCluster() == a)
                         {
-                            sumX = sumX + orderData[b].getX();
-                            sumY = sumY + orderData[b].getY();
+                            sumX = sumX + orderData[b].getLong();
+                            sumY = sumY + orderData[b].getLat();
                             ordersInRoute++;
                         }
                     }
@@ -143,7 +327,7 @@ namespace SDesignDesktop
                 {
                     Data temp = orderData[i];
                     min = 1000;
-                    for (int j = 0; j < orderData.Count; j++)
+                    for (int j = 0; j < centers.Count; j++)
                     {
                         dist = calcDist(temp, centers[j]);
                         if (dist < min)
@@ -163,8 +347,8 @@ namespace SDesignDesktop
         }
         private static double calcDist(Data d, Center_Point c)
         {
-            double distY = Math.Pow((c.getY() - d.getY()), 2);
-            double distX = Math.Pow((c.getX() - d.getX()), 2);
+            double distY = Math.Pow((c.getY() - d.getLat()), 2);
+            double distX = Math.Pow((c.getX() - d.getLong()), 2);
             double EuclidDist = Math.Sqrt(distY + distX);
             return EuclidDist;
         }
@@ -211,35 +395,79 @@ namespace SDesignDesktop
 
         private class Data
         {
+            private string name = "";
+            private int ordernum = 0;
+            private int ID = 0;
             private double nX = 0;
             private double nY = 0;
             private int nCluster = 0;
+            private int total = 0;
 
             public Data()
             {
                 return;
             }
-            public Data(double x, double y)
+            public Data(int ID, string name, int ordernum, double y, double x, int total)
             {
+                this.total = total;
+                this.ID = ID;
+                this.name = name;
+                this.ordernum = ordernum;
                 this.nX = x;
                 this.nY = y;
                 return;
             }
-            public void setX(double x)
+            public void setTotal(int tot)
+            {
+                this.total = tot;
+                return;
+            }
+            public int getTotal()
+            {
+                return this.total;
+            }
+            public void setID(int id)
+            {
+                this.ID = id;
+                return;
+            }
+            public int getID()
+            {
+                return this.ID;
+            }
+            public void setName(string name)
+            {
+                this.name = name;
+                return;
+            }
+            public string getName()
+            {
+                return this.name;
+            }
+            public void setOrdernum(int order)
+            {
+                this.ordernum = order;
+                return;
+            }
+            public int getOrdernum()
+            {
+                return this.ordernum;
+            }
+            public void setLong(double x)
             {
                 this.nX = x;
                 return;
             }
-            public double getX()
+            public double getLong()
             {
                 return this.nX;
             }
-            public void setY(double y)
+            public void setLat(double y)
             {
                 this.nY = y;
                 return;
             }
-            public double getY()
+            public double getLat()
             {
                 return this.nY;
             }
@@ -269,9 +497,9 @@ namespace SDesignDesktop
             //////////////////////////////////////////////////////////////////////////////////////////////
             //                                 Populate Customer Master and Coords                     //
             /////////////////////////////////////////////////////////////////////////////////////////////
-            /*string[] adjective = new string[] { "Salty", "Stinky", "Blue", "Black", "Tiny", "Huge", "Lazy", "Strong", "Drunken", "International", "Super", "American", "Colorful", "Ugly", "Modern", "Old", "Red", "Dirty", "Quick", "Slow" };
+            string[] adjective = new string[] { "Salty", "Stinky", "Blue", "Black", "Tiny", "Huge", "Lazy", "Strong", "Drunken", "International", "Super", "American", "Colorful", "Ugly", "Modern", "Old", "Red", "Dirty", "Quick", "Slow" };
             string[] noun = new string[] { "Glass", "Friday", "Mug", "Chicken", "Duck", "Student", "Burger", "Lion", "Tavern", "Paris", "Truck", "Palm", "Corgi", "Town", "Tree", "Web", "Song", "Shirt", "Tower", "Ride" };
-            string[] number = new string[] {"1","2","3","4","5","6","7","8","9"};
+            string[] number = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
             string[] letter = new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };//26
             string addr_street = "not null Street";
             string addr_city = "not null city";
@@ -373,12 +601,16 @@ namespace SDesignDesktop
             int[] bulk = new int[442];
             int[] flag = new int[442];
             int counter = 0;
+            string[] beers = new string[442];
+            string[] desc = new string[442];
             //string num;
             for (int i = 0; i < 34; i++)
             {
                 string brand = beer[i];
                 for (int j = 0; j < 13; j++)
                 {
+                    beers[counter] = beer[i];
+                    desc[counter] = desc[j];
                     string prod = brand + " " + size[j];
                     product_names[counter] = prod;
                     priorities[counter] = priority[j];
@@ -427,7 +659,7 @@ namespace SDesignDesktop
                 connection1.Open();
                 for (int i = 0; i < 442; i++)
                 {
-                    using (SqlCommand updateProduct = new SqlCommand("Insert into product values (" + prod_IDs[i] + ", '" + product_names[i] + "', '" + "" + "', '" + "" + "', " + prices[i] + ", " + priorities[i] + ", " + volumes[i] + ");", connection1))
+                    using (SqlCommand updateProduct = new SqlCommand("Insert into product values (" + prod_IDs[i] + ", '" + product_names[i] + "', '" + beers[i] + "', '" + desc[i] + "', " + prices[i] + ", " + priorities[i] + ", " + volumes[i] + ");", connection1))
                     {
                         updateProduct.ExecuteNonQuery();
                     }
@@ -438,7 +670,7 @@ namespace SDesignDesktop
                 }
                 connection1.Close();
             }
-            
+
             //////////////////////////////////////////////////////////////////////////////////////////////
             //                                 Populate order_full and order_item                      //
             /////////////////////////////////////////////////////////////////////////////////////////////
@@ -456,8 +688,8 @@ namespace SDesignDesktop
                 {
                     int ID = accountIDs[i];
                     ordernums[i] = ordcount2;
-                    int sku = rand.Next(35);
-                    using (SqlCommand updateOrderfull = new SqlCommand("Insert into order_full values (" + ordernums[i] + ", " + ID + ", " + complete + ", " + urgency + ", " + active + ");", connection2))
+                    int sku = rand.Next(1, 35);
+                    using (SqlCommand updateOrderfull = new SqlCommand("Insert into order_full values (" + ordcount2 + ", " + ID + ", " + complete + ", " + urgency + ", " + active + ");", connection2))
                     {
                         updateOrderfull.ExecuteNonQuery();
                     }
@@ -471,16 +703,16 @@ namespace SDesignDesktop
                         }
                         check[prod_id_index] = true;
                         int quantity;
-                        if(volumes[prod_id_index] < 600)
+                        if (volumes[prod_id_index] < 600)
                         {
-                            quantity = rand.Next(1,60);
+                            quantity = rand.Next(1, 60);
                         }
                         else
                         {
                             quantity = rand.Next(1, 6);
                         }
 
-                        using (SqlCommand updateOrderitem = new SqlCommand("Insert into order_item values (" + ordernums[i] + ", " + prod_IDs[prod_id_index] + ", " + quantity + ");", connection2))
+                        using (SqlCommand updateOrderitem = new SqlCommand("Insert into order_item values (" + ordcount2 + ", " + prod_IDs[prod_id_index] + ", " + quantity + ");", connection2))
                         {
                             updateOrderitem.ExecuteNonQuery();
                         }
@@ -488,10 +720,126 @@ namespace SDesignDesktop
                     ordcount2++;
                 }
                 connection2.Close();
-            }*/
+            }
         }
 
+        private void View_Navigated(object sender, NavigationEventArgs e)
+        {
 
+        }
+
+        private void toChange_Click(object sender, RoutedEventArgs e)
+        {
+            SqlConnection connection3 = new SqlConnection("Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;");
+            connection3.Open();
+           
+            int count = routesfchange.Count();
+            progress.Minimum = 0;
+            progress.Maximum = count;
+            progress.Value = 1;
+            for (int i = 0; i < count; i++)
+            {
+                SqlCommand change = new SqlCommand("UPDATE route_info SET route_id = " + routesfchange[i] + "FROM order_full WHERE order_full.order_num = route_info.order_num AND order_full.acc_id = " + accountfchange[i] + ";", connection3);
+                change.ExecuteNonQuery();
+                
+                updateProgress();
+            }
+            updateGUI();
+            changes.Items.Clear();
+            connection3.Close();
+        }
+        private void updateProgress()
+        {
+            progress.Value = progress.Value + 1;
+            return;
+        }
+
+        private void toDelete_Click(object sender, RoutedEventArgs e)
+        {
+            int x = changes.SelectedIndex;
+            routesfchange.RemoveAt(x);
+            accountfchange.RemoveAt(x);
+            changes.Items.RemoveAt(x);
+        }
+
+        public void updateGUI()
+        {
+            SqlConnection connection = new SqlConnection("Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;");
+            using (connection)
+            {
+                int count = numCenterPoints + 1;
+                RouteList.Items.Clear();
+                for (int i = 1; i < count; i++)
+                {
+                    connection.Open();
+                    int routenum = 100 + i;
+                    System.Windows.Controls.ListBoxItem routeTitle = new ListBoxItem();
+                    routeTitle.Content = "Route " + routenum;
+                    routeTitle.FontSize = 20;
+                    routeTitle.SetValue(ListBoxItem.FontWeightProperty, FontWeights.Bold);
+                    route = new ListBoxItem();
+                    System.Windows.Controls.ListBox orders = new ListBox();
+                    orders.FontSize = 12;
+                    orders.Height = 140;
+                    orders.Width = 390;
+                    orders.BorderBrush = Brushes.Black;
+                    orders.BorderThickness.Equals(2);
+                    route.Height = 150;
+                    route.Width = 400;
+                    route.SetValue(ListBoxItem.HorizontalAlignmentProperty, HorizontalAlignment.Center);
+                    route.BorderThickness.Equals(1);
+                    RouteList.Items.Add(routeTitle);
+
+                    SqlCommand getRoutes = new SqlCommand("SELECT * FROM routelist WHERE route_id = " + routenum + ";", connection);
+                    SqlDataReader readRoutes = getRoutes.ExecuteReader();
+
+                    while (readRoutes.Read())
+                    {
+                        System.Windows.Controls.ListBoxItem edit = new ListBoxItem();
+                        edit.SetValue(ListBoxItem.HorizontalContentAlignmentProperty, HorizontalAlignment.Center);
+
+                        System.Windows.Controls.StackPanel stk = new StackPanel();
+                        stk.SetValue(StackPanel.OrientationProperty, Orientation.Horizontal); stk.SetValue(StackPanel.HorizontalAlignmentProperty, HorizontalAlignment.Left);
+
+                        System.Windows.Controls.TextBlock account = new TextBlock();
+                        account.Width = 80;
+                        account.SetValue(TextBlock.TextAlignmentProperty, TextAlignment.Left);
+                        account.Text = Convert.ToString(readRoutes.GetInt32(0));
+
+
+                        System.Windows.Controls.TextBlock name = new TextBlock();
+                        name.Width = 250;
+                        name.SetValue(TextBlock.TextAlignmentProperty, TextAlignment.Left); name.Text = readRoutes.GetString(1);
+
+
+                        System.Windows.Controls.TextBlock totalbox = new TextBlock();
+                        totalbox.SetValue(TextBlock.TextAlignmentProperty, TextAlignment.Right);
+                        totalbox.Width = 30;
+                        SqlConnection connection2 = new SqlConnection("Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;");
+                        using (connection2)
+                        {
+                            connection2.Open();
+                            SqlCommand getTotals = new SqlCommand("SELECT SUM(quantity) FROM orders WHERE acc_id    = " + readRoutes.GetInt32(0) + ";", connection2);
+                            string tot = Convert.ToString(getTotals.ExecuteScalar());
+                            totalbox.Text = tot;
+
+
+
+                            stk.Children.Add(account);
+                            stk.Children.Add(name);
+                            stk.Children.Add(totalbox);
+                            edit.Content = stk;
+                            edit.Selected += delegate (object se, RoutedEventArgs es) { order1_MouseDoubleClick(se, es, Convert.ToInt32(account.Text)); };
+                            orders.Items.Add(edit);
+                        }
+                        connection2.Close();
+                    }
+                    route.Content = orders;
+                    RouteList.Items.Add(route);
+                    connection.Close();
+                }
+            }
+        }
     }
 }
 

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\CapstoneDesktopApp\SDesignDesktop\obj\Debug\
+C:\Users\T\Source\Repos\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\CapstoneDesktopApp\SDesignDesktop\obj\Debug\
 SDesignDesktop
 none
 false
 DEBUG;TRACE
-C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\CapstoneDesktopApp\SDesignDesktop\App.xaml
+C:\Users\T\Source\Repos\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Desktop\CapstoneDesktopApp\SDesignDesktop\App.xaml
 91633528296
 
-17-752666761
+17-1220441374
 151984215308
 AddPage.xaml;AddRoute.xaml;createAcc.xaml;EditPage.xaml;LoginPage.xaml;Main.xaml;PalletizePage.xaml;PickManagePage.xaml;ViewPage.xaml;
 
-False
+True
 

@@ -2,9 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Phase4",
+    "\\Phase4\\Desktop",
+    "\\Phase4\\Desktop\\CapstoneDesktopApp",
     "\\Phase4\\Ordering Website",
     "\\Phase4\\Ordering Website\\WebTest"
   ],
-  "SelectedNode": "\\Phase4\\Ordering Website\\WebTest\\WebTest.sln",
+  "SelectedNode": "\\Phase4\\Desktop\\CapstoneDesktopApp\\CapstoneDesktopApp.sln",
   "PreviewInSolutionExplorer": false
 }
