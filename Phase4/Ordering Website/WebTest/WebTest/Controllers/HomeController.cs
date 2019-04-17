@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebTest.Data;
 using WebTest.Models;
 
@@ -18,30 +19,30 @@ namespace WebTest.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            var products = _dbContext.product.ToList();
+            var products = await _dbContext.product.ToListAsync();
             return View(products);
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public async Task<IActionResult> LoginAsync()
         {
-            var account = _dbContext.master_account.ToList();
+            var account = await _dbContext.master_account.ToListAsync();
             return View(account);
         }
 
         [HttpGet]
-        public IActionResult AccountInfo()
+        public async Task<IActionResult> AccountInfoAsync()
         {
-            var account = _dbContext.customer_account.ToList();
+            var account = await _dbContext.customer_account.ToListAsync();
             return View(account);
         }
 
         [HttpGet]
-        public IActionResult AccountOrderHistory()
+        public async Task<IActionResult> AccountOrderHistoryAsync()
         {
-            var orders = _dbContext.order_full.ToList();
+            var orders = await _dbContext.order_full.ToListAsync();
             return View(orders);
         }
 
@@ -74,9 +75,9 @@ namespace WebTest.Controllers
         }
 
         [HttpGet]
-        public IActionResult OrderItems()
+        public async Task<IActionResult> OrderItemsAysnc()
         {
-            var orders = _dbContext.order_item.ToList();
+            var orders = await _dbContext.order_item.ToListAsync();
             return View(orders);
         }
 
