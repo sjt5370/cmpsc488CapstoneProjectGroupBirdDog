@@ -24,5 +24,20 @@ namespace SDesignDesktop
         {
             InitializeComponent();
         }
+
+        private void AddPallet_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditPallet_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeletePallet_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

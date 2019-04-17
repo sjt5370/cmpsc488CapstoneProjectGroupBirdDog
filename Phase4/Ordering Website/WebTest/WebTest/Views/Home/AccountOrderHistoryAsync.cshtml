@@ -42,10 +42,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.urgency)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.order_num">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.order_num">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.order_num">Delete</a>
+            <td>                
+                <a asp-action="OrderItemsAsync" asp-route-id="@item.order_num">Details</a>                
             </td>
         </tr>
 }

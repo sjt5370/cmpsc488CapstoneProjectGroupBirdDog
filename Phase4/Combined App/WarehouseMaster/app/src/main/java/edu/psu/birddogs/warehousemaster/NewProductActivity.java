@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 public class NewProductActivity extends AppCompatActivity {
     private StockProduct stockProduct;
-    //private int toMove;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +24,7 @@ public class NewProductActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.pickUpButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ((Button) findViewById(R.id.pickUpButton)).setClickable(false);
                 Editable name = ((EditText) findViewById(R.id.nameField)).getText();
                 Editable desc = ((EditText) findViewById(R.id.descriptionField)).getText();
                 Editable manu = ((EditText) findViewById(R.id.manufacturerField)).getText();
@@ -44,9 +44,18 @@ public class NewProductActivity extends AppCompatActivity {
                 stockProduct.setBulkStock(Integer.parseInt(bulk.toString()));
                 stockProduct.setPriority(Integer.parseInt(priority.toString()));
                 stockProduct.setVolume(Double.parseDouble(volume.toString()));
-
-                DatabaseManager.addProduct(stockProduct);                    //FIXME: Does not currently check that unique is enforced
-                finish();
+                DatabaseManager.checkUniqueProduct(stockProduct, new DatabaseManager.OnCheckUniqueProductListener() {
+                    @Override
+                    public void onCheckUniqueProduct(boolean unique) {
+                        if (unique) {
+                            DatabaseManager.addProduct(stockProduct);
+                            finish();
+                        } else {
+                            Toast.makeText(NewProductActivity.this, getResources().getString(R.string.duplicate_product_response), Toast.LENGTH_SHORT).show();
+                            ((Button) findViewById(R.id.pickUpButton)).setClickable(true);
+                        }
+                    }
+                });
             }
         });
     }

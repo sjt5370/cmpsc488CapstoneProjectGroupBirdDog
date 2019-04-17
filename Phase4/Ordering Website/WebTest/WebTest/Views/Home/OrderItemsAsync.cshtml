@@ -16,6 +16,9 @@
                 @Html.DisplayNameFor(model => model.order_num)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.prod_id)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.quantity)
             </th>
             <th></th>
@@ -28,12 +31,13 @@
                 @Html.DisplayFor(modelItem => item.order_num)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.prod_id)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.quantity)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }

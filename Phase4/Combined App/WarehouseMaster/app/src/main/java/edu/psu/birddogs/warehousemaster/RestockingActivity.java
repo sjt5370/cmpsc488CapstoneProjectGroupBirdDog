@@ -2,8 +2,10 @@ package edu.psu.birddogs.warehousemaster;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -73,10 +75,24 @@ public class RestockingActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.logoutButton) {
-            Intent intent = new Intent(RestockingActivity.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle(getResources().getString(R.string.logout_button));
+            alert.setMessage(getResources().getString(R.string.logout_confirmation)).setCancelable(false).setPositiveButton(getResources().getString(R.string.confirm_button), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(RestockingActivity.this, LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            }).setNegativeButton(getResources().getString(R.string.cancel_button), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            AlertDialog alertD = alert.create();
+            alertD.show();
             return true;
         } else return super.onOptionsItemSelected(item);
     }
@@ -115,27 +131,25 @@ public class RestockingActivity extends AppCompatActivity {
 
     private void search() {
         Editable queryField = ((EditText) findViewById(R.id.searchField)).getText();
-        String query;
+        displayList.clear();
         if (TextUtils.isEmpty(queryField)) {
-            displayList.clear();
             displayList.addAll(stockProductList);
         } else {
-            displayList.clear();
-            query = queryField.toString();
+            String query = queryField.toString();
             switch(spinner.getSelectedItem().toString()) {
-                case "StockProduct Name":
+                case "Product Name":
                     for (StockProduct stockProduct : stockProductList)
-                        if (stockProduct.getProductName().contains(query))
+                        if (stockProduct.getProductName().toLowerCase().contains(query.toLowerCase()))
                             displayList.add(stockProduct);
                     break;
                 case "Manufacturer":
                     for (StockProduct stockProduct : stockProductList)
-                        if (stockProduct.getManufacturer().contains(query))
+                        if (stockProduct.getManufacturer().toLowerCase().contains(query.toLowerCase()))
                             displayList.add(stockProduct);
                     break;
                 case "Description":
                     for (StockProduct stockProduct : stockProductList)
-                        if (stockProduct.getDescription().contains(query))
+                        if (stockProduct.getDescription().toLowerCase().contains(query.toLowerCase()))
                             displayList.add(stockProduct);
                     break;
                 default:
