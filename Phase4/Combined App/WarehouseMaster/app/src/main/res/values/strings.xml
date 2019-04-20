@@ -15,6 +15,7 @@
     <string name="logout_confirmation">Are you sure you want to log out?</string>
     <string name="hold_confirmation">Place pallet on hold and exit?</string>
     <string name="finish_confirmation">Finish pallet and exit?</string>
+    <string name="next_stop_confirmation">Mark all selected orders as complete and move to next stop? Unselected orders will be marked as incomplete.</string>
     <string name="confirm_button">Confirm</string>
     <string name="cancel_button">Cancel</string>
 
@@ -70,5 +71,12 @@
     <string name="volume_label">Volume (cm^3)</string>
     <string name="empty_fields_response">Fields cannot be blank.</string>
     <string name="duplicate_product_response">Duplicate product already in inventory.</string>
+
+    <string name="driver_bar">Select a route:</string>
+    <string name="route_label">Route</string>
+    <string name="route_quantity_label">Orders</string>
+    <string name="order_label">Order</string>
+    <string name="stop_label">Stop</string>
+    <string name="next_stop_button">Next Stop</string>
 
 </resources>

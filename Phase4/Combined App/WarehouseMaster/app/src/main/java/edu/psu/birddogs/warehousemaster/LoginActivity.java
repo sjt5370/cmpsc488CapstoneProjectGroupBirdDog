@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LoginActivity extends AppCompatActivity {  //FIXME: All back buttons should be custom to avoid restarting activities
+import java.sql.DriverManager;
+
+public class LoginActivity extends AppCompatActivity {
 
     public static final String LOGIN_MESSAGE = "edu.psu.birddogs.warehousemaster.MESSAGE";
     private boolean authPending;
@@ -54,12 +56,12 @@ public class LoginActivity extends AppCompatActivity {  //FIXME: All back button
                     DatabaseManager.authenticate(username.toString(), password.toString(), new DatabaseManager.OnAuthenticationListener() {
                         @Override
                         public void onAuthentication(boolean authGranted, String job) {
-                            if (authGranted && job.equals("stocker")) {
+                            if (authGranted && job.toLowerCase().equals("stocker")) {
                                 Intent intent = new Intent(LoginActivity.this, StockingActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
                                 finish();
-                            } else if (authGranted && job.equals("picker")) {
+                            } else if (authGranted && job.toLowerCase().equals("picker")) {
                                 DatabaseManager.getUsers(new DatabaseManager.OnGetUsersListener() {
                                     @Override
                                     public void onGetUsers(User user) {
@@ -69,17 +71,20 @@ public class LoginActivity extends AppCompatActivity {  //FIXME: All back button
                                         startActivity(intent);
                                     }
                                 }, u);
+                            } else if (authGranted && job.toLowerCase().equals("driver")) {
+                                Intent intent = new Intent(LoginActivity.this, DriverActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                                finish();
                             } else if (authGranted) {
                                 Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_unauthorized), Toast.LENGTH_LONG).show();
                             } else {
-                                //FIXME: Highlight textboxes as invalid
                                 Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_failed), Toast.LENGTH_LONG).show();
                             }
                             authPending = false;
                         }
                     });
                 } else {
-                    //FIXME: Highlight textboxes as invalid
                     Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_failed), Toast.LENGTH_LONG).show();
                     authPending = false;
                 }

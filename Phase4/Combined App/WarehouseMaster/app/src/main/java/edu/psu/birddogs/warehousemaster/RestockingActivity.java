@@ -100,13 +100,15 @@ public class RestockingActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putParcelableArrayList("stockProductList", stockProductList);
         savedInstanceState.putParcelableArrayList("displayList", displayList);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        stockProductList = savedInstanceState.getParcelableArrayList("displayList");
+        stockProductList = savedInstanceState.getParcelableArrayList("stockProductList");
+        displayList = savedInstanceState.getParcelableArrayList("displayList");
         if (displayList == null)
             displayList = new ArrayList<>();
         if (stockProductList == null)

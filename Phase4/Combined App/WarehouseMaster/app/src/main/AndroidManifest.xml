@@ -57,8 +57,10 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:label="" />
+            android:label=""
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".DriverActivity" />
+        <activity android:name=".RouteActivity"></activity>
     </application>
 
 </manifest>

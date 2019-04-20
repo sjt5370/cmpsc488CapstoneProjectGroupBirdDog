@@ -20,6 +20,7 @@ public class DatabaseManager {
     interface OnGetPalletListener { void onGetPallet(HashMap<Integer, PickProduct> pallet); }
     interface OnGetUsersListener { void onGetUsers(User users); }
     interface OnCheckUniqueProductListener { void onCheckUniqueProduct(boolean unique); }
+    interface OnGetRoutesListener { void onGetRoutes(HashMap<Integer, ArrayList<StopOrder>> routes); }
 
     private static final String URL = "jdbc:jtds:sqlserver://mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com:1433;databaseName=warehouse;user=masterUser;password=master1234;sslProtocol=TLSv1";
     public static int curr_id = 0;
@@ -661,6 +662,120 @@ public class DatabaseManager {
         protected void onPostExecute(ArrayList<String> retVal) {
             OnAuthenticationListener listener = weakListener.get();
             if (listener != null) listener.onAuthentication(retVal.get(0).equals("true"), retVal.get(1));
+        }
+    }
+
+    public static void getRoutes(OnGetRoutesListener listener) { new GetRoutesAsyncTask().execute(listener); }
+    private static class GetRoutesAsyncTask extends AsyncTask<OnGetRoutesListener, Void, HashMap<Integer, ArrayList<StopOrder>>> {
+        WeakReference<OnGetRoutesListener> weakListener;
+
+        @Override
+        protected HashMap<Integer, ArrayList<StopOrder>> doInBackground(OnGetRoutesListener... params) {
+            weakListener = new WeakReference<>(params[0]);
+
+            StringBuilder command = new StringBuilder();
+            command.append("select * from route_info as valid_route where ");
+            command.append("(select count(*) as count1 from pallet where pallet.route_id = valid_route.route_id) = ");
+            command.append("(select count(*) as count2 from pallet where pallet.route_id = valid_route.route_id and fulfilled = 1) ");
+            command.append("and route_id in (select distinct route_id from pallet);");
+            HashMap<Integer,ArrayList<StopOrder>> routes = new HashMap<>();
+
+            Connection c = connect();
+            Statement st = null;
+            ResultSet rs = null;
+            try {
+                st = c.createStatement();
+                rs = st.executeQuery(command.toString());
+                while (rs.next()) {
+                    int route = rs.getInt("route_id");
+                    StopOrder order = new StopOrder(rs.getInt("order_num"), rs.getInt("stop_num"));
+                    if (routes.containsKey(route)) routes.get(route).add(order);
+                    else {
+                        ArrayList<StopOrder> orders = new ArrayList<>();
+                        orders.add(order);
+                        routes.put(route, orders);
+                    }
+                }
+            } catch (SQLException | NullPointerException ex) {
+                ex.printStackTrace();
+                System.exit(1);
+            } finally {
+                try {
+                    rs.close();
+                    st.close();
+                    disconnect(c);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    System.exit(1);
+                }
+            }
+            return routes;
+        }
+
+        @Override
+        protected void onPostExecute(HashMap<Integer, ArrayList<StopOrder>> routes) {
+            OnGetRoutesListener listener = weakListener.get();
+            if (listener != null) listener.onGetRoutes(routes);
+        }
+    }
+
+    public static void completeOrder(int orderNum) { new CompleteOrderAsyncTask().execute(orderNum); }
+    private static class CompleteOrderAsyncTask extends AsyncTask<Integer, Void, Void> {
+        int orderNum;
+
+        @Override
+        protected Void doInBackground(Integer... params) {
+            orderNum = params[0];
+
+            String command = "update order_full set complete = 1 where order_num = " + orderNum + ";";
+
+            Connection c = connect();
+            try {
+                Statement st = c.createStatement();
+                st.executeUpdate(command);
+                st.close();
+            } catch (SQLException | NullPointerException ex) {
+                ex.printStackTrace();
+                System.exit(1);
+            } finally {
+                try {
+                    disconnect(c);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    System.exit(1);
+                }
+            }
+            return null;
+        }
+    }
+
+    public static void delayOrder(int orderNum) { new DelayOrderAsyncTask().execute(orderNum); }
+    private static class DelayOrderAsyncTask extends AsyncTask<Integer, Void, Void> {
+        int orderNum;
+
+        @Override
+        protected Void doInBackground(Integer... params) {
+            orderNum = params[0];
+
+            String command = "update order_full set urgency = case when urgency = 0 then 0 else urgency - 1 end where order_num = " + orderNum + ";";
+
+            Connection c = connect();
+            try {
+                Statement st = c.createStatement();
+                st.executeUpdate(command);
+                st.close();
+            } catch (SQLException | NullPointerException ex) {
+                ex.printStackTrace();
+                System.exit(1);
+            } finally {
+                try {
+                    disconnect(c);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    System.exit(1);
+                }
+            }
+            return null;
         }
     }
 
