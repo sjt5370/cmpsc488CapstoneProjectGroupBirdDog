@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromotonalWeb", "PromotonalWeb\PromotonalWeb.csproj", "{9EF96FA4-1852-46D7-BE24-793EB295F6FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EF96FA4-1852-46D7-BE24-793EB295F6FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EF96FA4-1852-46D7-BE24-793EB295F6FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EF96FA4-1852-46D7-BE24-793EB295F6FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EF96FA4-1852-46D7-BE24-793EB295F6FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4C32E8D-A43A-4706-9DB2-B8675B898A5E}
+	EndGlobalSection
+EndGlobal
