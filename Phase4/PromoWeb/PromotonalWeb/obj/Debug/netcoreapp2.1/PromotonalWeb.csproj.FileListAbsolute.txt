@@ -51,11 +51,8 @@ C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Ph
 C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\PromotonalWeb.RazorCoreGenerate.cache
 C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
 C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
-C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\Razor\Views\Home\DesktopApp.g.cshtml.cs
 C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
-C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\Razor\Views\Home\MobleApp.g.cshtml.cs
 C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
-C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\Razor\Views\Home\WebSiteApp.g.cshtml.cs
 C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
 C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
@@ -68,3 +65,5 @@ C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Ph
 C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\PromotonalWeb.dll
 C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\PromotonalWeb.pdb
 C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\PromotonalWeb.csproj.CopyComplete
+C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\Razor\Views\Home\Download.g.cshtml.cs
+C:\Users\johnf\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\PromoWeb\PromotonalWeb\obj\Debug\netcoreapp2.1\Razor\Views\Home\Doc.g.cshtml.cs
