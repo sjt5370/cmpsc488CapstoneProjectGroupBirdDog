@@ -2,12 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Phase4",
-    "\\Phase4\\Ordering Website",
-    "\\Phase4\\Ordering Website\\WebTest",
-    "\\Phase4\\Ordering Website\\WebTest\\WebTest",
     "\\Phase4\\PromoWeb",
     "\\Phase4\\PromoWeb\\PromotonalWeb"
   ],
-  "SelectedNode": "\\Phase4\\PromoWeb\\PromotonalWeb",
+  "SelectedNode": "\\Phase4\\PromoWeb\\PromotonalWeb.sln",
   "PreviewInSolutionExplorer": false
 }
