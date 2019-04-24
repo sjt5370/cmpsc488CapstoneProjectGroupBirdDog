@@ -26,10 +26,10 @@ namespace WebTest.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> LoginAsync()
-        {            
-            var account = await _dbContext.master_account.ToListAsync();
-            return View(account);
+        public async Task<IActionResult> LoginAsync(MasterAccount id)
+        {
+            var account = await _dbContext.master_account.ContainsAsync(id);
+            return View();
         }
 
         [HttpGet]
