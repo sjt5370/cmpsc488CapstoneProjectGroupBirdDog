@@ -5520,7 +5520,7 @@
       ]
     },
     "Microsoft.AspNetCore.Razor.Design/2.1.2": {
-      "sha512": "ab4+TZw3Sxqrr5TwrwVyABeQkhSxYMJXgG6yZw7T+r6Vz+hcOt+pK79o15ESG7kZvWAK9wRG7emnTIia5O6R1Q==",
+      "sha512": "fe1+dpy+eM4IX1zodsvkihO1Spuj0NecfStWzvkYoMo7/ziOsqSv4vFK36ZpBfHa4gpdCEwaU46EPzdq+ZDYhQ==",
       "type": "package",
       "path": "microsoft.aspnetcore.razor.design/2.1.2",
       "hasTools": true,
@@ -12535,23 +12535,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Nicholas\\.nuget\\packages\\": {},
+    "C:\\Users\\johnf\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nicholas\\Desktop\\PromotonalWeb\\PromotonalWeb\\PromotonalWeb.csproj",
+      "projectUniqueName": "C:\\Users\\johnf\\Source\\Repos\\NicholasTHall\\cmpsc488CapstoneProjectGroupBirdDog\\Phase4\\PromoWeb\\PromotonalWeb\\PromotonalWeb.csproj",
       "projectName": "PromotonalWeb",
-      "projectPath": "C:\\Users\\Nicholas\\Desktop\\PromotonalWeb\\PromotonalWeb\\PromotonalWeb.csproj",
-      "packagesPath": "C:\\Users\\Nicholas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nicholas\\Desktop\\PromotonalWeb\\PromotonalWeb\\obj\\",
+      "projectPath": "C:\\Users\\johnf\\Source\\Repos\\NicholasTHall\\cmpsc488CapstoneProjectGroupBirdDog\\Phase4\\PromoWeb\\PromotonalWeb\\PromotonalWeb.csproj",
+      "packagesPath": "C:\\Users\\johnf\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\johnf\\Source\\Repos\\NicholasTHall\\cmpsc488CapstoneProjectGroupBirdDog\\Phase4\\PromoWeb\\PromotonalWeb\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Nicholas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\johnf\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
