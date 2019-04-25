@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebTest.Data;
@@ -12,7 +13,6 @@ namespace WebTest.Controllers
 {
     public class HomeController : Controller
     {
-        private int user_id = 0;
         private TestDBContext _dbContext;
         public HomeController(TestDBContext db)
         {
@@ -43,7 +43,7 @@ namespace WebTest.Controllers
             }
             else
             {
-                user_id = account.ElementAt(0).acc_id;
+                HttpContext.Session.SetInt32("user_id", account.ElementAt(0).acc_id);
                 return RedirectToAction("IndexAsync");
             }
         }
@@ -51,14 +51,14 @@ namespace WebTest.Controllers
         [HttpGet]
         public async Task<IActionResult> AccountInfoAsync()
         {
-            var account = await _dbContext.customer_account.Where(x => x.acc_id.Equals(user_id)).ToListAsync();
+            var account = await _dbContext.customer_account.Where(x => x.acc_id.Equals(HttpContext.Session.GetInt32("user_id"))).ToListAsync();
             return View(account);
         }
 
         [HttpGet]
         public async Task<IActionResult> AccountOrderHistoryAsync()
         {
-            var orders = await _dbContext.order_full.Where(x => x.acc_id.Equals(user_id)).ToListAsync();
+            var orders = await _dbContext.order_full.Where(x => x.acc_id.Equals(HttpContext.Session.GetInt32("user_id"))).ToListAsync();
             return View(orders);
         }
 
