@@ -1,6 +1,8 @@
 package edu.psu.birddogs.warehousemaster;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -8,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.DriverManager;
@@ -23,7 +26,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         authPending = false;
         setContentView(R.layout.activity_login);
-        //((ImageView) findViewById(R.id.titleImage)).setImageDrawable(getResources().getDrawable(R.drawable.we));
         ((Button) findViewById(R.id.forgotPasswordButton)).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -39,10 +41,42 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         authenticate();
-                        //FIXME: Add loading gif
                     }
                 }
         );
+        ((Button) findViewById(R.id.settingsButton)).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(LoginActivity.this, SettingsActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TextView warning = (TextView) findViewById(R.id.databaseWarning);
+        if (PreferenceManager.getDefaultSharedPreferences(this).getString("server", null) == null)
+            warning.setVisibility(View.VISIBLE);
+        else warning.setVisibility(View.INVISIBLE);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        StringBuilder url = new StringBuilder();
+        url.append("jdbc:jtds:sqlserver://");
+        url.append(prefs.getString("server", getResources().getString(R.string.pref_default_server)));
+        url.append(":");
+        url.append(prefs.getString("port", getResources().getString(R.string.pref_default_port)));
+        url.append(";databaseName=");
+        url.append(prefs.getString("database", getResources().getString(R.string.pref_default_database)));
+        url.append(";user=");
+        url.append(prefs.getString("username", getResources().getString(R.string.pref_default_username)));
+        url.append(";password=");
+        url.append(prefs.getString("password", getResources().getString(R.string.pref_default_password)));
+        url.append(";sslProtocol=");
+        url.append(prefs.getString("protocol", getResources().getString(R.string.pref_default_protocol)));
+        DatabaseManager.URL = url.toString();
     }
 
     private void authenticate() {
