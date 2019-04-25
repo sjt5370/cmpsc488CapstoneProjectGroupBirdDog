@@ -5,17 +5,37 @@
 
 <div id="androidDoc">
     <h3>Using the Android Application</h3>
-    <p>When the app is opened you will see the login page. Users can login using their account credientials created on the desktop application.  Depending on the user's account type, one of two screens will be displayed.</p>
+    <p>When the app is opened you will see the login page. Users can login using their account credientials created on the desktop application.  Depending on the user's account type, one of three screens will be displayed.</p>
     <p>
         If the User is a Picker, they will see the picking homescreen.  From here, they can click next pallet to get a new pallet from the database.  This will open a new screen displaying the details of the new pallet.
         Products are sorted by their picking priority, so Pickers should pick the products from top to bottom.  Tapping on the priority headings will collapse all products of that priority for easier viewing. If more details are needed, Pickers can tap a product to see the product description and manufacturer.
         When a Picker picks a product, they should tap the scan button to read the barcode. This will confirm that they have picked the correct product.  At any point a Picker can place the pallet on hold.  This will return the Picker to the picking homescreen and return all picked products back to the shelf.  When they have scanned all products, the finish order button will be activated. Upon clicking the button they will be returned to the picking homescreen.
     </p>
-    <p>If the User is a Stocker,</p>
+    <p>
+        If the User is a Stocker, they will see the stocking homescreen. From here, the user may choose to either restock shelves by tapping the restocking button or receive incoming inventory by tapping the receiving button.
+        Tapping the restocking button opens the restocking screen which displays a list of all products out of shelf stock or marked as in need of stocking by another employee. The user can select a product from the list by tapping it or search for a specific product by name, manufacturer, or description using the dropdown menu. Selecting a product will open its restocking screen, which displays the amount of bulk stock available to move. The user can enter a quantity to move and update the inventory by tapping the move button. If the quantity is valid, the inventory will update and the product will be removed from the list.
+        Tapping the receiving button instead opens the camera for scanning barcodes of incoming products. Upon scanning a barcode, the user will be prompted to enter the quantity received. If the barcode is for a new product, the user will additionally need to enter information describing the product. <b>Users are encouraged to enter detailed and correct information, as it will be displayed to customers and utilized in future searches.</b> Tapping the pick up button will update the inventory and reopen the camera.
+        When the user is finished, they may logout by tapping the icon on the top right of the main screens.
+    </p>
+    <p>
+        If the User is a Driver, they will see the driving homescreen which displays a list of routes for which the pallets have been prepared. The user can select a route by tapping it, which will display the first stop with a list of orders to be delivered at that stop.
+        The user can check off orders successfully delivered and tap the next stop button to proceed. Any checked orders will be marked as complete and unchecked orders will be deferred.
+        Once all stops have been visited, the route will close and return to the route selection screen.
+        When the user is finished, they may logout by tapping the icon on the top right of the main screen.
+    </p>
 </div>
 <div id="desktopDoc">
     <h3>Using the Desktop Application</h3>
+    <p>
+        The desktop application is the centerpiece of the project, It does most of the heavy calculations and database management. The end user would use the desktop application to manage inventory in the warehouse. Create routes, edit routes, and thanks to our k means based algorithm, It almost writes the routes for you. In addition to this the desktop application is used to monitor and manage the pickers along with controlling the order and pace of the employees while putting together orders. Finally the desktop gives the user the ability to Palletize their orders and adds an extra level of control to the ordering of the picks.
+    </p>
 </div>
 <div id="siteDoc">
     <h3>Using the Ordering Website</h3>
+    <p>
+        The website first ask the user to log in.  On fail it takes the user back to the log in page.
+        On success it takes the user to the products page.  From there the user can look at their
+        Account Info, their order history and items that were in the orders.  They can also place
+        orders for the products on the products page.
+    </p>
 </div>
