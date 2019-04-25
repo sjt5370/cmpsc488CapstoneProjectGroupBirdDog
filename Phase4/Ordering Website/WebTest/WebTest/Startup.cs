@@ -33,8 +33,9 @@ namespace WebTest
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddSession();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddDbContext<TestDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("WareHouse")));
+            services.AddDbContext<TestDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("WareHouse")));            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +54,7 @@ namespace WebTest
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
