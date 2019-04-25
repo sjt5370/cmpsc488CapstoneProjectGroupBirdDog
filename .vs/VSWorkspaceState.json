@@ -3,7 +3,9 @@
     "",
     "\\Phase4",
     "\\Phase4\\PromoWeb",
-    "\\Phase4\\PromoWeb\\PromotonalWeb"
+    "\\Phase4\\PromoWeb\\PromotonalWeb",
+    "\\Phase4\\PromoWeb\\PromotonalWeb\\Views",
+    "\\Phase4\\PromoWeb\\PromotonalWeb\\Views\\Home"
   ],
   "SelectedNode": "\\Phase4\\PromoWeb\\PromotonalWeb.sln",
   "PreviewInSolutionExplorer": false

@@ -1,16 +1,21 @@
 ﻿@{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Support";
 }
-<h2>@ViewData["Title"]</h2>
+<h1>@ViewData["Title"]</h1>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div id="androidDoc">
+    <h3>Using the Android Application</h3>
+    <p>When the app is opened you will see the login page. Users can login using their account credientials created on the desktop application.  Depending on the user's account type, one of two screens will be displayed.</p>
+    <p>
+        If the User is a Picker, they will see the picking homescreen.  From here, they can click next pallet to get a new pallet from the database.  This will open a new screen displaying the details of the new pallet.
+        Products are sorted by their picking priority, so Pickers should pick the products from top to bottom.  Tapping on the priority headings will collapse all products of that priority for easier viewing. If more details are needed, Pickers can tap a product to see the product description and manufacturer.
+        When a Picker picks a product, they should tap the scan button to read the barcode. This will confirm that they have picked the correct product.  At any point a Picker can place the pallet on hold.  This will return the Picker to the picking homescreen and return all picked products back to the shelf.  When they have scanned all products, the finish order button will be activated. Upon clicking the button they will be returned to the picking homescreen.
+    </p>
+    <p>If the User is a Stocker,</p>
+</div>
+<div id="desktopDoc">
+    <h3>Using the Desktop Application</h3>
+</div>
+<div id="siteDoc">
+    <h3>Using the Ordering Website</h3>
+</div>
