@@ -12,6 +12,7 @@ namespace WebTest.Controllers
 {
     public class HomeController : Controller
     {
+        private int user_id = 0;
         private TestDBContext _dbContext;
         public HomeController(TestDBContext db)
         {
@@ -26,23 +27,38 @@ namespace WebTest.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> LoginAsync(MasterAccount id)
+        public IActionResult Login()
         {
-            var account = await _dbContext.master_account.ContainsAsync(id);
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(MasterAccount model)
+        {
+            var account = _dbContext.master_account.Where(x => (x.username.Equals(model.username) && x.password.Equals(model.password) && x.acc_type.Equals(true))).ToList();
+            if (account.Count()<1)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return View();
+            }
+            else
+            {
+                user_id = account.ElementAt(0).acc_id;
+                return RedirectToAction("IndexAsync");
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> AccountInfoAsync()
         {
-            var account = await _dbContext.customer_account.Where(x => x.acc_id.Equals(20003)).ToListAsync();
+            var account = await _dbContext.customer_account.Where(x => x.acc_id.Equals(user_id)).ToListAsync();
             return View(account);
         }
 
         [HttpGet]
         public async Task<IActionResult> AccountOrderHistoryAsync()
         {
-            var orders = await _dbContext.order_full.Where(x => x.acc_id.Equals(20003)).ToListAsync();
+            var orders = await _dbContext.order_full.Where(x => x.acc_id.Equals(user_id)).ToListAsync();
             return View(orders);
         }
 
@@ -55,6 +71,7 @@ namespace WebTest.Controllers
         [HttpPost]
         public IActionResult CreateOrder(AccountOrder model)
         {
+            model.order_num = _dbContext.order_full.Count() + 1;
             _dbContext.order_full.Add(model);
             _dbContext.SaveChanges();
             return RedirectToAction("Index");

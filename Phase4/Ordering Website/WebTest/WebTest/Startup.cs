@@ -33,7 +33,6 @@ namespace WebTest
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<TestDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("WareHouse")));
         }
@@ -59,7 +58,7 @@ namespace WebTest
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=IndexAsync}/{id?}");
+                    template: "{controller=Home}/{action=Login}/{id?}");
             });
         }
     }
