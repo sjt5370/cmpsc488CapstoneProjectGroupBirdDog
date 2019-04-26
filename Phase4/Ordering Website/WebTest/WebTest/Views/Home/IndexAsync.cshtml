@@ -10,25 +10,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.prod_id)
+                Product Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.prod_name)
+                Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.prod_desc)
+                Description
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.manu)
+                manufacturer
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.price)
+                price
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.proirity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.volume)
+                volume
             </th>
             <th></th>
         </tr>
@@ -50,15 +47,11 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.proirity)
-            </td>
+            </td>            
             <td>
                 @Html.DisplayFor(modelItem => item.volume)
             </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.prod_id">Details</a> |
+            <td>                
                 <a asp-action="AddToCart" asp-route-id="@item.prod_id">Add To Cart</a>
             </td>
         </tr>
