@@ -72,6 +72,7 @@ namespace WebTest.Controllers
         public IActionResult CreateOrder(AccountOrder model)
         {
             model.order_num = _dbContext.order_full.Count() + 1;
+            model.acc_id = (int)(HttpContext.Session.GetInt32("user_id"));
             _dbContext.order_full.Add(model);
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
@@ -94,8 +95,15 @@ namespace WebTest.Controllers
         [HttpGet]
         public async Task<IActionResult> OrderItemsAsync()
         {
-            var orders = await _dbContext.order_item.ToListAsync();
-            return View(orders);
+            var orders = await _dbContext.order_full.Where(x => x.acc_id.Equals(HttpContext.Session.GetInt32("user_id"))).ToListAsync();
+            var orderitems = new List<OrderItem>();
+            for (int i=0; i<orders.Count; i++)
+            {
+                var orderitem = await _dbContext.order_item.Where(x => x.order_num.Equals(orders.ElementAt(i).order_num)).ToListAsync();
+                orderitems.AddRange(orderitem);
+            }
+            
+            return View(orderitems);
         }
 
         public IActionResult About()
