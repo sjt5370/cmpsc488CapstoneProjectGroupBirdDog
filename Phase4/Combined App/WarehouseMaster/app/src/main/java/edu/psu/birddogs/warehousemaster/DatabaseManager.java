@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 
 public class DatabaseManager {
     interface OnAuthenticationListener { void onAuthentication(boolean authGranted, String job); }
@@ -22,7 +21,7 @@ public class DatabaseManager {
     interface OnCheckUniqueProductListener { void onCheckUniqueProduct(boolean unique); }
     interface OnGetRoutesListener { void onGetRoutes(HashMap<Integer, ArrayList<StopOrder>> routes); }
 
-    private static final String URL = "jdbc:jtds:sqlserver://mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com:1433;databaseName=warehouse;user=masterUser;password=master1234;sslProtocol=TLSv1";
+    protected static String URL;
     public static int curr_id = 0;
 
     public static void checkUniqueProduct(StockProduct product, OnCheckUniqueProductListener listener) { new CheckUniqueProductAsyncTask().execute(product, listener); }
@@ -614,7 +613,7 @@ public class DatabaseManager {
         WeakReference<OnAuthenticationListener> weakListener;
 
         @Override
-        protected ArrayList<String> doInBackground(Object... params) {    //FIXME: SCRUB USERNAME OF SPECIAL CHARACTERS BEFORE CHECKING
+        protected ArrayList<String> doInBackground(Object... params) {
             username = (String) params[0];
             password = (String) params[1];
             weakListener = new WeakReference<>((OnAuthenticationListener) params[2]);
@@ -641,7 +640,7 @@ public class DatabaseManager {
                 }
                 if (rs.getInt("acc_type") == 0) acc_type = "true";
                 retVal.set(1, rs.getString("job").toLowerCase());
-                correctPass = rs.getString("password");     //FIXME: needs encryption
+                correctPass = rs.getString("password");
             } catch (SQLException | NullPointerException ex) {
                 ex.printStackTrace();
                 System.exit(1);
