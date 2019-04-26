@@ -1,22 +1,17 @@
 ﻿@model WebTest.Models.OrderItem
 
 @{
-    ViewData["Title"] = "CreateOrder2";
+    ViewData["Title"] = "AddToCart";
 }
 
-<h2>CreateOrder2</h2>
+<h2>AddToCart</h2>
 
 <h4>OrderItem</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateOrder2">
+        <form method="post" asp-action="AddToCart">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="order_num" class="control-label"></label>
-                <input asp-for="order_num" class="form-control" />
-                <span asp-validation-for="order_num" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="prod_id" class="control-label"></label>
                 <input asp-for="prod_id" class="form-control" />
@@ -28,14 +23,14 @@
                 <span asp-validation-for="quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Add to Cart" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="IndexAsync">Back to Products</a>
 </div>
 
 @section Scripts {

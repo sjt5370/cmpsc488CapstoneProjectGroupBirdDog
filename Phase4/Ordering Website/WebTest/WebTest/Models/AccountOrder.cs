@@ -13,5 +13,6 @@ namespace WebTest.Models
         public int acc_id { get; set; }
         public Boolean complete { get; set; }
         public int urgency { get; set; }
+        public Boolean active { get; set; }
     }
 }
