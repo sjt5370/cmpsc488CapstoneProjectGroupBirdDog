@@ -149,6 +149,19 @@ namespace WebTest.Controllers
         [HttpPost]
         public IActionResult AddToCart(OrderItem model)
         {
+            var account = _dbContext.product.Where(x => x.prod_id.Equals(model.prod_id)).ToList();
+            if (account.Count() < 1)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid Product Id.");
+                return View();
+            }
+
+            if (model.quantity < 1)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid Quantity Amount.");
+                return View();
+            }
+
             model.order_num = 0;
             if (SessionHelper.GetObjectFromJson<List<OrderItem>>(HttpContext.Session, "cart") == null)
             {
@@ -166,10 +179,10 @@ namespace WebTest.Controllers
         }
 
         [Route("remove/{id}")]
-        public IActionResult RemoveFromCart(int prodId)
+        public IActionResult RemoveFromCart(int id)
         {
             List<OrderItem> cart = SessionHelper.GetObjectFromJson<List<OrderItem>>(HttpContext.Session, "cart");
-            int index = FindElement(prodId);
+            int index = FindElement(id);
             cart.RemoveAt(index);
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             return RedirectToAction("Cart");
@@ -180,7 +193,7 @@ namespace WebTest.Controllers
             List<OrderItem> cart = SessionHelper.GetObjectFromJson<List<OrderItem>>(HttpContext.Session, "cart");
             for (int i = 0; i < cart.Count(); i++)
             {
-                if (cart.ElementAt(i).prod_id.Equals(id))
+                if (cart[i].prod_id.Equals(id))
                 {
                     return i;
                 }
@@ -190,15 +203,11 @@ namespace WebTest.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
-
             return View();
         }
 
