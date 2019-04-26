@@ -61,7 +61,6 @@ C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog
 C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Ordering Website\WebTest\WebTest\obj\Debug\netcoreapp2.1\WebTest.dll
 C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Ordering Website\WebTest\WebTest\obj\Debug\netcoreapp2.1\WebTest.pdb
 C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Ordering Website\WebTest\WebTest\obj\Debug\netcoreapp2.1\WebTest.csproj.CopyComplete
-C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Ordering Website\WebTest\WebTest\obj\Debug\netcoreapp2.1\Razor\_Layout.g.cshtml.cs
 C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Ordering Website\WebTest\WebTest\obj\Debug\netcoreapp2.1\Razor\Views\Home\CreateOrder.g.cshtml.cs
 C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Ordering Website\WebTest\WebTest\obj\Debug\netcoreapp2.1\Razor\Views\Home\IndexAsync.g.cshtml.cs
 C:\Users\Nicholas\Source\Repos\NicholasTHall\cmpsc488CapstoneProjectGroupBirdDog\Phase4\Ordering Website\WebTest\WebTest\obj\Debug\netcoreapp2.1\Razor\Views\Home\AccountInfoAsync.g.cshtml.cs
