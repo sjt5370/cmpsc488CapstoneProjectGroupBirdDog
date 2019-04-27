@@ -4,31 +4,28 @@
     ViewData["Title"] = "AccountInfo";
 }
 
-<h2>AccountInfo</h2>
+<h2>Account Information</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.email)
+                Email
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.cus_name)
+                Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.addr_street)
+                Street Address
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.addr_city)
+                City
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.addr_state)
+                State
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.addr_zip)
+                Zip
             </th>
             <th></th>
         </tr>
@@ -53,9 +50,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.addr_zip)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.acc_id">Edit</a>
             </td>
         </tr>
 }

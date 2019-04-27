@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h2>Cart</h2>
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>Product Id</th>
+        <th>Quantity</th>
+    </tr>
+    @foreach (var item in ViewBag.cart)
+    {
+        <tr>
+            <td><a asp-action="RemoveFromCart" asp-route-id="@item.prod_id">Remove</a></td>
+            <td>@item.prod_id</td>
+            <td>@item.quantity</td>
+        </tr>
+    }
+    <tr>
+        <td align="right" colspan="6">Total Cost</td>
+        <td>
+            $ @ViewBag.total
+        </td>
+    </tr>    
+</table>
+<div>
+    <a asp-action="IndexAsync">Products</a> |
+    <a asp-action="AddToCart">Add to Cart</a> |
+    <a asp-action="CreateOrder">Submit Order</a>
+</div>

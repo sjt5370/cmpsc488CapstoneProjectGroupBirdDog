@@ -1,0 +1,38 @@
+﻿@model WebTest.Models.OrderItem
+
+@{
+    ViewData["Title"] = "AddToCart";
+}
+
+<h2>Add To Cart</h2>
+
+<h4>Please enter product id and the quantity you wish to order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="AddToCart">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="prod_id" class="control-label">Product Id</label>
+                <input asp-for="prod_id" class="form-control" />
+                <span asp-validation-for="prod_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="quantity" class="control-label">Quantity</label>
+                <input asp-for="quantity" class="form-control" />
+                <span asp-validation-for="quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add to Cart" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="IndexAsync">Back to Products</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

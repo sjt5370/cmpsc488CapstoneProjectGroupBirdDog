@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:key="@string/pref_key_server"
+        android:title="@string/pref_title_server"
+        android:summary="@string/pref_summary_server"
+        android:defaultValue="@string/pref_default_server" />
+
+    <EditTextPreference
+        android:key="@string/pref_key_port"
+        android:title="@string/pref_title_port"
+        android:summary="@string/pref_summary_port"
+        android:defaultValue="@string/pref_default_port" />
+
+    <EditTextPreference
+        android:key="@string/pref_key_database"
+        android:title="@string/pref_title_database"
+        android:summary="@string/pref_summary_database"
+        android:defaultValue="@string/pref_default_database" />
+
+    <EditTextPreference
+        android:key="@string/pref_key_username"
+        android:title="@string/pref_title_username"
+        android:summary="@string/pref_summary_username"
+        android:defaultValue="@string/pref_default_username" />
+
+    <EditTextPreference
+        android:key="@string/pref_key_password"
+        android:title="@string/pref_title_password"
+        android:summary="@string/pref_summary_password"
+        android:defaultValue="@string/pref_default_password" />
+
+    <EditTextPreference
+        android:key="@string/pref_key_protocol"
+        android:title="@string/pref_title_protocol"
+        android:summary="@string/pref_summary_protocol"
+        android:defaultValue="@string/pref_default_protocol" />
+
+</PreferenceScreen>

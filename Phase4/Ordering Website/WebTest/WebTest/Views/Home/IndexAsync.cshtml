@@ -1,34 +1,31 @@
 ﻿@model IEnumerable<WebTest.Models.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Products";
 }
 
-<h2>Index</h2>
+<h2>Products</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.prod_name)
+                Product Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.prod_desc)
+                Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.manu)
+                Description
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.price)
+                manufacturer
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.proirity)
+                price
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.volume)
+                volume
             </th>
             <th></th>
         </tr>
@@ -36,6 +33,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.prod_id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.prod_name)
             </td>
@@ -47,16 +47,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.proirity)
-            </td>
+            </td>            
             <td>
                 @Html.DisplayFor(modelItem => item.volume)
             </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.prod_id">Details</a> |
-                <a asp-action="AddToCard" asp-route-id="@item.prod_id">Add To Cart</a>
+            <td>                
+                <a asp-action="AddToCart" asp-route-id="@item.prod_id">Add To Cart</a>
             </td>
         </tr>
 }

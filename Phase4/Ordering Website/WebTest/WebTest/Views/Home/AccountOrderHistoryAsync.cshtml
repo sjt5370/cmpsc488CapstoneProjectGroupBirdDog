@@ -4,25 +4,19 @@
     ViewData["Title"] = "AccountOrderHistory";
 }
 
-<h2>AccountOrderHistory</h2>
+<h2>Order History</h2>
 
 <p>
-    <a asp-action="CreateOrder">Create New</a>
+    <a asp-action="AddToCart">Add to Cart</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.order_num)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.acc_id)
+                Order Number
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.complete)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.urgency)
             </th>
             <th></th>
         </tr>
@@ -34,13 +28,7 @@
                 @Html.DisplayFor(modelItem => item.order_num)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.acc_id)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.complete)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.urgency)
             </td>
             <td>                
                 <a asp-action="OrderItemsAsync" asp-route-id="@item.order_num">Details</a>                

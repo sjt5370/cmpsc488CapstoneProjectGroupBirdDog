@@ -15,6 +15,7 @@
     <string name="logout_confirmation">Are you sure you want to log out?</string>
     <string name="hold_confirmation">Place pallet on hold and exit?</string>
     <string name="finish_confirmation">Finish pallet and exit?</string>
+    <string name="next_stop_confirmation">Mark all selected orders as complete and move to next stop? Unselected orders will be marked as incomplete.</string>
     <string name="confirm_button">Confirm</string>
     <string name="cancel_button">Cancel</string>
 
@@ -70,5 +71,48 @@
     <string name="volume_label">Volume (cm^3)</string>
     <string name="empty_fields_response">Fields cannot be blank.</string>
     <string name="duplicate_product_response">Duplicate product already in inventory.</string>
+
+    <string name="driver_bar">Select a route:</string>
+    <string name="route_label">Route</string>
+    <string name="route_quantity_label">Orders</string>
+    <string name="order_label">Order</string>
+    <string name="stop_label">Stop</string>
+    <string name="next_stop_button">Next Stop</string>
+
+    <string name="pref_key_server">server</string>
+    <string name="pref_title_server">Server URL</string>
+    <string name="pref_summary_server">Enter the URL of the server hosting the database.</string>
+    <string name="pref_default_server">localhost</string>
+
+    <string name="pref_key_port">port</string>
+    <string name="pref_title_port">Connection Port</string>
+    <string name="pref_summary_port">Enter the port to use to connect to the database.</string>
+    <string name="pref_default_port">1433</string>
+
+    <string name="pref_key_database">database</string>
+    <string name="pref_title_database">Database Name</string>
+    <string name="pref_summary_database">Enter the name of the database to use. Database must use Microsoft SQL Server and have tables formatted exactly as specified on the website otherwise crashes and unexpected behaviour will occur.</string>
+    <string name="pref_default_database">warehouse</string>
+
+    <string name="pref_key_username">username</string>
+    <string name="pref_title_username">Database Admin Username</string>
+    <string name="pref_summary_username">Enter the username used to access the database.</string>
+    <string name="pref_default_username">admin</string>
+
+    <string name="pref_key_password">password</string>
+    <string name="pref_title_password">Database Admin Password</string>
+    <string name="pref_summary_password">Enter the password for the admin account above.</string>
+    <string name="pref_default_password">password</string>
+
+    <string name="pref_key_protocol">protocol</string>
+    <string name="pref_title_protocol">Connection Protocol</string>
+    <string name="pref_summary_protocol">Enter the protocol used to connect to the database. Leave as default if you are unsure.</string>
+    <string name="pref_default_protocol">TLSv1</string>
+
+    <string name="database_warning">Set up database in settings before trying to log in.</string>
+
+
+
+
 
 </resources>

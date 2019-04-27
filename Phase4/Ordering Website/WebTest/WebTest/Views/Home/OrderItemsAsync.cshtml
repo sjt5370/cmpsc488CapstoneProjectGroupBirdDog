@@ -6,20 +6,17 @@
 
 <h2>OrderItems</h2>
 
-<p>
-    <a asp-action="CreateOrder2">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.order_num)
+                Order Number
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.prod_id)
+                Product Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.quantity)
+                Quantity
             </th>
             <th></th>
         </tr>
@@ -36,10 +33,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.quantity)
             </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
-            </td>
         </tr>
 }
     </tbody>
 </table>
+
+<div>
+    <a asp-action="IndexAsync">Back to Products</a>
+</div>
