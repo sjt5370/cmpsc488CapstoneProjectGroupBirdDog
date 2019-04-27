@@ -29,12 +29,15 @@ namespace SDesignDesktop
         public ViewPage()
         {
             InitializeComponent();
+            updateGUI();
+            UpdateLayout();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
             Gmaps.Source = new Uri("https://www.google.com/maps/");
+            updateGUI();
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)
@@ -181,8 +184,10 @@ namespace SDesignDesktop
             using (connection3)
             {
                 connection3.Open();
+                SqlCommand clearPallet = new SqlCommand("DELETE FROM pallet", connection3);
                 using (SqlCommand clear = new SqlCommand("DELETE FROM route_info", connection3))
                 {
+                    clearPallet.ExecuteNonQuery();
                     clear.ExecuteNonQuery();
                 }
                 for (int i = 0; i < orderData.Count(); i++)
@@ -688,7 +693,7 @@ namespace SDesignDesktop
                 {
                     int ID = accountIDs[i];
                     ordernums[i] = ordcount2;
-                    int sku = rand.Next(1, 35);
+                    int sku = rand.Next(1, 10);
                     using (SqlCommand updateOrderfull = new SqlCommand("Insert into order_full values (" + ordcount2 + ", " + ID + ", " + complete + ", " + urgency + ", " + active + ");", connection2))
                     {
                         updateOrderfull.ExecuteNonQuery();
@@ -705,7 +710,7 @@ namespace SDesignDesktop
                         int quantity;
                         if (volumes[prod_id_index] < 600)
                         {
-                            quantity = rand.Next(1, 60);
+                            quantity = rand.Next(1, 15);
                         }
                         else
                         {
@@ -761,13 +766,31 @@ namespace SDesignDesktop
             accountfchange.RemoveAt(x);
             changes.Items.RemoveAt(x);
         }
-
+        private int checkCount;
         public void updateGUI()
         {
+            SqlConnection con2 = new SqlConnection("Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;");
+            using (con2)
+            {
+                con2.Open();
+                SqlCommand getNumberOfRoutes = new SqlCommand("SELECT COUNT(DISTINCT route_id) FROM route_info", con2);
+                SqlDataReader numRts = getNumberOfRoutes.ExecuteReader();
+                numRts.Read();
+                checkCount = numRts.GetInt32(0);
+                con2.Close();
+            }
             SqlConnection connection = new SqlConnection("Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;");
             using (connection)
             {
-                int count = numCenterPoints + 1;
+                int count;
+                if(checkCount == 0)
+                {
+                    count = numCenterPoints + 1;
+                } else
+                {
+                    count = checkCount + 1;
+                }
+                
                 RouteList.Items.Clear();
                 for (int i = 1; i < count; i++)
                 {
@@ -839,6 +862,12 @@ namespace SDesignDesktop
                     connection.Close();
                 }
             }
+        }
+        
+        private void toPalletizePage_Click(object sender, RoutedEventArgs e)
+        {
+            Gmaps.Dispose();
+            SDesignDesktop.Main.GetWindow(this).Content = new PalletizePage();
         }
     }
 }

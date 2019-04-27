@@ -39,7 +39,8 @@
                     </StackPanel>
                 </StackPanel>
                 <Button x:Name="genOrders" Content="Test Algorithms" Click="GenOrders_Click" Height="35" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold"></Button>
-                <TextBlock Text="Edit Routes" FontSize="40" FontWeight="Bold" Margin="0,50,0,0" HorizontalAlignment="Center"/>
+                <Button x:Name="toPalletizePage" Content="Edit Pallets" Height="35" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" Click="toPalletizePage_Click"></Button>
+                <TextBlock Text="Edit Routes" FontSize="40" FontWeight="Bold" Margin="0,15,0,0" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Account Number:" FontSize="18" HorizontalAlignment="Center" Margin="0,15"/>
                 <TextBox x:Name="textBox" Height="23" TextWrapping="Wrap" Width="100" Background="LightGray"/>
                 <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Route Number:" FontSize="18" HorizontalAlignment="Center" Margin="0,15"/>
@@ -60,10 +61,6 @@
             </StackPanel>
         </StackPanel>
             
-        
-
-        
-        
         <Frame x:Name="View" Navigated="View_Navigated"/>
         
     </Grid>

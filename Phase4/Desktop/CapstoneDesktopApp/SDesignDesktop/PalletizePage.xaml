@@ -5,88 +5,58 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SDesignDesktop"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="PalletizePage" Background="SteelBlue">
+      Height="1080" Width="1920"
+      Title="PalletizePage" Background="SteelBlue" >
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <ListBox Margin="170,10,150,-55" Name="Pallets" Height="495" Width="480" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" Background="SlateGray" Grid.ColumnSpan="2">
-            <ListBoxItem Content="Pallet 1" FontSize="20" FontWeight="Bold"></ListBoxItem>
-            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
-                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                </ListBox>
-            </ListBoxItem>
+        <StackPanel Height="50" VerticalAlignment="Top">
+            <Button x:Name="navBack" Click="navBack_Click" Height="45" Width="100" Content="Home" FontSize="30" Margin="0,5,5,0" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="2"></Button>
+        </StackPanel>
+        <StackPanel x:Name="Stk" Width="500" Height="auto" HorizontalAlignment="Left"  Margin="50,50,50,0">
+            <TextBlock FontSize="30" Text="Route List" HorizontalAlignment="Center"/>
+            <ListBox  Margin="0,0,0,0" x:Name="RouteList" MinHeight="495" Height="600" MinWidth="500" VerticalAlignment="Top" HorizontalAlignment="Left" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" Background="SlateGray">
 
-            <ListBoxItem Content="Pallet 2" FontWeight="Bold" FontSize="20"></ListBoxItem>
-            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
-                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                </ListBox>
-            </ListBoxItem>
+            </ListBox>
+            <TextBlock Text="Order View" FontSize="30"  HorizontalAlignment="Center"/>
+            <ListBox x:Name="listBox" Height="240" Margin="0,0,0,0">
 
-            <ListBoxItem Content="Pallet 3" FontWeight="Bold" FontSize="20"></ListBoxItem>
-            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
-                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                </ListBox>
-            </ListBoxItem>
+            </ListBox>
+        </StackPanel>
+        <StackPanel x:Name="Pallets" Width="650" Height="auto" HorizontalAlignment="Left"  Margin="650,50,50,0">
+            <TextBlock FontSize="30" Text="Pallets for Route" HorizontalAlignment="Center"/>
+            <ListBox Margin="0,0,0,0" x:Name="PalletList" MinHeight="495" Height="880" MinWidth="650" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" Background="SlateGray">
 
-            <ListBoxItem Content="Pallet 4" FontWeight="Bold" FontSize="20"></ListBoxItem>
-            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
-                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                </ListBox>
-            </ListBoxItem>
+            </ListBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" Height="auto" Width="480" Grid.Column="3" Margin="0,90,50,0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                <ComboBox x:Name="selectRoute" FontSize="23" Width="210" Height="50" MaxDropDownHeight="200" HorizontalContentAlignment="Center" SelectedIndex="0" SelectedValuePath="Content" SelectionChanged="selectRoute_SelectionChanged"          Margin="0,100,0,0">
+                    <ComboBoxItem x:Name="default1" Visibility="Collapsed">Select a Route</ComboBoxItem>
+                </ComboBox>
+                <TextBox x:Name="numRoutes"  Width="50" Height="50" FontSize="33" HorizontalContentAlignment="Center" BorderThickness="2" Background="LightGray"  BorderBrush="DarkGray" FontWeight="DemiBold" Margin="0,100,0,0">0</TextBox>
+                <StackPanel Orientation="Vertical" Height="50" Margin="0,100,0,0">
+                    <Button x:Name="numUp" Content="  ^  " Click="numUp_Click"  FontSize="15" FontWeight="Bold" Height="25"></Button>
+                    <Button x:Name="numDown" Content="  v  " Click="numDown_Click"  FontWeight="Bold" FontSize="15" Height="25"></Button>
+                </StackPanel>
+            </StackPanel>
+            <Button x:Name="PalletizeB" Width="210" Content="Palletize Route" FontSize="30" Margin="0,20,0,0" Height="50" BorderThickness="2" BorderBrush="Black" Click="Palletize_Click"></Button>
+            <StackPanel Orientation="Horizontal" Width="480" Margin="0,50,0,0">
+                <Button x:Name="remove" Content="Remove" Width="100" Height="40" FontSize="20" VerticalAlignment="Bottom" BorderThickness="2" BorderBrush="Black" Click="remove_Click"></Button>
+                <TextBlock FontSize="23" HorizontalAlignment="Center" Margin="100,50,93,0">Selected</TextBlock>
+                <Button x:Name="Clear" Click="Clear_Click" Content="Clear" Width="100" Height="40" FontSize="20" VerticalAlignment="Bottom" BorderThickness="2" BorderBrush="Black"></Button>
+            </StackPanel>
 
-            <ListBoxItem Content="Pallet 5" FontWeight="Bold" FontSize="20"></ListBoxItem>
-            <ListBoxItem Height="150" Width="400" HorizontalAlignment="Center" BorderThickness="1">
-                <ListBox FontSize="12"  Height="140" Width="390" BorderBrush="Black" BorderThickness="2">
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                    <ListBoxItem Content="Order Number                    Order Size"/>
-                </ListBox>
-            </ListBoxItem>
-        </ListBox>
+            <ListBox x:Name="Selected" Height="240" Width="475" Margin="0,0,0,0" BorderThickness="3" BorderBrush="Black">
 
-        <Button x:Name="AddPallet" Content="Add" Height="36" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Margin="692,172,0,242" Click="AddPallet_Click" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="80"/>
-        <Button x:Name="EditPallet" Content="Edit" Height="35" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" Width="80" Click="EditPallet_Click" Grid.ColumnSpan="2" Margin="0,213,28,202"/>
-        <Button x:Name="DeletePallet" Content="Delete" Height="35" BorderThickness="2" Background="SlateGray" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" Width="80" Click="DeletePallet_Click" Grid.ColumnSpan="2" Margin="0,253,28,162"/>
+            </ListBox>
+            <StackPanel Width="auto" Height="50" Orientation="Horizontal" Margin="0,50" HorizontalAlignment="Center">
+                <Button x:Name="moveTo" FontSize="29" Content="Move to Pallet" Width="200" Height="49" BorderBrush="Black" BorderThickness="2" Click="moveTo_Click"></Button>
+                <ComboBox x:Name="sRoute" FontSize="20" Width="60" MaxDropDownHeight="200" HorizontalContentAlignment="Center" SelectedIndex="0" SelectedValuePath="Content"  SelectionChanged="sRoute_SelectionChanged"  BorderBrush="Black" BorderThickness="2" Margin="0,1,0,0">
+                    <ComboBoxItem x:Name="default2" Visibility="Collapsed">0</ComboBoxItem>
+
+                </ComboBox>
+            </StackPanel>
+            <Button x:Name="CreatePallet" Height="50" Width="200" BorderBrush="Black" BorderThickness="2" Click="CreatePallet_Click"  Content="Create Pallet" FontSize="29"></Button>
+        </StackPanel>
     </Grid>
 </Page>

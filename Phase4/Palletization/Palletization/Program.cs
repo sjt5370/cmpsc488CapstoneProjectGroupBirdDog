@@ -7,7 +7,7 @@ namespace Palletization {
         private readonly static String URL = "Data Source=mycsdb.civb68g6fy4p.us-east-2.rds.amazonaws.com;Initial Catalog=warehouse;User ID=masterUser;Password=master1234;";
 
         static void Main(string[] args) {
-            Palletize(0);       // Replace 0 with route number to generate pallets for
+            Palletize(101);       // Replace 0 with route number to generate pallets for
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
